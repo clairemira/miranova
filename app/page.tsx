@@ -1,3 +1,5 @@
+import { HeroTitle } from "../components/HeroTitle/HeroTitle";
+
 export default function HomePage() {
-  return <div>Home page</div>;
+  return <HeroTitle />;
 }
