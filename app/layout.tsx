@@ -8,11 +8,35 @@ import {
 import { theme } from "../theme";
 
 export const metadata = {
-  title: "Mantine Next.js template",
-  description: "I am using Mantine with Next.js!",
+  metadataBase: new URL("https://miranova.dev"),
+  title: {
+    default: "Claire Mira Shaw",
+    template: "%s | Claire Mira Shaw",
+  },
+  description:
+    "Software engineer focused on robust systems, clarity, and long-horizon maintainability. Author of The Miranova Matrix.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "https://miranova.dev",
+    title: "Claire Mira Shaw",
+    description:
+      "Software engineer focused on robust systems, clarity, and long-horizon maintainability. Author of The Miranova Matrix.",
+    siteName: "miranova.dev",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Claire Mira Shaw",
+    description:
+      "Software engineer focused on robust systems, clarity, and long-horizon maintainability. Author of The Miranova Matrix.",
+  },
 };
 
-export default function RootLayout({ children }: { children: any }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" {...mantineHtmlProps}>
       <head>
@@ -24,7 +48,9 @@ export default function RootLayout({ children }: { children: any }) {
         />
       </head>
       <body>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <MantineProvider theme={theme} defaultColorScheme="dark">
+          {children}
+        </MantineProvider>
       </body>
     </html>
   );
