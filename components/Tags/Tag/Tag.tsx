@@ -5,13 +5,19 @@ export type TagProps = BadgeProps & {
   name: string;
   /** Optional human-friendly label */
   label?: string;
+  color?: string;
 };
 
-export default function Tag({ name, label, ...badgeProps }: TagProps) {
+export default function Tag({
+  name,
+  label,
+  color = "rgb(120, 120, 120, 1)",
+  ...badgeProps
+}: TagProps) {
   return (
     <Badge
-      color="rgb(150, 150, 150, 1)"
-      bg="rgb(1, 1, 1, 0.3)"
+      color={color}
+      // bg="rgb(1, 1, 1, 0.3)"
       size="xs"
       variant="light"
       {...badgeProps}

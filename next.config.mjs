@@ -1,4 +1,7 @@
 import createMDX from "@next/mdx";
+import rehypeSlug from "rehype-slug";
+import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -10,7 +13,11 @@ const nextConfig = {
 };
 
 const withMDX = createMDX({
-  extension: /\.(md|mdx)$/, // optionally compile .md too
+  extension: /\.(md|mdx)$/,
+  options: {
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeSlug, rehypeKatex],
+  },
 });
 
 export default withMDX(nextConfig);

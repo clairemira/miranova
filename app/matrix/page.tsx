@@ -1,0 +1,125 @@
+import {
+  Title,
+  Text,
+  Divider,
+  Anchor,
+  Group,
+  Center,
+  Image,
+  Box,
+  Container,
+  Button,
+  Stack,
+  Badge,
+  TableOfContents,
+} from "@mantine/core";
+import Link from "next/link";
+
+import Article from "../../components/Layout/Article/Article";
+import classes from "./page.module.css";
+import Page from "../../components/Layout/Page/Page";
+import SmartLink from "../../components/SmartLink/SmartLink";
+import MiranovaMatrixTable from "../../components/MiranovaMatrixTable/MiranovaMatrixTable";
+
+// MDX
+import Contents from "../../components/Contents/Contents";
+import Introduction from "../../content/miranova/01-introduction.mdx";
+import Motivation from "../../content/miranova/02-motivation.mdx";
+import OperationalFramework from "../../content/miranova/03-operational-framework.mdx";
+import ParticipationLedger from "../../content/miranova/04-participation-ledger.mdx";
+import InterpretationAndProjection from "../../content/miranova/05-interpretation-and-projection.mdx";
+import SimulationRealisation from "../../content/miranova/06-simulation-realisation.mdx";
+import ConcludingContext from "../../content/miranova/07-concluding-context.mdx";
+
+export const metadata = {
+  title: "The Miranova Matrix",
+  description: "An operational framework for emergent structure.",
+};
+
+export default function TheMiranovaMatrixPage() {
+  return (
+    <Page>
+      <Box py="xl" className={classes.header}>
+        <Container size="sm">
+          {/* Back link */}
+          <Group>
+            <Anchor component={Link} href="/" size="sm">
+              ← Home
+            </Anchor>
+          </Group>
+
+          {/* Header */}
+          <Center>
+            <Image
+              src="/images/miranova-matrix-logo-bordered.png"
+              maw={180}
+              alt="Miranova Matrix logo"
+            />
+          </Center>
+
+          <div>
+            <Title order={1}>The Miranova Matrix</Title>
+            <Text c="dimmed" mt="sm">
+              The Miranova Matrix is an operational framework for studying how
+              persistent structure may arise from minimal irreversible update
+              rules. System progression is modelled as discrete “Ticks”: closed
+              traversals in which defined Degrees of Freedom are read, gated,
+              and written under admissibility constraints. The resulting
+              Participation Ledger specifies a minimal grammar through which
+              commitment, compatibility, directional bias, and closure can be
+              expressed without presupposing geometry or external time. Miranova
+              is presented not as a physical theory, but as a
+              simulation-oriented formalism for exploring constraint propagation
+              and emergent organisation under physically compatible principles.
+            </Text>
+          </div>
+
+          <Stack gap="xs" justify="flex-end" align="flex-end">
+            <Group gap="xs">
+              <Badge variant="filled" color="blue">
+                1.4.1
+              </Badge>
+              <SmartLink href="https://doi.org/10.5281/zenodo.18158338">
+                <Image
+                  src="/images/zenodo.18158338.svg"
+                  alt="10.5281/zenodo.18158338"
+                />
+              </SmartLink>
+            </Group>
+
+            <Group gap="xs">
+              <Anchor
+                href="/pdf/miranova/The Miranova Matrix (1.4.1).pdf"
+                target="_blank"
+                size="sm"
+              >
+                Download Latest (PDF)
+              </Anchor>
+            </Group>
+          </Stack>
+        </Container>
+      </Box>
+
+      <Divider />
+
+      {/* Content */}
+      <Article>
+        <div id="mdx">
+          <Introduction />
+          <Divider variant="dotted" my="xl" />
+          <Motivation />
+          <Divider variant="dotted" my="xl" />
+          <OperationalFramework />
+          <Divider variant="dotted" my="xl" />
+          <ParticipationLedger />
+          <Divider variant="dotted" my="xl" />
+          <InterpretationAndProjection />
+          <Divider variant="dotted" my="xl" />
+          <SimulationRealisation />
+          <Divider variant="dotted" my="xl" />
+          <ConcludingContext />
+        </div>
+      </Article>
+    </Page>
+  );
+}

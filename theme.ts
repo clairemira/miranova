@@ -1,7 +1,15 @@
 "use client";
 
-import { createTheme } from "@mantine/core";
+import { createTheme, DEFAULT_THEME } from "@mantine/core";
 
 export const theme = createTheme({
-  /* Put your mantine theme override here */
+  fontFamily: `Inter, ${DEFAULT_THEME.fontFamily}`,
+  fontFamilyMonospace: `JetBrains Mono, ${DEFAULT_THEME.fontFamilyMonospace}`,
+  headings: {
+    fontFamily: `Inter, ${DEFAULT_THEME.fontFamily}`,
+    fontWeight: "700",
+  },
+  radius: {
+    md: "10px",
+  },
 });

@@ -1,32 +1,63 @@
 import { Action, ActionsGrid } from "../ActionsGrid/ActionsGrid";
 import { Image } from "@mantine/core";
-import PersonalTags from "../Tags/PersonalTags/PersonalTags";
 
 export default function PersonalWork() {
   const actions: Action[] = [
     {
       title: "The Miranova Matrix",
-      caption: "An operational framework exploring emergent structure.",
+      link: "/matrix",
+      description:
+        "An operational framework for exploring how structure emerges through constrained participation.",
       upperSection: (
         <Image
           h="80"
           w="auto"
           fit="contain"
-          src="/images/miranova-matrix-transparent.png"
+          src="/images/miranova-matrix-logo-bordered.png"
         />
       ),
+      tags: [
+        {
+          label: "Cybernetics",
+          name: "Cybernetics",
+        },
+        {
+          label: "Complex Systems",
+          name: "ComplexSystems",
+        },
+        {
+          label: "Structure",
+          name: "Structure",
+        },
+      ],
     },
     {
       title: "The Commons",
-      caption: "A multi-parcipant cognitive substrate.",
+      link: "/commons",
+      description:
+        "A shared cognitive substrate where participants explore ideas and emergent structure together.",
       upperSection: (
         <Image
           h="80"
           w="auto"
           fit="contain"
-          src="/images/commons-transparent.png"
+          src="/images/commons-bordered.png"
         />
       ),
+      tags: [
+        {
+          label: "Synergetics",
+          name: "Synergetics",
+        },
+        {
+          label: "Emergence",
+          name: "Emergence",
+        },
+        {
+          label: "Sensemaking",
+          name: "Sensemaking",
+        },
+      ],
     },
   ];
 
@@ -34,7 +65,7 @@ export default function PersonalWork() {
     <ActionsGrid
       gridTitle="Personal Work"
       actions={actions}
-      cols={actions.length}
+      span={{ base: 12, md: 6 }}
     />
   );
 }

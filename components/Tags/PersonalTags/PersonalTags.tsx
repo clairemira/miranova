@@ -3,6 +3,11 @@ import Tag, { TagProps } from "../Tag/Tag";
 
 const tags: TagProps[] = [
   {
+    label: "Synergetics",
+    name: "Synergetics",
+    color: "indigo",
+  },
+  {
     label: "Complex Systems",
     name: "ComplexSystems",
   },
@@ -13,6 +18,11 @@ const tags: TagProps[] = [
   {
     label: "Structure",
     name: "Structure",
+  },
+  {
+    label: "Cybernetics",
+    name: "Cybernetics",
+    color: "indigo",
   },
 ];
 

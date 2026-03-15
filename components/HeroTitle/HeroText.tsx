@@ -1,50 +1,37 @@
-import { Button, Container, Text, Title } from "@mantine/core";
-import { Dots } from "./Dots";
+import { Container, Text, Title } from "@mantine/core";
 import classes from "./HeroText.module.css";
-import ProfileLinks from "../ProfileLinks/ProfileLinks";
 
 export function HeroText() {
   return (
-    <>
-      {/* <Container className={classes.wrapper} size={1400}> */}
-      <Dots className={classes.dots} style={{ left: 0, top: 0 }} />
-      <Dots className={classes.dots} style={{ left: 60, top: 0 }} />
-      <Dots className={classes.dots} style={{ left: 0, top: 140 }} />
-      <Dots className={classes.dots} style={{ right: 0, top: 60 }} />
+    <Container size="xl" mt="xl">
+      <Title className={classes.titleHero} mb="xs">
+        Claire{" "}
+        <Text
+          component="span"
+          className={classes.highlight}
+          fw={700}
+          variant="gradient"
+          gradient={{ from: "blue", to: "cyan" }}
+          inherit
+        >
+          Mira
+        </Text>{" "}
+        Shaw
+      </Title>
 
-      {/* <div className={classes.inner}> */}
-      <Container size="xl" mt="xl">
-        <Title className={classes.title}>
-          Claire{" "}
-          <Text
-            component="span"
-            className={classes.highlight}
-            fw={700}
-            variant="gradient"
-            gradient={{ from: "blue", to: "cyan" }}
-            inherit
-          >
-            Mira
-          </Text>{" "}
-          Shaw
-        </Title>
-
-        <Container p={0} size={600}>
-          <Text
-            size="lg"
-            c="dimmed"
-            className={classes.description}
-            // display="inline"
-          >
-            I build and maintain software systems, translating ambiguous
-            requirements into structures that remain stable over time. Alongside
-            engineering, I publish exploratory work on emergence, constraint,
-            and the principles behind organised complexity.
-          </Text>
-        </Container>
+      <Container p={0} size={600}>
+        <Text
+          size="lg"
+          c="dimmed"
+          className={classes.description}
+          // display="inline"
+        >
+          I build and maintain software systems, translating ambiguous
+          requirements into structures that remain stable over time. Alongside
+          engineering, I publish exploratory work on emergence, constraint, and
+          the principles behind organised complexity.
+        </Text>
       </Container>
-      {/* </div> */}
-      {/* </Container> */}
-    </>
+    </Container>
   );
 }

@@ -5,18 +5,16 @@ const tags: TagProps[] = [
   {
     label: "Synergetics",
     name: "Synergetics",
+    color: "indigo",
   },
   {
     label: "Cybernetics",
     name: "Cybernetics",
-  },
-  {
-    label: "Cloud Architecture",
-    name: "CloudArchitecture",
+    color: "indigo",
   },
 ];
 
-export default function ProfessionalTags() {
+export default function StructureTags() {
   return (
     <Group>
       {tags.map((tag) => (

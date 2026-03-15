@@ -1,0 +1,54 @@
+.root {
+  text-align: center;
+}
+
+.red {
+  background-color: var(--mantine-color-red-light);
+  min-width: 300px;
+}
+
+.green {
+  background-color: var(--mantine-color-green-light);
+  min-width: 300px;
+}
+
+.blue {
+  background-color: var(--mantine-color-blue-light);
+  min-width: 300px;
+}
+
+.orange {
+  background-color: var(--mantine-color-orange-light);
+}
+
+.yellow {
+  background-color: var(--mantine-color-yellow-light);
+}
+
+.magenta {
+  background-color: var(--mantine-color-pink-light);
+}
+
+.cyan {
+  background-color: var(--mantine-color-cyan-light);
+}
+
+.dark {
+  background-color: var(--mantine-color-dark-light-colour);
+}
+
+.light {
+  background-color: var(--mantine-color-gray-light-colour);
+}
+
+.redText {
+  color: var(--mantine-color-red-9);
+}
+
+.greenText {
+  color: var(--mantine-color-green-9);
+}
+
+.blueText {
+  color: var(--mantine-color-blue-9);
+}

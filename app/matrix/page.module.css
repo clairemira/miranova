@@ -1,0 +1,25 @@
+.header {
+  background-color: light-dark(
+    var(--mantine-color-gray-0),
+    var(--mantine-color-dark-8)
+  );
+}
+
+.tocWrapper {
+  position: fixed;
+  left: var(--mantine-spacing-md);
+  z-index: 10;
+}
+
+.tocFloating {
+  position: sticky;
+  right: 32px;
+  width: 240px;
+  z-index: 10;
+}
+
+@media (max-width: 1200px) {
+  .tocFloating {
+    display: none;
+  }
+}
