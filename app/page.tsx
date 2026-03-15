@@ -13,12 +13,12 @@ export default function HomePage() {
     name: "Claire Mira Shaw",
     url: "https://miranova.dev",
     sameAs: [
-      "https://clairemira.github.io",
-      "https://github.com/clairemira",
       "https://www.linkedin.com/in/clairemirashaw",
+      "https://github.com/clairemira",
       "https://orcid.org/0009-0006-9340-585X",
       "https://sciprofiles.com/profile/clairemirashaw",
       "https://gravatar.com/clairemirashaw",
+      "https://clairemira.github.io",
     ],
     jobTitle: "Software Engineer",
   };

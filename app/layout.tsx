@@ -5,6 +5,7 @@ import "./globals.css";
 import React from "react";
 import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
 import AppProvider from "../components/Providers/AppProvider";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
   metadataBase: new URL("https://miranova.dev"),
@@ -31,14 +32,11 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" {...mantineHtmlProps}>
       <head>
+        <Analytics />
         <ColorSchemeScript />
         <link rel="shortcut icon" href="/favicon.svg" />
         <meta
