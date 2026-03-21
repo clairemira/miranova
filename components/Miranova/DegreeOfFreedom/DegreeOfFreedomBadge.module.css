@@ -1,0 +1,9 @@
+.badge {
+  text-transform: none;
+  border: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-5));
+}
+
+.icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}

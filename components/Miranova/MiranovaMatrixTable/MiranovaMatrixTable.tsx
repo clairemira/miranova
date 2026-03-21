@@ -72,19 +72,11 @@ export default function MiranovaMatrixTable() {
             <TableTh>O1</TableTh>
             <TableTd></TableTd>
             <TableTd></TableTd>
-            <TableTd className={cx(classes.blue, classes.blueText)}>
-              write
-            </TableTd>
-            <TableTd className={cx(classes.green, classes.greenText)}>
-              gate
-            </TableTd>
+            <TableTd className={cx(classes.blue, classes.blueText)}>write</TableTd>
+            <TableTd className={cx(classes.green, classes.greenText)}>gate</TableTd>
             <TableTd className={cx(classes.red, classes.redText)}>read</TableTd>
-            <TableTd className={cx(classes.green, classes.greenText)}>
-              gate
-            </TableTd>
-            <TableTd className={cx(classes.blue, classes.blueText)}>
-              write
-            </TableTd>
+            <TableTd className={cx(classes.green, classes.greenText)}>gate</TableTd>
+            <TableTd className={cx(classes.blue, classes.blueText)}>write</TableTd>
             <TableTd></TableTd>
             <TableTd></TableTd>
           </TableTr>
@@ -92,131 +84,79 @@ export default function MiranovaMatrixTable() {
           <TableTr>
             <TableTh>O2</TableTh>
             <TableTd></TableTd>
-            <TableTd className={cx(classes.blue, classes.blueText)}>
-              write
-            </TableTd>
-            <TableTd className={cx(classes.green, classes.greenText)}>
-              gate
-            </TableTd>
+            <TableTd className={cx(classes.blue, classes.blueText)}>write</TableTd>
+            <TableTd className={cx(classes.green, classes.greenText)}>gate</TableTd>
             <TableTd className={cx(classes.red, classes.redText)}>read</TableTd>
             <TableTd></TableTd>
             <TableTd className={cx(classes.red, classes.redText)}>read</TableTd>
-            <TableTd className={cx(classes.green, classes.greenText)}>
-              gate
-            </TableTd>
-            <TableTd className={cx(classes.blue, classes.blueText)}>
-              write
-            </TableTd>
+            <TableTd className={cx(classes.green, classes.greenText)}>gate</TableTd>
+            <TableTd className={cx(classes.blue, classes.blueText)}>write</TableTd>
             <TableTd></TableTd>
           </TableTr>
           {/* Constrain */}
           <TableTr>
             <TableTh>O3</TableTh>
-            <TableTd className={cx(classes.blue, classes.blueText)}>
-              write
-            </TableTd>
-            <TableTd className={cx(classes.green, classes.greenText)}>
-              gate
-            </TableTd>
+            <TableTd className={cx(classes.blue, classes.blueText)}>write</TableTd>
+            <TableTd className={cx(classes.green, classes.greenText)}>gate</TableTd>
             <TableTd className={cx(classes.red, classes.redText)}>read</TableTd>
             <TableTd></TableTd>
             <TableTd></TableTd>
             <TableTd></TableTd>
             <TableTd className={cx(classes.red, classes.redText)}>read</TableTd>
-            <TableTd className={cx(classes.green, classes.greenText)}>
-              gate
-            </TableTd>
-            <TableTd className={cx(classes.blue, classes.blueText)}>
-              write
-            </TableTd>
+            <TableTd className={cx(classes.green, classes.greenText)}>gate</TableTd>
+            <TableTd className={cx(classes.blue, classes.blueText)}>write</TableTd>
           </TableTr>
           {/* Disperse */}
           <TableTr>
             <TableTh>O4</TableTh>
-            <TableTd className={cx(classes.green, classes.greenText)}>
-              gate
-            </TableTd>
+            <TableTd className={cx(classes.green, classes.greenText)}>gate</TableTd>
             <TableTd className={cx(classes.red, classes.redText)}>read</TableTd>
-            <TableTd className={cx(classes.blue, classes.blueText)}>
-              write
-            </TableTd>
+            <TableTd className={cx(classes.blue, classes.blueText)}>write</TableTd>
             <TableTd></TableTd>
             <TableTd></TableTd>
             <TableTd></TableTd>
-            <TableTd className={cx(classes.blue, classes.blueText)}>
-              write
-            </TableTd>
+            <TableTd className={cx(classes.blue, classes.blueText)}>write</TableTd>
             <TableTd className={cx(classes.red, classes.redText)}>read</TableTd>
-            <TableTd className={cx(classes.green, classes.greenText)}>
-              gate
-            </TableTd>
+            <TableTd className={cx(classes.green, classes.greenText)}>gate</TableTd>
           </TableTr>
           {/* Mediate */}
           <TableTr>
             <TableTh>O5ᶜ</TableTh>
-            <TableTd className={cx(classes.red, classes.redText)}>
-              readᶜ
-            </TableTd>
-            <TableTd className={cx(classes.blue, classes.blueText)}>
-              write
-            </TableTd>
-            <TableTd className={cx(classes.green, classes.greenText)}>
-              gate
-            </TableTd>
+            <TableTd className={cx(classes.red, classes.redText)}>readᶜ</TableTd>
+            <TableTd className={cx(classes.blue, classes.blueText)}>write</TableTd>
+            <TableTd className={cx(classes.green, classes.greenText)}>gate</TableTd>
             <TableTd></TableTd>
             <TableTd></TableTd>
             <TableTd></TableTd>
-            <TableTd className={cx(classes.green, classes.greenText)}>
-              gate
-            </TableTd>
-            <TableTd className={cx(classes.blue, classes.blueText)}>
-              write
-            </TableTd>
-            <TableTd className={cx(classes.red, classes.redText)}>
-              readᶜ
-            </TableTd>
+            <TableTd className={cx(classes.green, classes.greenText)}>gate</TableTd>
+            <TableTd className={cx(classes.blue, classes.blueText)}>write</TableTd>
+            <TableTd className={cx(classes.red, classes.redText)}>readᶜ</TableTd>
           </TableTr>
           {/* Bias */}
           <TableTr>
             <TableTh>O6χ</TableTh>
-            <TableTd className={cx(classes.blue, classes.blueText)}>
-              write
-            </TableTd>
-            <TableTd className={cx(classes.green, classes.greenText)}>
-              gateχ
-            </TableTd>
+            <TableTd className={cx(classes.blue, classes.blueText)}>write</TableTd>
+            <TableTd className={cx(classes.green, classes.greenText)}>gateχ</TableTd>
             <TableTd className={cx(classes.red, classes.redText)}>read</TableTd>
             <TableTd></TableTd>
             <TableTd></TableTd>
             <TableTd></TableTd>
             <TableTd className={cx(classes.red, classes.redText)}>read</TableTd>
-            <TableTd className={cx(classes.green, classes.greenText)}>
-              gateχ
-            </TableTd>
-            <TableTd className={cx(classes.blue, classes.blueText)}>
-              write
-            </TableTd>
+            <TableTd className={cx(classes.green, classes.greenText)}>gateχ</TableTd>
+            <TableTd className={cx(classes.blue, classes.blueText)}>write</TableTd>
           </TableTr>
           {/* Order */}
           <TableTr>
             <TableTh>O7∘</TableTh>
-            <TableTd className={cx(classes.green, classes.greenText)}>
-              gate
-            </TableTd>
+            <TableTd className={cx(classes.green, classes.greenText)}>gate</TableTd>
             <TableTd className={cx(classes.red, classes.redText)}>read</TableTd>
             <TableTd></TableTd>
-            <TableTd className={cx(classes.blue, classes.blueText)}>
-              write∘
-            </TableTd>
+            <TableTd className={cx(classes.blue, classes.blueText)}>write∘</TableTd>
             <TableTd></TableTd>
-            <TableTd className={cx(classes.blue, classes.blueText)}>
-              write∘
-            </TableTd>
+            <TableTd className={cx(classes.blue, classes.blueText)}>write∘</TableTd>
             <TableTd></TableTd>
             <TableTd className={cx(classes.red, classes.redText)}>read</TableTd>
-            <TableTd className={cx(classes.green, classes.greenText)}>
-              gate
-            </TableTd>
+            <TableTd className={cx(classes.green, classes.greenText)}>gate</TableTd>
           </TableTr>
         </TableTbody>
       </Table>

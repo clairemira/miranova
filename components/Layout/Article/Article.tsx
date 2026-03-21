@@ -12,7 +12,6 @@ export type ArticleProps = PropsWithChildren & {
 export default function Article({ children }: ArticleProps) {
   return (
     <Container id="mdx" size="sm" className={classes.article}>
-      <ScrollToTopButton />
       {children}
     </Container>
   );

@@ -1,4 +1,15 @@
 import { Image, Center } from "@mantine/core";
+import DegreeOfFreedomBadge from "../../components/Miranova/DegreeOfFreedom/DegreeOfFreedomBadge";
+import {
+  IconCircleFilled,
+  IconCircle,
+  IconGitCommit,
+  IconGitBranch,
+  IconGitMerge,
+  IconGitFork,
+  IconBinaryTree,
+} from "@tabler/icons-react";
+import classes from "./classes.module.css";
 
 # Operational Framework
 
@@ -9,48 +20,82 @@ import { Image, Center } from "@mantine/core";
   independent of external time. In simulation,
   ticks may be realised as asynchronous local
   commitment events.
+  <div className={classes.smallImg}>
+    ![Tick represented as a series of ordered operations](/images/miranova/tick-example.png)
+  </div>
 - **Identity / Distinction**
   Identity is the persistence of a distinguishable
   structure across one or more ticks. Identities
   emerge when distinguishable patterns remain
   correlated across successive updates.
+  <div className={classes.smallImg}>
+    ![Identity represented as a distinguishable structure across
+    ticks](/images/miranova/identity-dots-example.png)
+  </div>
 - **Causal depth**
   Causal depth is the length of the longest
   irreducible chain of tick-ordered dependencies
   required for a structure to exist.
+  <div className={classes.smallImg}>
+    ![Causal depth as the longest chain of tick-ordered
+    dependencies](/images/miranova/causal-depth-diagram.png)
+  </div>
 - **Branching / Clustering**
   Branching refers to the divergence of causal
   sequences across updates, while clustering
   denotes the subsequent formation of correlated
   structure within that divergence.
+  <div className={classes.smallImg}>
+    ![Demonstration of branching and clustering across
+    ticks](/images/miranova/branching-example.png)
+  </div>
 - **Emergent time**
   Embedded observers experience time
   primarily through the growth of causal depth
   and persistence, rather than through direct
   access to tick count.
+  <div className={classes.smallImg}>
+    ![Conceptual depiction of emergent time](/images/miranova/emergent-time-example.png)
+  </div>
 - **Monotonicity**
   Operational updates establish causal precedence
   through ordered dependency, without requiring
   an external time metric or a globally
   synchronous clock.
+  <div className={classes.smallImg}>
+    ![Example of ordered dependency](/images/miranova/monotonic-example.png)
+  </div>
 - **Irreversibility**
   Certain operational distinctions, once
   introduced, cannot be fully undone in
   subsequent updates.
+  <div className={classes.smallImg}>
+    ![Example of irreversibility](/images/miranova/irreversible-diagram.png)
+  </div>
 - **Dependency constraints**
   Higher-order structures arise only after the
   completion of prerequisite operational
   sequences.
+  <div className={classes.smallImg}>
+    ![Example of higher-order structures](/images/miranova/dependency-constraints-example.png)
+  </div>
 - **Emergence principle**
   Persistent structure arises when admissible
   distinctions stabilise through constraint-mediated
   commitment across repeated ticks.
+  <div className={classes.smallImg}>
+    ![Example of complex structure arising from ordered
+    dependencies](/images/miranova/emergence-principle-example.png)
+  </div>
 - **Observer embedding**
   Observers exist as subsystems within the
   dynamics and therefore access only emergent,
   relational notions of time. The underlying
   update ordering remains internal and
   unobservable.
+  <div className={classes.smallImg}>
+    ![Example of an embedded subsystem](/images/miranova/nodes-cluster-example.png)
+  </div>
 
 ## Degrees of Freedom
 
@@ -71,7 +116,7 @@ distinct mode by which a state may differ, persist, or influence subsequent upda
 alone defines the state, and none implies a separate dimension in which the system exists.
 
 What matters is not the number of degrees of freedom, but the fact that they are independent
-yet copresent . Together, they describe how a state is structured, constrained, and able to evolve.
+yet co-present. Together, they describe how a state is structured, constrained, and able to evolve.
 The framework treats these degrees of freedom as operational descriptors and ways to characterise change,
 rather than as coordinates in a geometric space.
 
@@ -85,16 +130,24 @@ Definitions are operational and do not presuppose semantic, cognitive, or physic
 
 Icons are mnemonic only and carry no ontological implication.
 
-1. **Coherence** · Structural alignment between participating distinctions. It contributes to the admissibility
-   envelope governing stable configuration.
-2. **Entropy** · Structured dispersion of possibility. It represents branching variation without implying disorder.
-3. **Activation** · Mobilised engagement in transformation. It indicates operational readiness without implying direction or persistence.
-4. **Salience** · Expressive prominence within the system. It reflects relative weighting among co-present distinctions.
-5. **Excitation** · Available generative capacity. It enables participation but does not record structure.
-6. **Modality** · Categorical mode of expression. It characterises the representational form through which differentiation appears.
-7. **Stimulus** · Perturbation within an activated field. It introduces local disturbance without guaranteeing persistence.
-8. **Valence** · Directional weighting across variation. It expresses attraction, repulsion, or preference within dispersion.
-9. **Resonance** · Reinforcement across aligned structure. It reflects persistence of compatible patterns under repeated participation.
+1. <DegreeOfFreedomBadge type="coherence" /> Structural alignment between participating
+   distinctions. It contributes to the admissibility envelope governing stable configuration.
+2. <DegreeOfFreedomBadge type="entropy" /> Structured dispersion of possibility. It represents
+   branching variation without implying disorder.
+3. <DegreeOfFreedomBadge type="activation" /> Mobilised engagement in transformation. It indicates
+   operational readiness without implying direction or persistence.
+4. <DegreeOfFreedomBadge type="salience" /> Expressive prominence within the system. It reflects
+   relative weighting among co-present distinctions.
+5. <DegreeOfFreedomBadge type="excitation" /> Available generative capacity. It enables
+   participation but does not record structure.
+6. <DegreeOfFreedomBadge type="modality" /> Categorical mode of expression. It characterises the
+   representational form through which differentiation appears.
+7. <DegreeOfFreedomBadge type="stimulus" /> Perturbation within an activated field. It introduces
+   local disturbance without guaranteeing persistence.
+8. <DegreeOfFreedomBadge type="valence" /> Directional weighting across variation. It expresses
+   attraction, repulsion, or preference within dispersion.
+9. <DegreeOfFreedomBadge type="resonance" /> Reinforcement across aligned structure. It reflects
+   persistence of compatible patterns under repeated participation.
 
 ### Diagrammatic Arrangement
 
@@ -121,7 +174,7 @@ represented centrally as a structural constraint rather than as a peripheral reg
 ### Operational Subspaces
 
 1. **Dynamics** describes how change is locally expressed across operational updates. It governs
-   mobilisation, variation, and relational restructuring under shared generative capacity
+   mobilisation, variation, and relational restructuring under shared generative capacity.
 2. **Disposition** describes how expressed structure is differentially weighted across commitment
    history. It governs reinforcement, directional weighting, and persistence of configuration.
 
@@ -237,6 +290,8 @@ single closed update cycle.
 
 ### O1 : Distinguish
 
+<IconCircleFilled size={22} />
+
 Undifferentiated → **distinguishable structure**
 
 Distinguish introduces operational differentiation. Available capacity is referenced,
@@ -244,6 +299,8 @@ expressive prominence and representational mode constrain admissibility, and mob
 with perturbation is written. No persistence is yet committed.
 
 ### O2 : Persist
+
+<IconCircle size={22} />
 
 Transient difference → **stable identity**
 
@@ -253,7 +310,9 @@ directional weighting is committed.
 
 ### O3 : Constrain
 
-Free variation → constrained relational structure
+<IconGitCommit size={48} style={{ transform: "translateX(-12px)" }} />
+
+Free variation → **constrained relational structure**
 
 Constrain consolidates relational compatibility. Mobilised variation is referenced,
 dispersion constrains admissibility, and structural alignment with reinforcement is
@@ -261,7 +320,9 @@ written.
 
 ### O4 : Disperse
 
-Local commitment → branching continuation
+<IconGitBranch size={48} style={{ transform: "scaleY(-1)" }} />
+
+Local commitment → **branching continuation**
 
 Disperse reintroduces generative motion within compatible bounds. Structured
 variation is referenced, alignment constrains admissibility, and renewed
@@ -269,7 +330,9 @@ mobilisation is written.
 
 ### O5ᶜ : Mediate
 
-Isolated persistence → coupled dynamics
+<IconGitMerge size={48} style={{ transform: "scaleY(-1)" }} />
+
+Isolated persistence → **coupled dynamics**
 
 Mediate evaluates compatibility under Consonance (ᶜ). Structural alignment
 is jointly referenced, mobilisation constrains coupling, and directional
@@ -277,7 +340,9 @@ structure is redistributed.
 
 ### O6χ : Bias
 
-Symmetric branching → orientational preference
+<IconGitFork size={48} style={{ transform: "scaleY(-1)" }} />
+
+Symmetric branching → **orientational preference**
 
 Bias introduces directional preference under Chirality (χ). Mobilised
 trajectories are referenced, dispersion gates asymmetrically, and oriented
@@ -285,7 +350,9 @@ relational structure is committed.
 
 ### O7∘ : Order
 
-Change → realised history
+<IconBinaryTree size={48} style={{ transform: "scaleX(-1)" }} />
+
+Change → **realised history**
 
 Order realises Closure (∘). Directional outcomes are referenced, compatibility
 constrains finality, and expressive prominence with representational form is
@@ -295,9 +362,9 @@ committed to record. Closure records without amplifying, biasing, or re-evaluati
 
 The traversal forms a pyramidal progression:
 
-- O1→O2→O3→O4 generative ascent
-- O5ᶜ →O6χ compatibility alignment & directional asymmetry
-- O7∘ structural closure
+- **O1→O2→O3→O4** generative ascent
+- &emsp;&emsp;**O5ᶜ →O6χ** compatibility alignment & directional asymmetry
+- &emsp;&emsp;&emsp;&nbsp;&nbsp;**O7∘** structural closure
 
 The operations do not represent temporal stages. They specify structured participation
 within an admissible transformation.

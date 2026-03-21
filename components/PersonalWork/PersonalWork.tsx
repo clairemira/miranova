@@ -9,12 +9,7 @@ export default function PersonalWork() {
       description:
         "An operational framework for exploring how structure emerges through constrained participation.",
       upperSection: (
-        <Image
-          h="80"
-          w="auto"
-          fit="contain"
-          src="/images/miranova-matrix-logo-bordered.png"
-        />
+        <Image h="80" w="auto" fit="contain" src="/images/miranova-matrix-logo-bordered.png" />
       ),
       tags: [
         {
@@ -36,14 +31,7 @@ export default function PersonalWork() {
       link: "/commons",
       description:
         "A shared cognitive substrate where participants explore ideas and emergent structure together.",
-      upperSection: (
-        <Image
-          h="80"
-          w="auto"
-          fit="contain"
-          src="/images/commons-bordered.png"
-        />
-      ),
+      upperSection: <Image h="80" w="auto" fit="contain" src="/images/commons-bordered.png" />,
       tags: [
         {
           label: "Synergetics",
@@ -61,11 +49,5 @@ export default function PersonalWork() {
     },
   ];
 
-  return (
-    <ActionsGrid
-      gridTitle="Personal Work"
-      actions={actions}
-      span={{ base: 12, md: 6 }}
-    />
-  );
+  return <ActionsGrid gridTitle="Personal Work" actions={actions} span={{ base: 12, md: 6 }} />;
 }
