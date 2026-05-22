@@ -11,17 +11,9 @@ type SmartLinkProps = PropsWithChildren & {
   size?: MantineSize;
 };
 
-export default function SmartLink({
-  href,
-  children,
-  style,
-  size,
-  ...props
-}: SmartLinkProps) {
+export default function SmartLink({ href, children, style, size, ...props }: SmartLinkProps) {
   const isExternal =
-    href.startsWith("http") ||
-    href.startsWith("mailto:") ||
-    href.startsWith("tel:");
+    href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:");
 
   const combinedStyle = {
     //
@@ -31,13 +23,12 @@ export default function SmartLink({
   const combinedProps = {
     size,
     href,
-    target: href.startsWith("http") ? "_blank" : undefined,
-    rel: href.startsWith("http") ? "noopener noreferrer" : undefined,
+    target: isExternal ? "_blank" : undefined,
+    rel: isExternal ? "noopener noreferrer" : undefined,
     ...props,
   };
 
-  const ParentComponent =
-    typeof children === "string" ? Anchor : UnstyledButton;
+  const ParentComponent = typeof children === "string" ? Anchor : UnstyledButton;
 
   if (isExternal) {
     return (

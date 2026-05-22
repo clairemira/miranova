@@ -30,8 +30,8 @@ export default function PersonalWork() {
       title: "The Commons",
       link: "/commons",
       description:
-        "A shared cognitive substrate where participants explore ideas and emergent structure together.",
-      upperSection: <Image h="80" w="auto" fit="contain" src="/images/commons-bordered.png" />,
+        "A shared cognitive substrate designed to explore how ideas evolve under constraint.",
+      upperSection: <Image h="80" w="auto" fit="contain" src="/images/commons/commons-logo.png" />,
       tags: [
         {
           label: "Synergetics",

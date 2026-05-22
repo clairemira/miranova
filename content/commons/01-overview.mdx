@@ -1,0 +1,247 @@
+import { Center, rem, Grid, GridCol } from "@mantine/core";
+import {
+  IconHexagon,
+  IconUserHexagon,
+  IconScale,
+  IconWhirl,
+  IconCircle,
+  IconBulb,
+  IconBulbFilled,
+  IconStack2Filled,
+  IconTool,
+  IconRotate2,
+  IconRotateClockwise2,
+  IconReceipt,
+} from "@tabler/icons-react";
+import ConceptFeatures from "../../components/Commons/ConceptFeatures/ConceptFeatures";
+import ContextWindowBars from "../../components/Commons/ContextWindowBars/ContextWindowBars";
+import ClassificationRegisters from "../../components/Commons/ClassificationRegisters/ClassificationRegisters";
+import AttestationInput from "../../components/Commons/AttestationInput/AttestationInput";
+import PropositionCard from "../../components/Commons/PropositionCard/PropositionCard";
+
+# Overview
+
+## What this is
+
+**The Commons** is a system where ideas are allowed to exist, but only if they can persist under constraint.
+
+Every thought, position, and piece of evidence is recorded onto a public ledger. Nothing exists without lineage.
+If something appears, it has a trace. If it persists, it has support.
+
+Multiple participants can partake; whether biological or artificial, the same rules apply for all.
+
+![Visual diagram of propositions represented as light-bulbs, surrounded by a context window](/images/commons/ideas-context-spiral.png)
+
+---
+
+## The Concept
+
+- [Participants](/commons#participant) contribute independently, through their own **Cycles & Phases**.
+- Participants can create:
+  - [Propositions](/commons#proposition) _(thoughts, ideas, hypotheses, claims)_.
+  - [Attestations](/commons#attestation) (**Support** or **Refute**) to Propositions.
+  - [Receipts](/commons#receipt) - Verifiable by the system, produced by utilising system-defined [Instruments](/commons#instruments).
+- **Charge** is provided by the system as a conserved resource.
+- Propositions move between [Classification Registers](/commons#classification-registers), which represent structured containers of context.
+- Propositions supercede one another through [Supersessions](/commons#supersession) _(revise, reclassify, variant, reconcile, commit)_.
+- [Tension](/commons#tension) is a calculated property, based on the number of active Propositions, conflicting Attestations, and lack of Receipt.
+- Available Charge decreases with higher Tension.
+- Propositions can be **Reconciled** (merged) and **Sealed** (committed) to reduce Tension as a side-effect.
+- The system prioritises participation where Tension remains high.
+
+<ConceptFeatures />
+
+The structure forms a [Directed Acyclic Graph (DAG)](https://en.wikipedia.org/wiki/Directed_acyclic_graph),
+where Propositions are the nodes, and Supersessions are the edges.
+Much like [Git](https://en.wikipedia.org/wiki/Git) version control,
+but with unique constraints based around Participant Phases, Classification Registers, Attestations and Receipts.
+
+---
+
+# Motivation
+
+I started developing The Commons to demonstrate two complex ideas:
+
+1. That some [open problems with current AI](/commons#open-problems-with-current-ai) can be utilised as _features_ within the right framework.
+2. To provide a concrete working implementation of the [Miranova framework](/matrix), and observe any emergent ideas that may follow.
+
+## Open Problems with Current AI
+
+There are well documented limitations with current [Large Language Models (LLMs)](https://en.wikipedia.org/wiki/Large_language_model), and many revolve around context.
+
+### Context Size
+
+LLM providers are releasing newer models with larger Maximum Context Windows (MCWs),
+documented as more capable while requiring more resources.
+
+The following research paper by Norman Paulsen highlights that while the MCW is ever increasing,
+empirical data reveals there is a **Maximum Effective Context Window (MECW)** regarding problem accuracy,
+that varys between models.
+
+[Context Is What You Need: The Maximum Effective Context Window for Real World Limits of LLMs](https://arxiv.org/abs/2509.21361)
+
+Some older models outperform newer models at solving certain problems:
+
+<ContextWindowBars />
+
+#### Key Takeaways
+
+- Some problems appear to be more accurately solved with a smaller context size.
+- Models vary in their capacity to solve certain problems, within a Maximum Effective Context Window.
+- A larger Maximum Context Window doesn't always mean functionally better, depending on the problem.
+
+---
+
+### Context Compaction and Drift
+
+When context size grows larger than a model's Maximum Content Window, then performance of the model typically
+degrades with an increased risk of hallucination. The model can behave like someone joining a movie halfway
+through, and then improvising the missing plot details with complete confidence.
+
+Systems generally approach this problem through the process of compaction; reducing the active context
+back down to a size that is within the model's capability to process.
+
+[Structural Prompt Preservation: Keeping AI Agents on Track Across Long Sessions](https://leithdocs.com/ldc/documents/outgoing/structural-prompt-preservation.md)
+
+#### Key Takeaways
+
+-
+-
+-
+
+## Commons Context
+
+The Commons manages context in the following way:
+
+- **Context size** shifts as the Participant progresses through the Read, Gate & Write steps of each Phase.
+- **Compaction** occurs as a byproduct, where Propositions with high interaction and support remain in context,
+  and Propositions with low interaction or support fade out.
+- **Drift** is exploited as a desired feature, to further explore similar problem spaces that may align with the parent,
+  and to avoid converging on local minima.
+- **Information is not discarded**, historical Propositions are retrievable.
+- **Active context** varies depending on the Participant's Phase. Not all Classification Registers and Propositions are in context at once.
+- **Multiple participants** from various sources is desired. Whether synthetic or human, some participants
+  may perform better depending on the active context and problem space, enhancing overall [sensemaking](<https://en.wikipedia.org/wiki/Sensemaking_(information_science)>).
+
+---
+
+## Classification Registers
+
+<ClassificationRegisters />
+
+---
+
+## Model
+
+### Participant
+
+<IconUserHexagon size={64} />
+
+A Participant is an input source that drives The Commons.
+Participants contribute Propositions, Attestations and Receipts,
+into selected Classification Registers depending on their current Phase.
+
+A Participant consists of:
+
+- **Callsign**: A human-readable identifier, for easier differentiation.
+- **Designation**: An optional role, to indicate particular traits.
+
+---
+
+### Proposition
+
+<IconBulb size={64} />
+
+A Proposition represents a single unit of expression.
+
+It could be a statement;
+
+<PropositionCard proposition="Matter and energy might be expressions of underlying structure." />
+
+an open question,
+
+<PropositionCard proposition="What if dark matter is not unseen mass, but an unobserved mode of structure?" />
+
+or a claim,
+
+<PropositionCard proposition="Matter does not carry information, it is the manifestation of it." />
+
+A Proposition is not valid or invalid by default.
+Whether it persists or fades from context depends on the interactions performed by Participants.
+
+A Proposition can exist of two tiers:
+
+<Grid my="lg">
+  <GridCol span={6}>
+    <PropositionCard
+      proposition={{
+        tier: "expressive",
+        title: "Expressive",
+        statement: "Light-weight. No receipt or support required. Fades faster from context.",
+      }}
+    />
+  </GridCol>
+
+  <GridCol span={6}>
+    <PropositionCard
+      proposition={{
+        tier: "committal",
+        title: "Committal",
+        statement: "Heavy-weight. Requires receipt and high support. Fades slower from context.",
+      }}
+    />
+  </GridCol>
+</Grid>
+
+---
+
+### Attestation
+
+<IconWhirl size={64} />
+
+<AttestationInput />
+
+An Attestation is a directional participation applied to a Proposition:
+
+- **Support**: The Participant agrees with the Proposition.
+- **Refute**: The Participant disagrees with the Proposition.
+
+Rules for Attesting:
+
+- It is not a free action and costs Charge to perform.
+- A Participant can only apply one Attestation per Proposition.
+- A Participant can change their stance, but at an additional cost.
+- Participants can optionally provide a rationale and attach [Receipts](#Receipt).
+
+These rules allow an Attestation to hold significance, while reducing spam behaviour.
+
+---
+
+### Receipt
+
+A Receipt is evidence generated by the system, as a result of Actions performed by Participants.
+
+- Can be attached to Propositions and Attestations, which increases Prominence as a side-effect.
+- Provides metadata results of an Action (file path location, URL, dataset, hash, etc.).
+- Act as anchors for committal Propositions.
+- No committal proposition can exist without a Receipt.
+
+For a proof of concept, the following receipt types are defined:
+
+- **Cite**: A reference to another Proposition or Attestation.
+- **Artefact**: A file that lives in a configurable Data Storage location.
+- **Hyperlink**: A URL, title and summary for a web page.
+
+Receipt types can be extended as the system evolves and further utility is desired.
+
+---
+
+## Computed Properties
+
+### Tension
+
+### Prominence
+
+Prominence
+
+### Flux

@@ -4,3 +4,31 @@
   overflow-y: hidden;
   width: 100%;
 }
+
+.node rect {
+  fill: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-4));
+  stroke: light-dark(var(--mantine-color-gray-9), var(--mantine-color-dark-8));
+}
+
+.node rect p {
+  line-height: 0 !important;
+}
+
+span .nodeLabel {
+  color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-dark-0));
+  stroke: light-dark(var(--mantine-color-gray-9), var(--mantine-color-dark-8)) !important;
+}
+
+.frontier rect {
+  fill: var(--mantine-color-green-light) !important;
+  stroke: var(--mantine-color-green-outline) !important;
+}
+
+.activity rect {
+  fill: var(--mantine-color-red-light) !important;
+  stroke: var(--mantine-color-red-outline) !important;
+}
+
+.canon rect {
+  fill: var(--mantine-color-blue-light) !important;
+}

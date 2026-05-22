@@ -7,16 +7,20 @@ import Page from "../../components/Layout/Page/Page";
 
 import type { Metadata } from "next";
 
+// MDX
+import Overview from "../../content/commons/01-overview.mdx";
+
 export const metadata: Metadata = {
   title: "The Commons",
   description:
-    "The Commons is a shared cognitive substrate exploring ideas, synergetics, and emergent structure across multiple participants.",
+    "The Commons is a shared cognitive substrate exploring ideas, sensemaking, and emergent structure through Human-AI collaboration.",
   alternates: {
     canonical: "https://miranova.dev/commons",
   },
   openGraph: {
     title: "The Commons",
-    description: "A shared cognitive substrate exploring ideas and emergence across participants.",
+    description:
+      "A shared cognitive substrate exploring ideas and emergence through Human-AI collaboration.",
     url: "https://miranova.dev/commons",
     siteName: "miranova.dev",
     type: "website",
@@ -25,7 +29,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "The Commons",
-    description: "A shared cognitive substrate exploring ideas and emergence across participants.",
+    description:
+      "A shared cognitive substrate exploring ideas and emergence through Human-AI collaboration.",
     images: ["https://miranova.dev/images/commons-bordered.png"],
   },
 };
@@ -46,7 +51,7 @@ export default function TheCommonsPage() {
             },
             url: "https://miranova.dev/commons",
             description:
-              "A shared cognitive substrate exploring ideas, synergetics, and emergent structure across participants.",
+              "The Commons is a shared cognitive substrate exploring ideas, sensemaking, and emergent structure through Human-AI collaboration.",
           }),
         }}
       />
@@ -62,7 +67,7 @@ export default function TheCommonsPage() {
 
           {/* Header */}
           <Center>
-            <Image src="/images/commons-bordered.png" maw={180} alt="Commons logo" />
+            <Image src="/images/commons/commons-logo.png" maw={180} alt="Commons logo" />
           </Center>
 
           <div>
@@ -70,8 +75,8 @@ export default function TheCommonsPage() {
             <Text c="dimmed" mt="sm">
               The Commons is a shared cognitive substrate designed to explore how ideas evolve under
               constraint. Built on the <SmartLink href="/matrix">Miranova Matrix</SmartLink>{" "}
-              framework, it provides a governed environment where participants (human or artificial)
-              can propose, revise, and reconcile propositions through structured lineage. Each
+              framework, it provides a governed environment where participants (human or AI) can
+              propose, revise, and reconcile propositions through structured lineage. Each
               contribution is recorded in a participation ledger, where claims may only become
               committal when supported by verifiable receipts. Through branching, supersession, and
               reconciliation, the system captures the natural evolution of knowledge while
@@ -87,7 +92,7 @@ export default function TheCommonsPage() {
 
       {/* Content */}
       <Article>
-        <Text c="dimmed">Documentation coming soon.</Text>
+        <Overview />
       </Article>
     </Page>
   );

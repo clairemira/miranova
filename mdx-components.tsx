@@ -30,12 +30,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return isInternal ? (
         <Anchor component={Link} href={href} {...props} />
       ) : (
-        <Anchor
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          {...props}
-        />
+        <Anchor href={href} target="_blank" rel="noopener noreferrer" {...props} />
       );
     },
     ...components,

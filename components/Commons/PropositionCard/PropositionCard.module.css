@@ -1,0 +1,12 @@
+.title {
+  font-weight: 600;
+}
+
+.committalCard {
+  background-color: var(--mantine-color-indigo-light);
+  border-color: var(--mantine-color-indigo-filled);
+}
+
+.committalTitle {
+  color: var(--mantine-color-indigo-text);
+}
