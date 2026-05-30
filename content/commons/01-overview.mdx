@@ -36,15 +36,15 @@ Multiple participants can partake; whether biological or artificial, the same ru
 
 ## The Concept
 
-- [Participants](/commons#participant) contribute independently, through their own **Cycles & Phases**.
-- Participants can create:
-  - [Propositions](/commons#proposition) _(thoughts, ideas, hypotheses, claims)_.
-  - [Attestations](/commons#attestation) (**Support** or **Refute**) to Propositions.
-  - [Receipts](/commons#receipt) - Verifiable by the system, produced by utilising system-defined [Instruments](/commons#instruments).
+- Participants can contribute:
+  - [Propositions](/commons#proposition) - Thoughts, ideas, hypotheses, claims.
+  - [Attestations](/commons#attestation) - **Support** or **Refute** on Propositions.
+  - [Verifiable Receipts](/commons#receipt) - Resulting from using system-defined [Instruments](/commons#instruments).
+- [Participants](/commons#participant) contribute independently, through their own [Cycles & Phases](/commons#cycles-and-phases).
 - **Charge** is provided by the system as a conserved resource.
 - Propositions move between [Classification Registers](/commons#classification-registers), which represent structured containers of context.
 - Propositions supercede one another through [Supersessions](/commons#supersession) _(revise, reclassify, variant, reconcile, commit)_.
-- [Tension](/commons#tension) is a calculated property, based on the number of active Propositions, conflicting Attestations, and lack of Receipt.
+- [Tension](/commons#tension) is a calculated property, based on Observables.
 - Available Charge decreases with higher Tension.
 - Propositions can be **Reconciled** (merged) and **Sealed** (committed) to reduce Tension as a side-effect.
 - The system prioritises participation where Tension remains high.
@@ -109,11 +109,17 @@ back down to a size that is within the model's capability to process.
 -
 -
 
-## Commons Context
+## Commons Context: Depth
 
-The Commons manages context in the following way:
+Rather than thinking in terms of Context *Size*, The Commons provides a solution using **Context Depth**:
+How many Propositions can be shown in context, including the chain of ancestral history, up until the nearest stable Closure boundary.
 
-- **Context size** shifts as the Participant progresses through the Read, Gate & Write steps of each Phase.
+- [Observables](/commons#observables) emerge from the dynamics of the system; Computed properties that are derived from the minimal inputs and [Structural Invariants](/commons#structural-invariants).
+- The nearest stable Closure boundary is defined as the [Context Horizon](/commons#context-horizon): When [Persistence](/commons#persistence) and [Variability](/common#variability) shift Attestational direction within a local region, in comparison to the global direction.
+- When a Participant's contributions reduce Tension, their [Perspective](/commons#perspective) increases, allowing more Context Horizons to be visible.
+- When a Participant's contributions increase Tension, Perspective decreases, as a way of 
+  Computed properties that are derived from the minimal input dynamics within substrate.
+- The nearest stable Context Horizon boundary is determined when the local Tension switches 
 - **Compaction** occurs as a byproduct, where Propositions with high interaction and support remain in context,
   and Propositions with low interaction or support fade out.
 - **Drift** is exploited as a desired feature, to further explore similar problem spaces that may align with the parent,
@@ -146,6 +152,12 @@ A Participant consists of:
 - **Callsign**: A human-readable identifier, for easier differentiation.
 - **Designation**: An optional role, to indicate particular traits.
 
+#### Cycles and Phases
+
+Participants iterate on Cycles, which is made up of a total of seven Phases.
+
+ A Participant's **Age** is determined by the number of Cycles performed
+
 ---
 
 ### Proposition
@@ -169,7 +181,9 @@ or a claim,
 A Proposition is not valid or invalid by default.
 Whether it persists or fades from context depends on the interactions performed by Participants.
 
-A Proposition can exist of two tiers:
+#### Tiers
+
+A Proposition can exist in one of two **Tiers**:
 
 <Grid my="lg">
   <GridCol span={6}>
@@ -193,6 +207,8 @@ A Proposition can exist of two tiers:
   </GridCol>
 </Grid>
 
+Propositions begin as Expressive, and can progress to Committal with high support.
+
 ---
 
 ### Attestation
@@ -208,9 +224,8 @@ An Attestation is a directional participation applied to a Proposition:
 
 Rules for Attesting:
 
-- It is not a free action and costs Charge to perform.
 - A Participant can only apply one Attestation per Proposition.
-- A Participant can change their stance, but at an additional cost.
+- A Participant can change their directional stance.
 - Participants can optionally provide a rationale and attach [Receipts](#Receipt).
 
 These rules allow an Attestation to hold significance, while reducing spam behaviour.
