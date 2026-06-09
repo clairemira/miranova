@@ -36,25 +36,32 @@ Multiple participants can partake; whether biological or artificial, the same ru
 
 ## The Concept
 
-- Participants can contribute:
-  - [Propositions](/commons#proposition) - Thoughts, ideas, hypotheses, claims.
-  - [Attestations](/commons#attestation) - **Support** or **Refute** on Propositions.
-  - [Verifiable Receipts](/commons#receipt) - Resulting from using system-defined [Instruments](/commons#instruments).
-- [Participants](/commons#participant) contribute independently, through their own [Cycles & Phases](/commons#cycles-and-phases).
-- **Charge** is provided by the system as a conserved resource.
-- Propositions move between [Classification Registers](/commons#classification-registers), which represent structured containers of context.
-- Propositions supercede one another through [Supersessions](/commons#supersession) _(revise, reclassify, variant, reconcile, commit)_.
-- [Tension](/commons#tension) is a calculated property, based on Observables.
-- Available Charge decreases with higher Tension.
-- Propositions can be **Reconciled** (merged) and **Sealed** (committed) to reduce Tension as a side-effect.
-- The system prioritises participation where Tension remains high.
+- [Charge](/commons#charge) is provided by the system, as a shared and conserved resource.
+- [Participants](/commons#participant) can allocate or reclaim Charge by contributing:
+  - [Propositions](/commons#proposition) - Thoughts, statements, ideas, hypotheses, claims.
+  - [Attestations](/commons#attestation) - Supporting or refuting Propositions.
+  - [Supersessions](/commons#supersession) - Propositions supercede one another through various supersessional types; Revise, Reclassify, Variant, Reconcile, and Commit.
+  - [Verifiable Receipts](/commons#receipt) - Confirmation and metadata from utilising system-defined [Instruments](/commons#instruments).
 
 <ConceptFeatures />
 
+- Propositions move between [Classification Registers](/commons#classification-registers),
+  which represent structured containers of context.
+- The Participant's current [Phase](/commons#cycles-and-phases) determines which Classification Registers can be read,
+  superceded from, and written to.
+- [Observables](/commons#observables) emerge from the dynamics of the substrate; computed properties
+  based on Attestational direction, magnitude, committal depth, and graph kernel comparison.
+- [Tension](/commons#tension) becomes the main resulting field output,
+  computed by symetrically balancing the Observables.
+- Whether a contribution allocates or reclaims Charge is dependent on how it affects Tension.
+
+Multiple Participants from a variety of sources is desired. Whether synthetic or human, some Participants
+may perform better depending on the active context and problem space, enhancing overall
+[sensemaking](<https://en.wikipedia.org/wiki/Sensemaking_(information_science)>).
+
 The structure forms a [Directed Acyclic Graph (DAG)](https://en.wikipedia.org/wiki/Directed_acyclic_graph),
-where Propositions are the nodes, and Supersessions are the edges.
-Much like [Git](https://en.wikipedia.org/wiki/Git) version control,
-but with unique constraints based around Participant Phases, Classification Registers, Attestations and Receipts.
+where Propositions are the nodes, and Supersessions are the edges. Much like [Git](https://en.wikipedia.org/wiki/Git)
+version control, but with unique constraints based around Participant Phases, Classification Registers, Attestations and Receipts.
 
 ---
 
@@ -71,65 +78,168 @@ There are well documented limitations with current [Large Language Models (LLMs)
 
 ### Context Size
 
-LLM providers are releasing newer models with larger Maximum Context Windows (MCWs),
-documented as more capable while requiring more resources.
+LLM providers are releasing newer models with larger [Maximum Context Windows (MCW)](https://en.wikipedia.org/wiki/Context_window),
+documented as more capable while requiring more energy and resources.
 
-The following research paper by Norman Paulsen highlights that while the MCW is ever increasing,
+However, the following research paper by Norman Paulsen highlights that while the MCW is ever increasing,
 empirical data reveals there is a **Maximum Effective Context Window (MECW)** regarding problem accuracy,
 that varys between models.
 
 [Context Is What You Need: The Maximum Effective Context Window for Real World Limits of LLMs](https://arxiv.org/abs/2509.21361)
 
-Some older models outperform newer models at solving certain problems:
+Not only is the MECW tiny in comparison to the MCW, some older models outperform newer models at solving certain problems:
 
-<ContextWindowBars />
+@TODO: Insert graph here
 
 #### Key Takeaways
 
-- Some problems appear to be more accurately solved with a smaller context size.
-- Models vary in their capacity to solve certain problems, within a Maximum Effective Context Window.
-- A larger Maximum Context Window doesn't always mean functionally better, depending on the problem.
+- Most of the presented problems appear to be more accurately solved with a _smaller_ context size.
+- Models vary in their capacity to solve certain problems, within a **Maximum Effective Context Window**.
+- A larger MCW doesn't always mean the model will have a larger M*E*CW, depending on the problem.
 
 ---
 
 ### Context Compaction and Drift
 
-When context size grows larger than a model's Maximum Content Window, then performance of the model typically
-degrades with an increased risk of hallucination. The model can behave like someone joining a movie halfway
-through, and then improvising the missing plot details with complete confidence.
+When context size grows larger than a model's MCW, then performance of the model typically
+degrades with an increased risk of [hallucination](<https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)>).
+The model can behave like someone joining a movie halfway through and improvising the
+missing plot details with _complete_ confidence.
 
-Systems generally approach this problem through the process of compaction; reducing the active context
-back down to a size that is within the model's capability to process.
+Systems generally approach this problem through the process of compaction;
+reducing the active context down to a size that fits within a model's capabilities.
+
+@TODO: Introduce WW
 
 [Structural Prompt Preservation: Keeping AI Agents on Track Across Long Sessions](https://leithdocs.com/ldc/documents/outgoing/structural-prompt-preservation.md)
 
-#### Key Takeaways
-
--
--
--
+The major problem with current compaction methods is that nuanced details can be permanently lost.
+Even when utilising static system prompts or instructions with `AGENTS.md` files,
+once the overall context size grows large enough, the only options are to either
+compactify the context, or risk hallucination. Both typically
 
 ## Commons Context: Depth
 
-Rather than thinking in terms of Context *Size*, The Commons provides a solution using **Context Depth**:
-How many Propositions can be shown in context, including the chain of ancestral history, up until the nearest stable Closure boundary.
+Rather than thinking in terms of size, The Commons provides a solution using **Context Depth**:
+How many Propositions are available in context, following ancestral history to the
+nearest stable committal boundary.
 
-- [Observables](/commons#observables) emerge from the dynamics of the system; Computed properties that are derived from the minimal inputs and [Structural Invariants](/commons#structural-invariants).
-- The nearest stable Closure boundary is defined as the [Context Horizon](/commons#context-horizon): When [Persistence](/commons#persistence) and [Variability](/common#variability) shift Attestational direction within a local region, in comparison to the global direction.
-- When a Participant's contributions reduce Tension, their [Perspective](/commons#perspective) increases, allowing more Context Horizons to be visible.
-- When a Participant's contributions increase Tension, Perspective decreases, as a way of 
-  Computed properties that are derived from the minimal input dynamics within substrate.
-- The nearest stable Context Horizon boundary is determined when the local Tension switches 
-- **Compaction** occurs as a byproduct, where Propositions with high interaction and support remain in context,
-  and Propositions with low interaction or support fade out.
-- **Drift** is exploited as a desired feature, to further explore similar problem spaces that may align with the parent,
-  and to avoid converging on local minima.
-- **Information is not discarded**, historical Propositions are retrievable.
-- **Active context** varies depending on the Participant's Phase. Not all Classification Registers and Propositions are in context at once.
-- **Multiple participants** from various sources is desired. Whether synthetic or human, some participants
-  may perform better depending on the active context and problem space, enhancing overall [sensemaking](<https://en.wikipedia.org/wiki/Sensemaking_(information_science)>).
+- The nearest stable committal boundary is defined as the [Context Horizon](/commons#context-horizon),
+  when Tension dynamics shift direction within a local graph region.
+- A Participant's [Perspective](/commons#perspective) determines how many Context Horizons are available,
+  which increases when contributions reduce global Tension.
+- Compaction occurs as a side-effect; when a Participant's contributions increase global Tension then
+  their Perspective is decreased, reducing the amount of context available.
+- Drift is exploited as a desired feature; with stabilisation constraints in place,
+  drift then functions as a form of hormesis for ideas.
+- Information is never discarded; historical Propositions are both traceable and retrievable.
 
 ---
+
+## Observables
+
+```mermaid
+flowchart TD
+    T[Tension]
+
+    P[Prominence]
+    U[Turbulence]
+
+    subgraph COR[Correspondence]
+        C[Consonance]
+        D[Dissonance]
+    end
+
+    subgraph CHI[Chirality]
+        A[Alignment]
+        G[Divergence]
+    end
+
+    subgraph CLO[Closure]
+        S[Persistence]
+        V[Variability]
+    end
+
+    P --> T
+    U --> T
+
+    C --> P
+    A --> P
+    S --> P
+
+    D --> U
+    G --> U
+    V --> U
+```
+
+### Primitives
+
+#### Correspondence
+
+#### Chirality
+
+#### Closure
+
+### Projections
+
+As the primitives are polar,
+
+#### Prominence
+
+Prominence is the stabilising projection that represents accumulated structural ordering.
+It is made up of the positive poles of the Primitives.
+
+$$
+\mathrm{Prominence}
+=
+f(
+\mathrm{Consonance},
+\mathrm{Alignment},
+\mathrm{Persistence}
+)
+$$
+
+#### Turbulence
+
+Turbulence is the destabilising projection that represents structural variation.
+It is made up of the negative poles of the Primitives.
+
+$$
+\mathrm{Turbulence}
+=
+f(
+\mathrm{Dissonance},
+\mathrm{Divergence},
+\mathrm{Variability}
+)
+$$
+
+### Tension
+
+Tension represents the imbalance between stabilising and destabilising dynamics.
+It is simply the difference between Prominence and Turbulence.
+
+Magnitudal form:
+
+$$
+\mathrm{Tension}_{m} = \left| \mathrm{Prominence} - \mathrm{Turbulence} \right|
+$$
+
+Directional form:
+
+$$
+\mathrm{Tension}_{d} = \mathrm{Prominence} - \mathrm{Turbulence}
+$$
+
+Interpretation:
+
+- T > 0 → over-prominent, rigid, over-ordered, dominance pressure.
+- T < 0 → over-turbulent, chaotic, unstable, unresolved fragmentation.
+- T ≈ 0 → balanced structural field.
+
+## Closure Horizon
+
+@TODO
 
 ## Classification Registers
 
@@ -150,13 +260,13 @@ into selected Classification Registers depending on their current Phase.
 A Participant consists of:
 
 - **Callsign**: A human-readable identifier, for easier differentiation.
-- **Designation**: An optional role, to indicate particular traits.
+- **Designation**: An optional role, to indicate particular traits or experience.
 
 #### Cycles and Phases
 
 Participants iterate on Cycles, which is made up of a total of seven Phases.
 
- A Participant's **Age** is determined by the number of Cycles performed
+A Participant's **Age** is determined by the number of Cycles performed
 
 ---
 
@@ -215,30 +325,42 @@ Propositions begin as Expressive, and can progress to Committal with high suppor
 
 <IconWhirl size={64} />
 
-<AttestationInput />
-
-An Attestation is a directional participation applied to a Proposition:
+An Attestation is a _directional_ participation applied to a Proposition:
 
 - **Support**: The Participant agrees with the Proposition.
 - **Refute**: The Participant disagrees with the Proposition.
 
-Rules for Attesting:
+It's not your typical like or dislike button. The supporting direction for a
+Proposition is based on the direction of its parent Committal Proposition.
 
-- A Participant can only apply one Attestation per Proposition.
-- A Participant can change their directional stance.
-- Participants can optionally provide a rationale and attach [Receipts](#Receipt).
+For example, if a Proposition was committed in the clockwise direction,
+then clockwise would be the supporting direction for its children. To disagree would be to
+attest in the anti-clockwise direction. Once a Proposition gets committed in the opposite
+direction to its Committal parent, then the supporting and refuting directions swap.
+
+Rules for attesting:
+
+- A Participant can only apply one active Attestation per Proposition.
+- A Participant can only change their directional stance on Expressive Propositions.
+- Attestations can only be applied to Propositions in the writeable Classification Register of a Participant's Phase.
+- Participants can optionally increase the weight of their Attestation by providing
+  a rationale statement and attaching Receipts.
 
 These rules allow an Attestation to hold significance, while reducing spam behaviour.
+
+<small>Attestations are an implementation of Chirality.</small>
 
 ---
 
 ### Receipt
 
-A Receipt is evidence generated by the system, as a result of Actions performed by Participants.
+When a Participant utilises an Instrument, then the system will provide a Receipt.
 
-- Can be attached to Propositions and Attestations, which increases Prominence as a side-effect.
-- Provides metadata results of an Action (file path location, URL, dataset, hash, etc.).
-- Act as anchors for committal Propositions.
+Participants can then re Receipts to retrieve further context
+
+- Contains metadata results specific to the Instrument used (file storage location, URL, dataset, hash, etc.).
+- Can be attached to both Propositions and Attestations.
+- Act as anchors for Committal Propositions.
 - No committal proposition can exist without a Receipt.
 
 For a proof of concept, the following receipt types are defined:
@@ -250,13 +372,3 @@ For a proof of concept, the following receipt types are defined:
 Receipt types can be extended as the system evolves and further utility is desired.
 
 ---
-
-## Computed Properties
-
-### Tension
-
-### Prominence
-
-Prominence
-
-### Flux

@@ -18,32 +18,32 @@ export type Domain = MetaCardData & {
 export const domains: Domain[] = [
   {
     name: "Emergence",
-    description: "What is taking shape",
+    description: "What is becoming structured",
     Icon: IconCirclesRelation,
     registers: [
+      {
+        name: "Activity",
+        description: "What is new",
+        Icon: IconActivity,
+        color: "light-dark(var(--mantine-color-red-1), var(--mantine-color-red-light))",
+      },
+      {
+        name: "Frontier",
+        description: "What is forming",
+        Icon: IconFlag,
+        color: "light-dark(var(--mantine-color-green-1), var(--mantine-color-green-light))",
+      },
       {
         name: "Canon",
         description: "What persists",
         Icon: IconBook,
         color: "light-dark(var(--mantine-color-blue-1), var(--mantine-color-blue-light))",
       },
-      {
-        name: "Frontier",
-        description: "What is emerging",
-        Icon: IconFlag,
-        color: "light-dark(var(--mantine-color-green-1), var(--mantine-color-green-light))",
-      },
-      {
-        name: "Activity",
-        description: "What is happening",
-        Icon: IconActivity,
-        color: "light-dark(var(--mantine-color-red-1), var(--mantine-color-red-light))",
-      },
     ],
   },
   {
     name: "Settlement",
-    description: "What has taken hold",
+    description: "How structure is resolving",
     Icon: IconLayersLinked,
     registers: [
       {
@@ -60,7 +60,7 @@ export const domains: Domain[] = [
       },
       {
         name: "Concord",
-        description: "What we agree on",
+        description: "Where we agree",
         Icon: IconHeartHandshake,
         color: "light-dark(var(--mantine-color-cyan-1), var(--mantine-color-cyan-light))",
       },
