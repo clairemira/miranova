@@ -18,6 +18,7 @@ import ContextWindowBars from "../../components/Commons/ContextWindowBars/Contex
 import ClassificationRegisters from "../../components/Commons/ClassificationRegisters/ClassificationRegisters";
 import AttestationInput from "../../components/Commons/AttestationInput/AttestationInput";
 import PropositionCard from "../../components/Commons/PropositionCard/PropositionCard";
+import ContextWindowExample from "../../components/Commons/ContextWindowExample/ContextWindowExample";
 
 # Overview
 
@@ -25,8 +26,8 @@ import PropositionCard from "../../components/Commons/PropositionCard/Propositio
 
 **The Commons** is a system where ideas are allowed to exist, but only if they can persist under constraint.
 
-Every thought, position, and piece of evidence is recorded onto a public ledger. Nothing exists without lineage.
-If something appears, it has a trace. If it persists, it has support.
+Every thought, position, and piece of evidence is recorded onto a public ledger.
+Nothing exists without lineage. If something appears, it has a trace. If it persists, it has support.
 
 Multiple participants can partake; whether biological or artificial, the same rules apply for all.
 
@@ -38,32 +39,202 @@ Multiple participants can partake; whether biological or artificial, the same ru
 
 - [Charge](/commons#charge) is provided by the system, as a shared and conserved resource.
 - [Participants](/commons#participant) can allocate or reclaim Charge by contributing:
-  - [Propositions](/commons#proposition) - Thoughts, statements, ideas, hypotheses, claims.
-  - [Attestations](/commons#attestation) - Supporting or refuting Propositions.
-  - [Supersessions](/commons#supersession) - Propositions supercede one another through various supersessional types; Revise, Reclassify, Variant, Reconcile, and Commit.
-  - [Verifiable Receipts](/commons#receipt) - Confirmation and metadata from utilising system-defined [Instruments](/commons#instruments).
+  - [Propositions](/commons#proposition) - Thoughts, ideas, questions, hypotheses, claims.
+  - [Attestations](/commons#attestation) - A directional stance; Supporting or Refuting Propositions.
+  - [Supersessions](/commons#supersession) - Propositions supercede one another through various branching types;
+    Revise, Reclassify, Variant, Reconcile, and Commit.
+  - [Receipts](/commons#receipt) - Confirmation and verifiable metadata from utilising
+    system-defined [Instruments](/commons#instruments).
 
 <ConceptFeatures />
 
-- Propositions move between [Classification Registers](/commons#classification-registers),
+- Propositions are recorded into [Classification Registers](/commons#classification-registers),
   which represent structured containers of context.
-- The Participant's current [Phase](/commons#cycles-and-phases) determines which Classification Registers can be read,
-  superceded from, and written to.
-- [Observables](/commons#observables) emerge from the dynamics of the substrate; computed properties
-  based on Attestational direction, magnitude, committal depth, and graph kernel comparison.
-- [Tension](/commons#tension) becomes the main resulting field output,
-  computed by symetrically balancing the Observables.
-- Whether a contribution allocates or reclaims Charge is dependent on how it affects Tension.
+- Participant's navigate through [Cycles & Phases](/commons#cycles-and-phases),
+  determining which Classification Registers can be read, superceded from, and written to.
+- [Observables](/commons#observables) are computed properties based on comparing the inputs between two complementary [Domains](/commons#domain);
+  - Structural similarity of Supersessions -> [Correspondence](/commons#correspondence)
+  - Attestational direction & magnitude -> [Chirality](/commons#chirality)
+  - Committal Receipt type & count -> [Closure](/commons#closure)
+- [Tension](/commons#tension) becomes a dynamic system output, computed by symmetrically balancing the Observables.
+- Whether a contribution allocates or reclaims Charge depends on how it affects Tension.
 
-Multiple Participants from a variety of sources is desired. Whether synthetic or human, some Participants
-may perform better depending on the active context and problem space, enhancing overall
-[sensemaking](<https://en.wikipedia.org/wiki/Sensemaking_(information_science)>).
+Multiple Participants from a variety of sources is desired. Whether synthetic or human,
+each may provide a unique [Perspective](/commons#perspective) over the active context
+to enhance overall [sensemaking](<https://en.wikipedia.org/wiki/Sensemaking_(information_science)>).
 
 The structure forms a [Directed Acyclic Graph (DAG)](https://en.wikipedia.org/wiki/Directed_acyclic_graph),
 where Propositions are the nodes, and Supersessions are the edges. Much like [Git](https://en.wikipedia.org/wiki/Git)
 version control, but with unique constraints based around Participant Phases, Classification Registers, Attestations and Receipts.
 
+```mermaid
 ---
+config:
+  flowchart:
+    curve: basis
+  theme: neutral
+---
+flowchart TB
+
+    PARTICIPANT(Participant)
+
+    subgraph SUBSTRATE["Relational Substrate"]
+        direction TB
+
+        subgraph INPUTS["Inputs"]
+            direction LR
+            P(Propositions)
+            SS(Supersessions)
+            A(Attestations)
+            R(Receipts)
+        end
+
+        P --> SS
+        SS -.-> P
+        P --> A
+        P --> R
+    end
+
+    subgraph OBS["Observable System"]
+        direction TB
+
+        subgraph PRIM["Independent Measurements"]
+            direction LR
+            C(Correspondence)
+            H(Chirality)
+            L(Closure)
+        end
+
+        subgraph DERIVED["Derived"]
+            direction TB
+
+            subgraph PROJ["Projection"]
+                direction LR
+                TU(Turbulence)
+                PR(Prominence)
+            end
+
+            subgraph FIELD["Field"]
+                direction TD
+                T(Tension)
+            end
+        end
+
+        C -->|"(-)"| TU
+        C -->|"(+)"| PR
+
+        H -->|"(-)"| TU
+        H -->|"(+)"| PR
+
+        L -->|"(-)"| TU
+        L -->|"(+)"| PR
+
+        TU --> T
+        PR --> T
+    end
+
+    PARTICIPANT --> INPUTS
+
+    SS -.-> C
+    A -.-> H
+    R -.-> L
+
+    J(( ))
+
+    T --> J
+
+    subgraph REGISTERS["Classification Registers"]
+        direction TB
+
+        subgraph DOMAIN["Active Domain"]
+        direction TB
+
+            subgraph SETTLEMENT["Settlement"]
+                direction TB
+
+                SIGNAL["Signal"]:::signalRegister
+                STANCE["Stance"]:::stanceRegister
+                CONCORD["Concord"]:::concordRegister
+
+                TURBULENT["↑ Turbulence"]
+            end
+
+
+
+            subgraph EMERGENCE["Emergence"]
+                direction TB
+
+                ACTIVITY["Activity"]:::activityRegister
+                FRONTIER["Frontier"]:::frontierRegister
+                CANON["Canon"]:::canonRegister
+
+                PROMINENT["↑ Prominence"]
+            end
+        end
+    end
+
+    TURBULENT -.->|"P₁"| SIGNAL
+    PROMINENT -.->|"P₁"| ACTIVITY
+    CONCORD -.->|"P₇"| TURBULENT
+    CANON -.->|"P₇"| PROMINENT
+
+    ACTIVITY -.->|"P₂, P₅"| FRONTIER
+    FRONTIER -.->|"P₃, P₆"| CANON
+    CANON -.->|"P₄"| ACTIVITY
+
+    SIGNAL -.->|"P₂, P₅"| STANCE
+    STANCE -.->|"P₃, P₆"| CONCORD
+    CONCORD -.->|"P₄"| SIGNAL
+
+    J -->|"T < 0"| SETTLEMENT
+    J -->|"T > 0"| EMERGENCE
+
+    CH["Context Horizon"]
+
+    J2(( ))
+
+    TURBULENT -->|"T < 0"| J2
+    PROMINENT -->|"T > 0"| J2
+
+    J2 --> CH
+
+    CH -.-> PARTICIPANT
+
+
+    classDef activityRegister fill:#fee2e2,stroke:#dc2626,color:#7f1d1d,stroke-width:2px
+    classDef frontierRegister fill:#dcfce7,stroke:#16a34a,color:#14532d,stroke-width:2px
+    classDef canonRegister fill:#dbeafe,stroke:#2563eb,color:#1e3a8a,stroke-width:2px
+
+    classDef signalRegister fill:#fef9c3,stroke:#ca8a04,color:#713f12,stroke-width:2px
+    classDef stanceRegister fill:#fae8ff,stroke:#c026d3,color:#701a75,stroke-width:2px
+    classDef concordRegister fill:#cffafe,stroke:#0891b2,color:#164e63,stroke-width:2px
+
+    classDef turbulenceRegister fill:#dbe4ff,stroke:#364fc7,color:#364fc7,stroke-width:2px
+    classDef prominenceRegister fill:#edf2ff,stroke:#5c7cfa,color:#5c7cfa,stroke-width:2px
+
+    %% Mantine indigo.5
+    classDef positiveEdge stroke:#5c7cfa,color:#5c7cfa,stroke-width:3px
+
+    %% Mantine indigo.9
+    classDef negativeEdge stroke:#364fc7,color:#364fc7,stroke-width:3px
+
+    class ACTIVITY activityRegister
+    class FRONTIER frontierRegister
+    class CANON canonRegister
+
+    class SIGNAL signalRegister
+    class STANCE stanceRegister
+    class CONCORD concordRegister
+
+    class TURBULENT turbulenceRegister
+    class PROMINENT prominenceRegister
+
+    %% Negative (-) edges
+    linkStyle 4,6,8 stroke:#3b5bdb,color:#3b5bdb,stroke-width:1px
+
+    %% Positive (+) edges
+    linkStyle 5,7,9 stroke:#748ffc,color:#748ffc,stroke-width:1px
+```
 
 # Motivation
 
@@ -81,21 +252,13 @@ There are well documented limitations with current [Large Language Models (LLMs)
 LLM providers are releasing newer models with larger [Maximum Context Windows (MCW)](https://en.wikipedia.org/wiki/Context_window),
 documented as more capable while requiring more energy and resources.
 
-However, the following research paper by Norman Paulsen highlights that while the MCW is ever increasing,
-empirical data reveals there is a **Maximum Effective Context Window (MECW)** regarding problem accuracy,
+However, the following research paper by [Norman Paulsen](https://www.linkedin.com/in/norman-paulsen/) highlights that while the MCW is ever increasing,
+empirical data reveals there is a Maximum _Effective_ Context Window (MECW) regarding problem accuracy,
 that varys between models.
 
 [Context Is What You Need: The Maximum Effective Context Window for Real World Limits of LLMs](https://arxiv.org/abs/2509.21361)
 
-Not only is the MECW tiny in comparison to the MCW, some older models outperform newer models at solving certain problems:
-
-@TODO: Insert graph here
-
-#### Key Takeaways
-
-- Most of the presented problems appear to be more accurately solved with a _smaller_ context size.
-- Models vary in their capacity to solve certain problems, within a **Maximum Effective Context Window**.
-- A larger MCW doesn't always mean the model will have a larger M*E*CW, depending on the problem.
+Not only is a model's MECW tiny in comparison to its MCW, some older models can outperform newer models at solving certain problems:
 
 ---
 
@@ -107,31 +270,86 @@ The model can behave like someone joining a movie halfway through and improvisin
 missing plot details with _complete_ confidence.
 
 Systems generally approach this problem through the process of compaction;
-reducing the active context down to a size that fits within a model's capabilities.
+reducing the active context back down to a size that fits within the model's MCW.
 
-@TODO: Introduce WW
+To read more about various methods of compaction,
+I highly recommend this article written by [William Waites](https://www.linkedin.com/in/wwaites/),
+as he eloquently describes some modern solutions:
 
 [Structural Prompt Preservation: Keeping AI Agents on Track Across Long Sessions](https://leithdocs.com/ldc/documents/outgoing/structural-prompt-preservation.md)
 
-The major problem with current compaction methods is that nuanced details can be permanently lost.
-Even when utilising static system prompts or instructions with `AGENTS.md` files,
-once the overall context size grows large enough, the only options are to either
-compactify the context, or risk hallucination. Both typically
+The main problem with compaction is that context drifts over time.
+Not only that, the effect compounds as the active context is continuously altered.
+Not so dissimilar to how humans drift in conversation topic, it's kind of inevitible.
+
+Once the underlying project or context space grows large enough, the challenge becomes more about
+how the context is structurally managed and accessed, rather than any static instructions alone.
 
 ## Commons Context: Depth
 
-Rather than thinking in terms of size, The Commons provides a solution using **Context Depth**:
-How many Propositions are available in context, following ancestral history to the
-nearest stable committal boundary.
+Rather than thinking in terms of size or raw token count, The Commons provides a solution using **Context Depth**:
+How many Propositions are available in context, including ancestral history, to the nearest stable Closure boundary.
 
-- The nearest stable committal boundary is defined as the [Context Horizon](/commons#context-horizon),
-  when Tension dynamics shift direction within a local graph region.
-- A Participant's [Perspective](/commons#perspective) determines how many Context Horizons are available,
-  which increases when contributions reduce global Tension.
+```mermaid
+graph TD
+
+  subgraph D0["Depth 0"]
+    A["Question"]
+  end
+
+  subgraph D1["Depth 1"]
+    B["Observation"]
+    C["Observation"]
+  end
+
+  subgraph D2["Depth 2"]
+    D["Evidence"]
+    E["Hypothesis"]
+    F["Question"]
+  end
+
+  subgraph D3["Depth 3"]
+    G["Question"]
+    H["Evidence"]
+    I["Evidence"]
+    J["Hypothesis"]
+  end
+
+  subgraph D4["Depth 4"]
+    K["Closure"]
+  end
+
+  A --> B
+  A --> C
+
+  B --> D
+  B --> E
+  C --> F
+
+  D --> G
+  E --> H
+  E --> I
+  F --> J
+
+  I --> K
+
+  class A,B,E,I,K longestPath
+  class D,F,G,H,J,C otherNode
+
+  classDef longestPath fill:#4f46e5,stroke:#312e81,color:#fff
+  classDef otherNode fill:#e5e7eb,stroke:#9ca3af,color:#111
+```
+
+- The nearest stable Closure boundary is defined as the [Context Horizon](/commons#context-horizon),
+  when new Commitment shifts Tension direction.
+- A Participant's [Perspective](/commons#perspective) determines how many Context Horizons are readable,
+  which is determined by comparing the Participant's contributions to global Tension.
 - Compaction occurs as a side-effect; when a Participant's contributions increase global Tension then
   their Perspective is decreased, reducing the amount of context available.
+- Perspective may oscillate over a changing substrate, providing a dynamic
+  MECW that mirrors the Participant's contributions.
 - Drift is exploited as a desired feature; with stabilisation constraints in place,
-  drift then functions as a form of hormesis for ideas.
+  drift then functions as a form of [hormesis](https://en.wikipedia.org/wiki/Hormesis) for ideas.
 - Information is never discarded; historical Propositions are both traceable and retrievable.
 
 ---
@@ -140,28 +358,35 @@ nearest stable committal boundary.
 
 ```mermaid
 flowchart TD
-    T[Tension]
+    subgraph IM[Independent Measurements]
+        direction LR
 
-    P[Prominence]
-    U[Turbulence]
+        subgraph COR[Correspondence]
+            C[Consonance]
+            D[Dissonance]
+        end
 
-    subgraph COR[Correspondence]
-        C[Consonance]
-        D[Dissonance]
+        subgraph CHI[Chirality]
+            A[Alignment]
+            G[Divergence]
+        end
+
+        subgraph CLO[Closure]
+            S[Persistence]
+            V[Variability]
+        end
     end
 
-    subgraph CHI[Chirality]
-        A[Alignment]
-        G[Divergence]
+    subgraph PROJ[Projection]
+        direction LR
+        P[Prominence]
+        U[Turbulence]
     end
 
-    subgraph CLO[Closure]
-        S[Persistence]
-        V[Variability]
+    subgraph FIELD[Field]
+        direction TB
+        T[Tension]
     end
-
-    P --> T
-    U --> T
 
     C --> P
     A --> P
@@ -170,24 +395,254 @@ flowchart TD
     D --> U
     G --> U
     V --> U
+
+    P --> T
+    U --> T
 ```
 
-### Primitives
+### Measurements
+
+No new features need to be considered. As contributions are written to the ledger, various properties can be derived.
+
+The **Independent Measurements** are simply three unique ways of measuring the same substrate:
 
 #### Correspondence
 
+How similar in structure or shape is one graph region to another?
+
 #### Chirality
+
+Do Attestation directions align or conflict within a graph region?
+
+```mermaid
+graph TD
+
+    subgraph Alignment["<b>Alignment</b>"]
+        direction LR
+
+        subgraph AlignmentA["Region A"]
+            direction TD
+
+            A(( ))
+            B(( ))
+            C(( ))
+            D(( ))
+            E(( ))
+
+            A --> B
+            A --> C
+            B --> D
+            C --> E
+        end
+
+        subgraph AlignmentB["Region B"]
+            direction TD
+
+            A2(( ))
+            B2(( ))
+            C2(( ))
+            D2(( ))
+            E2(( ))
+
+            A2 --> B2
+            A2 --> C2
+            B2 --> D2
+            C2 --> E2
+        end
+    end
+
+    subgraph Divergence["<b>Divergence</b>"]
+        direction LR
+
+        subgraph DivergenceA["Region A"]
+            direction TD
+
+            F(( ))
+            G(( ))
+            H(( ))
+            I(( ))
+            J(( ))
+
+            F --> G
+            F --> H
+            G --> I
+            H --> J
+        end
+
+        subgraph DivergenceB["Region B"]
+            direction TD
+
+            F2(( ))
+            G2(( ))
+            H2(( ))
+            I2(( ))
+            J2(( ))
+
+            F2 --> G2
+            F2 --> H2
+            G2 --> I2
+            H2 --> J2
+        end
+    end
+
+    %% Alignment correspondence mappings
+    A -.-> A2
+    C -.-> C2
+    E -.-> E2
+
+    %% Divergence: only one surviving correspondence mapping
+    F -.-> F2
+
+    %% Alignment: all same direction
+    class A,B,C,D,E,A2,B2,C2,D2,E2 alignmentNode
+
+    %% Divergence: intentionally mixed
+    class F,H,J,G2,I2 divergenceGrape
+    class G,I,F2,H2,J2 divergencePink
+
+    %% Styles
+    classDef alignmentNode fill:#9c36b5,stroke:#862e9c,color:#fff
+    classDef divergenceGrape fill:#9c36b5,stroke:#862e9c,color:#fff
+    classDef divergencePink fill:#c2255c,stroke:#a61e4d,color:#fff
+
+    %% Group boundaries
+    style Alignment fill:transparent,stroke:none
+    style Divergence fill:transparent,stroke:none
+
+    %% Region boundaries
+    style AlignmentA fill:transparent,stroke:#9ca3af,stroke-width:1px
+    style AlignmentB fill:transparent,stroke:#9ca3af,stroke-width:1px
+    style DivergenceA fill:transparent,stroke:#9ca3af,stroke-width:1px
+    style DivergenceB fill:transparent,stroke:#9ca3af,stroke-width:1px
+
+    %% Correspondence mappings remain indigo
+    linkStyle 16 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
+    linkStyle 17 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
+    linkStyle 18 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
+    linkStyle 19 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
+```
 
 #### Closure
 
+Committal Depth comparison between two graph regions; is the commitment frequency persistent or variable?
+
+```mermaid
+graph TD
+
+    subgraph Consonance["<b>Consonance</b>"]
+        direction LR
+
+        subgraph ConsonanceA["Region A"]
+            direction TD
+
+            A(( ))
+            B(( ))
+            C(( ))
+            D(( ))
+            E(( ))
+
+            A --> B
+            A --> C
+            B --> D
+            C --> E
+        end
+
+        subgraph ConsonanceB["Region B"]
+            direction TD
+
+            A2(( ))
+            B2(( ))
+            C2(( ))
+            D2(( ))
+            E2(( ))
+
+            A2 --> B2
+            A2 --> C2
+            B2 --> D2
+            C2 --> E2
+        end
+    end
+
+    subgraph Dissonance["<b>Dissonance</b>"]
+        direction LR
+
+        subgraph DissonanceA["Region A"]
+            direction TD
+
+            F(( ))
+            G(( ))
+            H(( ))
+            I(( ))
+            J(( ))
+
+            F --> G
+            F --> H
+            G --> I
+            H --> J
+        end
+
+        subgraph DissonanceB["Region B"]
+            direction TD
+
+            F2(( ))
+            G2(( ))
+            H2(( ))
+            I2(( ))
+            J2(( ))
+
+            F2 --> G2
+            F2 --> H2
+            G2 --> I2
+            H2 --> J2
+        end
+    end
+
+    %% Consonance correspondence mappings
+    A -.-> A2
+    C -.-> C2
+    E -.-> E2
+
+    %% Dissonance: only one surviving correspondence mapping
+    F -.-> F2
+
+    %% Significant / committal structures
+    class A,C,E,A2,C2,E2 longestPath
+
+    %% Dissonant committal structures intentionally vary
+    class F,G,I,F2,H2,J2 longestPath
+
+    %% Supporting structure
+    class B,D,B2,D2,H,J,G2,I2 otherNode
+
+    %% Styles
+    classDef longestPath fill:#4f46e5,stroke:#312e81,color:#fff
+    classDef otherNode fill:#e5e7eb,stroke:#9ca3af,color:#111
+
+    %% Group boundaries
+    style Consonance fill:transparent,stroke:none
+    style Dissonance fill:transparent,stroke:none
+
+    %% Region boundaries
+    style ConsonanceA fill:transparent,stroke:#9ca3af,stroke-width:1px
+    style ConsonanceB fill:transparent,stroke:#9ca3af,stroke-width:1px
+    style DissonanceA fill:transparent,stroke:#9ca3af,stroke-width:1px
+    style DissonanceB fill:transparent,stroke:#9ca3af,stroke-width:1px
+
+    %% Only correspondence mappings are indigo + dashed
+    linkStyle 16 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
+    linkStyle 17 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
+    linkStyle 18 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
+    linkStyle 19 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
+```
+
 ### Projections
 
-As the primitives are polar,
+The positives and negatives from each Primitive get combined to form two polar opposites:
 
 #### Prominence
 
-Prominence is the stabilising projection that represents accumulated structural ordering.
-It is made up of the positive poles of the Primitives.
+Prominence is the stabilising projection that represents accumulated
+structural ordering, made up of the positive poles of the Primitives.
 
 $$
 \mathrm{Prominence}
@@ -201,8 +656,8 @@ $$
 
 #### Turbulence
 
-Turbulence is the destabilising projection that represents structural variation.
-It is made up of the negative poles of the Primitives.
+Turbulence is the destabilising projection that represents
+structural variation, made up of the negative poles of the Primitives.
 
 $$
 \mathrm{Turbulence}
@@ -216,8 +671,8 @@ $$
 
 ### Tension
 
-Tension represents the imbalance between stabilising and destabilising dynamics.
-It is simply the difference between Prominence and Turbulence.
+Tension represents the imbalance between stabilising and destabilising dynamics,
+simply the difference between Prominence and Turbulence.
 
 Magnitudal form:
 
@@ -231,11 +686,11 @@ $$
 \mathrm{Tension}_{d} = \mathrm{Prominence} - \mathrm{Turbulence}
 $$
 
-Interpretation:
+Commons Interpretation:
 
-- T > 0 → over-prominent, rigid, over-ordered, dominance pressure.
-- T < 0 → over-turbulent, chaotic, unstable, unresolved fragmentation.
-- T ≈ 0 → balanced structural field.
+- **T > 0** → over-prominent, rigid, over-ordered, dominance pressure.
+- **T < 0** → over-turbulent, chaotic, unstable, unresolved fragmentation.
+- **T ≈ 0** → balanced structural field.
 
 ## Closure Horizon
 
@@ -336,13 +791,13 @@ Proposition is based on the direction of its parent Committal Proposition.
 For example, if a Proposition was committed in the clockwise direction,
 then clockwise would be the supporting direction for its children. To disagree would be to
 attest in the anti-clockwise direction. Once a Proposition gets committed in the opposite
-direction to its Committal parent, then the supporting and refuting directions swap.
+direction to its Committal parent, then the supporting and refuting directions switch.
 
 Rules for attesting:
 
 - A Participant can only apply one active Attestation per Proposition.
 - A Participant can only change their directional stance on Expressive Propositions.
-- Attestations can only be applied to Propositions in the writeable Classification Register of a Participant's Phase.
+- Attestations can only be applied to Propositions in the writeable Classification Register of the Participant's Phase.
 - Participants can optionally increase the weight of their Attestation by providing
   a rationale statement and attaching Receipts.
 
@@ -372,3 +827,7 @@ For a proof of concept, the following receipt types are defined:
 Receipt types can be extended as the system evolves and further utility is desired.
 
 ---
+
+# Acknowledgements
+
+Authored by Claire Mira Shaw, proudly written in my own words without the assistance of AI.
