@@ -75,25 +75,23 @@ config:
   theme: neutral
 ---
 flowchart TB
-
     PARTICIPANT(Participant)
 
     subgraph SUBSTRATE["Relational Substrate"]
         direction TB
 
-        subgraph INPUTS["Inputs"]
-            direction LR
-            P(Propositions)
-            SS(Supersessions)
-            A(Attestations)
-            R(Receipts)
-        end
+        P(Propositions)
+        SS(Supersessions)
+        A(Attestations)
+        R(Commits)
 
         P --> SS
         SS -.-> P
         P --> A
         P --> R
     end
+
+    PARTICIPANT --> SUBSTRATE
 
     subgraph OBS["Observable System"]
         direction TB
@@ -120,86 +118,75 @@ flowchart TB
             end
         end
 
-        C -->|"(-)"| TU
-        C -->|"(+)"| PR
+        C ==>|"(-)"| TU
+        C ==>|"(+)"| PR
 
-        H -->|"(-)"| TU
-        H -->|"(+)"| PR
+        H ==>|"(-)"| TU
+        H ==>|"(+)"| PR
 
-        L -->|"(-)"| TU
-        L -->|"(+)"| PR
+        L ==>|"(-)"| TU
+        L ==>|"(+)"| PR
 
-        TU --> T
-        PR --> T
+        TU ==> T
+        PR ==> T
     end
 
-    PARTICIPANT --> INPUTS
-
-    SS -.-> C
-    A -.-> H
-    R -.-> L
-
-    J(( ))
-
-    T --> J
+    SS --> C
+    A --> H
+    R --> L
 
     subgraph REGISTERS["Classification Registers"]
         direction TB
 
+        TENSE["↑ Tension"]
+
         subgraph DOMAIN["Active Domain"]
-        direction TB
-
-            subgraph SETTLEMENT["Settlement"]
-                direction TB
-
-                SIGNAL["Signal"]:::signalRegister
-                STANCE["Stance"]:::stanceRegister
-                CONCORD["Concord"]:::concordRegister
-
-                TURBULENT["↑ Turbulence"]
-            end
-
-
+            direction LR
 
             subgraph EMERGENCE["Emergence"]
                 direction TB
 
+                PROMINENT["↑ Prominence"]
                 ACTIVITY["Activity"]:::activityRegister
                 FRONTIER["Frontier"]:::frontierRegister
                 CANON["Canon"]:::canonRegister
+            end
 
-                PROMINENT["↑ Prominence"]
+            subgraph SETTLEMENT["Settlement"]
+                direction TB
+
+                TURBULENT["↑ Turbulence"]
+                SIGNAL["Signal"]:::signalRegister
+                STANCE["Stance"]:::stanceRegister
+                CONCORD["Concord"]:::concordRegister
             end
         end
     end
 
-    TURBULENT -.->|"P₁"| SIGNAL
-    PROMINENT -.->|"P₁"| ACTIVITY
-    CONCORD -.->|"P₇"| TURBULENT
-    CANON -.->|"P₇"| PROMINENT
+    T --> TENSE
 
+    TENSE -.->|"T<small>dir</small> < 0"| SETTLEMENT
+    TENSE -.->|"T<small>dir</small> > 0"| EMERGENCE
+
+    PROMINENT -.->|"P₁"| ACTIVITY
     ACTIVITY -.->|"P₂, P₅"| FRONTIER
     FRONTIER -.->|"P₃, P₆"| CANON
     CANON -.->|"P₄"| ACTIVITY
+    CANON -.->|"P₇"| PROMINENT
 
+    TURBULENT -.->|"P₁"| SIGNAL
     SIGNAL -.->|"P₂, P₅"| STANCE
     STANCE -.->|"P₃, P₆"| CONCORD
     CONCORD -.->|"P₄"| SIGNAL
-
-    J -->|"T < 0"| SETTLEMENT
-    J -->|"T > 0"| EMERGENCE
+    CONCORD -.->|"P₇"| TURBULENT
 
     CH["Context Horizon"]
 
-    J2(( ))
+    REGISTERS --> CH
 
-    TURBULENT -->|"T < 0"| J2
-    PROMINENT -->|"T > 0"| J2
+    PARTICIPANT_OUT["Participant"]
 
-    J2 --> CH
-
-    CH -.-> PARTICIPANT
-
+    CH -->|"<small>x Perspective</small>"| PARTICIPANT_OUT
 
     classDef activityRegister fill:#fee2e2,stroke:#dc2626,color:#7f1d1d,stroke-width:2px
     classDef frontierRegister fill:#dcfce7,stroke:#16a34a,color:#14532d,stroke-width:2px
@@ -211,12 +198,6 @@ flowchart TB
 
     classDef turbulenceRegister fill:#dbe4ff,stroke:#364fc7,color:#364fc7,stroke-width:2px
     classDef prominenceRegister fill:#edf2ff,stroke:#5c7cfa,color:#5c7cfa,stroke-width:2px
-
-    %% Mantine indigo.5
-    classDef positiveEdge stroke:#5c7cfa,color:#5c7cfa,stroke-width:3px
-
-    %% Mantine indigo.9
-    classDef negativeEdge stroke:#364fc7,color:#364fc7,stroke-width:3px
 
     class ACTIVITY activityRegister
     class FRONTIER frontierRegister
@@ -230,10 +211,10 @@ flowchart TB
     class PROMINENT prominenceRegister
 
     %% Negative (-) edges
-    linkStyle 4,6,8 stroke:#3b5bdb,color:#3b5bdb,stroke-width:1px
+    linkStyle 5,7,9 stroke:#3b5bdb,color:#3b5bdb
 
     %% Positive (+) edges
-    linkStyle 5,7,9 stroke:#748ffc,color:#748ffc,stroke-width:1px
+    linkStyle 6,8,10 stroke:#748ffc,color:#748ffc
 ```
 
 # Motivation
@@ -830,4 +811,4 @@ Receipt types can be extended as the system evolves and further utility is desir
 
 # Acknowledgements
 
-Authored by Claire Mira Shaw, proudly written in my own words without the assistance of AI.
+Authored by Claire Mira Shaw. Proudly written in my own words, without the assistance of AI.
