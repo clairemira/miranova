@@ -40,7 +40,7 @@ Multiple participants can partake; whether biological or artificial, the same ru
 - [Charge](/commons#charge) is provided by the system, as a shared and conserved resource.
 - [Participants](/commons#participant) can allocate or reclaim Charge by contributing:
   - [Propositions](/commons#proposition) - Thoughts, ideas, questions, hypotheses, claims.
-  - [Attestations](/commons#attestation) - A directional stance; Supporting or Refuting Propositions.
+  - [Attestations](/commons#attestation) - A directional stance, by Supporting or Refuting Propositions.
   - [Supersessions](/commons#supersession) - Propositions supercede one another through various branching types;
     Revise, Reclassify, Variant, Reconcile, and Commit.
   - [Receipts](/commons#receipt) - Confirmation and verifiable metadata from utilising
@@ -52,20 +52,17 @@ Multiple participants can partake; whether biological or artificial, the same ru
   which represent structured containers of context.
 - Participant's navigate through [Cycles & Phases](/commons#cycles-and-phases),
   determining which Classification Registers can be read, superceded from, and written to.
-- [Observables](/commons#observables) are computed properties based on comparing the inputs between two complementary [Domains](/commons#domain);
-  - Structural similarity of Supersessions -> [Correspondence](/commons#correspondence)
+- [Observables](/commons#observables) are computed properties based from comparing unique aspects
+  of the inputs between two complementary [Domains](/commons#domain);
+  - Propositional & Supersessional shape -> [Correspondence](/commons#correspondence)
   - Attestational direction & magnitude -> [Chirality](/commons#chirality)
-  - Committal Receipt type & count -> [Closure](/commons#closure)
+  - Committal depth & frequency -> [Closure](/commons#closure)
 - [Tension](/commons#tension) becomes a dynamic system output, computed by symmetrically balancing the Observables.
 - Whether a contribution allocates or reclaims Charge depends on how it affects Tension.
 
 Multiple Participants from a variety of sources is desired. Whether synthetic or human,
-each may provide a unique [Perspective](/commons#perspective) over the active context
-to enhance overall [sensemaking](<https://en.wikipedia.org/wiki/Sensemaking_(information_science)>).
-
-The structure forms a [Directed Acyclic Graph (DAG)](https://en.wikipedia.org/wiki/Directed_acyclic_graph),
-where Propositions are the nodes, and Supersessions are the edges. Much like [Git](https://en.wikipedia.org/wiki/Git)
-version control, but with unique constraints based around Participant Phases, Classification Registers, Attestations and Receipts.
+each may provide a unique [Perspective](/commons#perspective) over the changing context space,
+enhancing overall [sensemaking](<https://en.wikipedia.org/wiki/Sensemaking_(information_science)>).
 
 ```mermaid
 ---
@@ -84,7 +81,7 @@ flowchart TB
         SS(Supersessions)
         A(Attestations)
         R(Commits)
-
+        
         P --> SS
         SS -.-> P
         P --> A
@@ -217,25 +214,30 @@ flowchart TB
     linkStyle 6,8,10 stroke:#748ffc,color:#748ffc
 ```
 
+The structure forms a [Directed Acyclic Graph (DAG)](https://en.wikipedia.org/wiki/Directed_acyclic_graph),
+where Propositions are the nodes, and Supersessions are the edges. Much like [Git](https://en.wikipedia.org/wiki/Git)
+version control, but with unique constraints based around Participant Phases, Classification Registers, Attestations and Receipts.
+
 # Motivation
 
 I started developing The Commons to demonstrate two complex ideas:
 
 1. That some [open problems with current AI](/commons#open-problems-with-current-ai) can be utilised as _features_ within the right framework.
-2. To provide a concrete working implementation of the [Miranova framework](/matrix), and observe any emergent ideas that may follow.
+2. To provide a concrete working implementation of the [Miranova Matrix](/matrix), and observe any emergent ideas that may follow.
 
 ## Open Problems with Current AI
 
-There are well documented limitations with current [Large Language Models (LLMs)](https://en.wikipedia.org/wiki/Large_language_model), and many revolve around context.
+There are well documented limitations with modern [Large Language Models (LLMs)](https://en.wikipedia.org/wiki/Large_language_model),
+and many revolve around context.
 
 ### Context Size
 
 LLM providers are releasing newer models with larger [Maximum Context Windows (MCW)](https://en.wikipedia.org/wiki/Context_window),
 documented as more capable while requiring more energy and resources.
 
-However, the following research paper by [Norman Paulsen](https://www.linkedin.com/in/norman-paulsen/) highlights that while the MCW is ever increasing,
-empirical data reveals there is a Maximum _Effective_ Context Window (MECW) regarding problem accuracy,
-that varys between models.
+However, the following research paper by [Norman Paulsen](https://www.linkedin.com/in/norman-paulsen/)
+highlights that while the MCW is ever increasing, empirical data reveals there is a Maximum _Effective_
+Context Window (MECW) regarding problem accuracy, that varys between models.
 
 [Context Is What You Need: The Maximum Effective Context Window for Real World Limits of LLMs](https://arxiv.org/abs/2509.21361)
 
@@ -245,7 +247,7 @@ Not only is a model's MECW tiny in comparison to its MCW, some older models can 
 
 ### Context Compaction and Drift
 
-When context size grows larger than a model's MCW, then performance of the model typically
+Once context size grows larger than a model's MCW, then performance of the model typically
 degrades with an increased risk of [hallucination](<https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)>).
 The model can behave like someone joining a movie halfway through and improvising the
 missing plot details with _complete_ confidence.
@@ -253,7 +255,7 @@ missing plot details with _complete_ confidence.
 Systems generally approach this problem through the process of compaction;
 reducing the active context back down to a size that fits within the model's MCW.
 
-To read more about various methods of compaction,
+To gain a broader insight into the various methods of compaction,
 I highly recommend this article written by [William Waites](https://www.linkedin.com/in/wwaites/),
 as he eloquently describes some modern solutions:
 
@@ -261,7 +263,7 @@ as he eloquently describes some modern solutions:
 
 The main problem with compaction is that context drifts over time.
 Not only that, the effect compounds as the active context is continuously altered.
-Not so dissimilar to how humans drift in conversation topic, it's kind of inevitible.
+It doesn't feel so so dissimilar to how humans drift in conversation topic.
 
 Once the underlying project or context space grows large enough, the challenge becomes more about
 how the context is structurally managed and accessed, rather than any static instructions alone.
@@ -269,50 +271,54 @@ how the context is structurally managed and accessed, rather than any static ins
 ## Commons Context: Depth
 
 Rather than thinking in terms of size or raw token count, The Commons provides a solution using **Context Depth**:
-How many Propositions are available in context, including ancestral history, to the nearest stable Closure boundary.
+How deep is the longest chain of Committal Propositions, to the nearest stable Closure boundary.
 
 ```mermaid
 graph TD
 
-  subgraph D0["Depth 0"]
-    A["Question"]
+  subgraph CH["Context Horizon"]
+    direction TB
+
+    subgraph D0["Depth 0"]
+      A["Question"]
+    end
+
+    subgraph D1["Depth 1"]
+      B["Observation"]
+      C["Observation"]
+    end
+
+    subgraph D2["Depth 2"]
+      D["Evidence"]
+      E["Hypothesis"]
+      F["Question"]
+    end
+
+    subgraph D3["Depth 3"]
+      G["Question"]
+      H["Evidence"]
+      I["Evidence"]
+      J["Hypothesis"]
+    end
+
+    subgraph D4["Depth 4"]
+      K["Closure"]
+    end
+
+    A --> B
+    A --> C
+
+    B --> D
+    B --> E
+    C --> F
+
+    D --> G
+    E --> H
+    E --> I
+    F --> J
+
+    I --> K
   end
-
-  subgraph D1["Depth 1"]
-    B["Observation"]
-    C["Observation"]
-  end
-
-  subgraph D2["Depth 2"]
-    D["Evidence"]
-    E["Hypothesis"]
-    F["Question"]
-  end
-
-  subgraph D3["Depth 3"]
-    G["Question"]
-    H["Evidence"]
-    I["Evidence"]
-    J["Hypothesis"]
-  end
-
-  subgraph D4["Depth 4"]
-    K["Closure"]
-  end
-
-  A --> B
-  A --> C
-
-  B --> D
-  B --> E
-  C --> F
-
-  D --> G
-  E --> H
-  E --> I
-  F --> J
-
-  I --> K
 
   class A,B,E,I,K longestPath
   class D,F,G,H,J,C otherNode
@@ -321,11 +327,11 @@ graph TD
   classDef otherNode fill:#e5e7eb,stroke:#9ca3af,color:#111
 ```
 
-- The nearest stable Closure boundary is defined as the [Context Horizon](/commons#context-horizon),
-  when new Commitment shifts Tension direction.
+- The nearest stable Closure boundary is labelled as the [Context Horizon](/commons#context-horizon),
+  where new commitment shifts Tension direction into the opposite Domain.
 - A Participant's [Perspective](/commons#perspective) determines how many Context Horizons are readable,
-  which is determined by comparing the Participant's contributions to global Tension.
-- Compaction occurs as a side-effect; when a Participant's contributions increase global Tension then
+  which is calculated by comparing how their individual contributions affect Tension.
+- Compaction occurs as a side-effect; when a Participant's contributions increase Tension then
   their Perspective is decreased, reducing the amount of context available.
 - Perspective may oscillate over a changing substrate, providing a dynamic
   MECW that mirrors the Participant's contributions.
@@ -334,6 +340,8 @@ graph TD
 - Information is never discarded; historical Propositions are both traceable and retrievable.
 
 ---
+
+# Documentation
 
 ## Observables
 
@@ -385,11 +393,158 @@ flowchart TD
 
 No new features need to be considered. As contributions are written to the ledger, various properties can be derived.
 
-The **Independent Measurements** are simply three unique ways of measuring the same substrate:
+The **Independent Measurements** are simply three unique ways of measuring the same substrate.
 
 #### Correspondence
 
-How similar in structure or shape is one graph region to another?
+How similar in structure or shape is one graph region to another,
+and how strongly is that structure anchored?
+
+Take the structural components of the relational substrate graph;
+Propositions, Supersessions, Classification Registers, and Receipts,
+and then categorise them into groups of **nodes** and **edges**:
+
+```mermaid
+flowchart LR
+  subgraph MAIN["<strong>Legend:</strong> Structural Components"]
+    direction LR
+    R(( ))
+    G(( ))
+    B(( ))
+    R -- "Soft Edge" --> G
+    G == "Hard Edge" ==> B
+  end
+
+  KEY1["Red - (Proposition Tier 1)"]
+  KEY2["Green - (Proposition Tier 2)"]
+  KEY3["Blue - (Proposition Tier 3)"]
+  KEY4["Light Fill - (Low Receipts)"]
+  KEY5["Solid Fill - (High Receipts)"]
+
+  R -.- KEY1
+  G -.- KEY2
+  B -.- KEY3
+  R -.- KEY4
+  B -.- KEY5
+
+  class R rLight
+  class G gLight
+  class B bSolid
+
+  classDef rLight fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+  classDef gLight fill:#dcfce7,stroke:#16a34a,color:#14532d
+  classDef bSolid fill:#2563eb,stroke:#1e3a8a,color:#fff
+
+  style KEY1 fill:transparent,stroke:#9ca3af,color:#374151
+  style KEY2 fill:transparent,stroke:#9ca3af,color:#374151
+  style KEY3 fill:transparent,stroke:#9ca3af,color:#374151
+  style MAIN fill:transparent,stroke:#9ca3af
+```
+
+**Node Labels**
+
+To compare Propositions across the two Domains *structurally*, while disregarding the content itself,
+the pairings of Classification Registers are reduced down to a single label for each tier.
+Represented as Red, Green, and Blue (RGB) nodes for an easier visual interpretation.
+
+- **R** - Activity & Signal
+- **G** - Frontier & Stance
+- **B** - Canon & Concord
+
+**Edge Labels**
+
+The five Supersession types can be reduced down to either a **soft** or **hard** edge between Propositions,
+whether branching from an existing Proposition or replacing one.
+
+- **S** - Soft Supersession (Thin Line)
+- **H** - Hard Supersession (Thick Line)
+
+**Node Weighting**
+
+One Receipt per Participant counts as an additional weighting extension,
+representing how strongly the structure is anchored by grounding Participation.
+
+- **(-)** Light Colour (None/Low Receipts)
+- **(+)** Solid Colour - (Many/High Receipts)
+
+The label names or colours ultimately do not matter, the three tiers
+identifed represent each register position in terms of node hierarchy and possible edge transitions.
+Receipts only play a role in reinforcing the existing structure.
+
+**Graph Kernel**
+
+Using the Context Horizon as the graph region for comparison,
+a Correspondence value is computed across domains using a weighted
+[Weisfeiler-Leman (WL)](https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test)
+graph kernel to differentiate the following poles:
+
+- **Consonance** - Structural similarity
+- **Dissonance** - Structural differentiation
+
+```mermaid
+flowchart TB
+  subgraph CON["Consonance"]
+    direction LR
+    subgraph CA["Domain A"]
+      direction TB
+      CA1(( ))
+      CA2(( ))
+      CA3(( ))
+      CA1 --> CA2
+      CA1 ==> CA3
+    end
+    subgraph CB["Domain B"]
+      direction TB
+      CB1(( ))
+      CB2(( ))
+      CB3(( ))
+      CB1 --> CB2
+      CB1 ==> CB3
+    end
+    CA1 -.-> CB1
+    CA2 -.-> CB2
+    CA3 -.-> CB3
+  end
+
+  subgraph DIS["Dissonance"]
+    direction LR
+    subgraph DA["Domain A"]
+      direction TB
+      DA1(( ))
+      DA2(( ))
+      DA3(( ))
+      DA1 --> DA2
+      DA1 ==> DA3
+    end
+    subgraph DB["Domain B"]
+      direction TB
+      DB1(( ))
+      DB2(( ))
+      DB3(( ))
+      DB1 ==> DB2
+      DB2 ==> DB3
+    end
+    DA1 -.-> DB1
+    DA3 -.-> DB2
+  end
+
+  class CA1,CB1,DA1,DB1 rNode
+  class CA2,CB2,DA2,DB3 gNode
+  class CA3,CB3,DA3,DB2 bNode
+
+  classDef rNode fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+  classDef gNode fill:#dcfce7,stroke:#16a34a,color:#14532d
+  classDef bNode fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+
+  linkStyle 4,5,6,11,12 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
+
+  style CA fill:transparent,stroke:#9ca3af
+  style CB fill:transparent,stroke:#9ca3af
+  style DA fill:transparent,stroke:#9ca3af
+  style DB fill:transparent,stroke:#9ca3af
+  style CON fill:transparent,stroke:#4f46e5,stroke-width:2px
+  style DIS fill:transparent,stroke:#dc2626,stroke-width:2px
+```
 
 #### Chirality
 
