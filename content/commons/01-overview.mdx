@@ -31,16 +31,12 @@ Nothing exists without lineage. If something appears, it has a trace. If it pers
 
 Multiple participants can partake; whether biological or artificial, the same rules apply for all.
 
-![Visual diagram of propositions represented as light-bulbs, surrounded by a context window](/images/commons/ideas-context-spiral.png)
-
----
-
 ## The Concept
 
 - [Charge](/commons#charge) is provided by the system, as a shared and conserved resource.
 - [Participants](/commons#participant) can allocate or reclaim Charge by contributing:
   - [Propositions](/commons#proposition) - Thoughts, ideas, questions, hypotheses, claims.
-  - [Attestations](/commons#attestation) - A directional stance, by Supporting or Refuting Propositions.
+  - [Attestations](/commons#attestation) - A directional stance; Supporting or Refuting Propositions.
   - [Supersessions](/commons#supersession) - Propositions supercede one another through various branching types;
     Revise, Reclassify, Variant, Reconcile, and Commit.
   - [Receipts](/commons#receipt) - Confirmation and verifiable metadata from utilising
@@ -52,9 +48,9 @@ Multiple participants can partake; whether biological or artificial, the same ru
   which represent structured containers of context.
 - Participant's navigate through [Cycles & Phases](/commons#cycles-and-phases),
   determining which Classification Registers can be read, superceded from, and written to.
-- [Observables](/commons#observables) are computed properties based from comparing unique aspects
+- [Observables](/commons#observables) are computed properties calculated by comparing unique aspects
   of the inputs between two complementary [Domains](/commons#domain);
-  - Propositional & Supersessional shape -> [Correspondence](/commons#correspondence)
+  - Registerial-Supersessional shape & structure -> [Correspondence](/commons#correspondence)
   - Attestational direction & magnitude -> [Chirality](/commons#chirality)
   - Committal depth & frequency -> [Closure](/commons#closure)
 - [Tension](/commons#tension) becomes a dynamic system output, computed by symmetrically balancing the Observables.
@@ -81,19 +77,19 @@ flowchart TB
         SS(Supersessions)
         A(Attestations)
         R(Commits)
-        
+
         P --> SS
         SS -.-> P
         P --> A
         P --> R
     end
 
-    PARTICIPANT --> SUBSTRATE
+    PARTICIPANT -->|"Input"| SUBSTRATE
 
     subgraph OBS["Observable System"]
         direction TB
 
-        subgraph PRIM["Independent Measurements"]
+        subgraph MEAS["Measurements"]
             direction LR
             C(Correspondence)
             H(Chirality)
@@ -110,7 +106,7 @@ flowchart TB
             end
 
             subgraph FIELD["Field"]
-                direction TD
+                direction LR
                 T(Tension)
             end
         end
@@ -135,7 +131,7 @@ flowchart TB
     subgraph REGISTERS["Classification Registers"]
         direction TB
 
-        TENSE["↑ Tension"]
+        TR("↑ Tension <small>(Potential Charge)</small>")
 
         subgraph DOMAIN["Active Domain"]
             direction LR
@@ -143,47 +139,51 @@ flowchart TB
             subgraph EMERGENCE["Emergence"]
                 direction TB
 
-                PROMINENT["↑ Prominence"]
-                ACTIVITY["Activity"]:::activityRegister
-                FRONTIER["Frontier"]:::frontierRegister
-                CANON["Canon"]:::canonRegister
+                PROMINENT(↑ Prominence)
+                ACTIVITY(Activity):::activityRegister
+                FRONTIER(Frontier):::frontierRegister
+                CANON(Canon):::canonRegister
             end
 
             subgraph SETTLEMENT["Settlement"]
                 direction TB
 
-                TURBULENT["↑ Turbulence"]
-                SIGNAL["Signal"]:::signalRegister
-                STANCE["Stance"]:::stanceRegister
-                CONCORD["Concord"]:::concordRegister
+                TURBULENT(↑ Turbulence)
+                SIGNAL(Signal):::signalRegister
+                STANCE(Stance):::stanceRegister
+                CONCORD(Concord):::concordRegister
             end
         end
     end
 
-    T --> TENSE
+    T --> REGISTERS
 
-    TENSE -.->|"T<small>dir</small> < 0"| SETTLEMENT
-    TENSE -.->|"T<small>dir</small> > 0"| EMERGENCE
+    TR -.->|"T<small>dir</small> < 0"| TURBULENT
+    TR -.->|"T<small>dir</small> > 0"| PROMINENT
 
-    PROMINENT -.->|"P₁"| ACTIVITY
-    ACTIVITY -.->|"P₂, P₅"| FRONTIER
-    FRONTIER -.->|"P₃, P₆"| CANON
-    CANON -.->|"P₄"| ACTIVITY
-    CANON -.->|"P₇"| PROMINENT
+    PROMINENT -.->|"P1"| ACTIVITY
+    ACTIVITY -.->|"P2, P5"| FRONTIER
+    FRONTIER -.->|"P3, P6"| CANON
+    CANON -.->|"P4"| ACTIVITY
+    CANON -.->|"P7"| PROMINENT
 
-    TURBULENT -.->|"P₁"| SIGNAL
-    SIGNAL -.->|"P₂, P₅"| STANCE
-    STANCE -.->|"P₃, P₆"| CONCORD
-    CONCORD -.->|"P₄"| SIGNAL
-    CONCORD -.->|"P₇"| TURBULENT
+    TURBULENT -.->|"P1"| SIGNAL
+    SIGNAL -.->|"P2, P5"| STANCE
+    STANCE -.->|"P3, P6"| CONCORD
+    CONCORD -.->|"P4"| SIGNAL
+    CONCORD -.->|"P7"| TURBULENT
 
-    CH["Context Horizon"]
+    CH(Context Horizon)
+    PERS(Perspective)
+
+    CH ---> PERS
+    PERS -.->|"← Tension"| CH
+
+    PARTICIPANT_OUT(Participant)
 
     REGISTERS --> CH
 
-    PARTICIPANT_OUT["Participant"]
-
-    CH -->|"<small>x Perspective</small>"| PARTICIPANT_OUT
+    PERS -->|"Output"| PARTICIPANT_OUT
 
     classDef activityRegister fill:#fee2e2,stroke:#dc2626,color:#7f1d1d,stroke-width:2px
     classDef frontierRegister fill:#dcfce7,stroke:#16a34a,color:#14532d,stroke-width:2px
@@ -193,8 +193,9 @@ flowchart TB
     classDef stanceRegister fill:#fae8ff,stroke:#c026d3,color:#701a75,stroke-width:2px
     classDef concordRegister fill:#cffafe,stroke:#0891b2,color:#164e63,stroke-width:2px
 
-    classDef turbulenceRegister fill:#dbe4ff,stroke:#364fc7,color:#364fc7,stroke-width:2px
-    classDef prominenceRegister fill:#edf2ff,stroke:#5c7cfa,color:#5c7cfa,stroke-width:2px
+    classDef pcRegister fill:#dbe4ff,stroke:#3b5bdb,color:#3b5bdb,stroke-width:2px
+    classDef turbulenceRegister fill:#dbe4ff,stroke:#263578,color:#263578,stroke-width:2px
+    classDef prominenceRegister fill:#edf2ff,stroke:#8ca3ff,color:#8ca3ff,stroke-width:2px
 
     class ACTIVITY activityRegister
     class FRONTIER frontierRegister
@@ -204,19 +205,23 @@ flowchart TB
     class STANCE stanceRegister
     class CONCORD concordRegister
 
+    class TR pcRegister
     class TURBULENT turbulenceRegister
     class PROMINENT prominenceRegister
 
     %% Negative (-) edges
-    linkStyle 5,7,9 stroke:#3b5bdb,color:#3b5bdb
+    linkStyle 5,7,9,11 stroke:#3b5bdb,color:#3b5bdb
 
     %% Positive (+) edges
-    linkStyle 6,8,10 stroke:#748ffc,color:#748ffc
+    linkStyle 6,8,10,12 stroke:#748ffc,color:#748ffc
 ```
 
 The structure forms a [Directed Acyclic Graph (DAG)](https://en.wikipedia.org/wiki/Directed_acyclic_graph),
 where Propositions are the nodes, and Supersessions are the edges. Much like [Git](https://en.wikipedia.org/wiki/Git)
-version control, but with unique constraints based around Participant Phases, Classification Registers, Attestations and Receipts.
+version control, but with unique constraints based around Participant Phases,
+Classification Registers, Attestations, and Receipts.
+
+---
 
 # Motivation
 
@@ -224,6 +229,8 @@ I started developing The Commons to demonstrate two complex ideas:
 
 1. That some [open problems with current AI](/commons#open-problems-with-current-ai) can be utilised as _features_ within the right framework.
 2. To provide a concrete working implementation of the [Miranova Matrix](/matrix), and observe any emergent ideas that may follow.
+
+![Visual diagram of propositions represented as light-bulbs, surrounded by a context window](/images/commons/ideas-context-spiral.png)
 
 ## Open Problems with Current AI
 
@@ -241,16 +248,16 @@ Context Window (MECW) regarding problem accuracy, that varys between models.
 
 [Context Is What You Need: The Maximum Effective Context Window for Real World Limits of LLMs](https://arxiv.org/abs/2509.21361)
 
-Not only is a model's MECW tiny in comparison to its MCW, some older models can outperform newer models at solving certain problems:
+Not only does a model's MECW appear _tiny_ compared to its MCW, some older models can outperform newer models depending on the problem type:
 
----
+@TODO: Insert graph
 
 ### Context Compaction and Drift
 
 Once context size grows larger than a model's MCW, then performance of the model typically
 degrades with an increased risk of [hallucination](<https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)>).
-The model can behave like someone joining a movie halfway through and improvising the
-missing plot details with _complete_ confidence.
+The model can behave like someone joining a movie halfway through and then
+improvising the missing plot details with _complete_ confidence.
 
 Systems generally approach this problem through the process of compaction;
 reducing the active context back down to a size that fits within the model's MCW.
@@ -263,17 +270,25 @@ as he eloquently describes some modern solutions:
 
 The main problem with compaction is that context drifts over time.
 Not only that, the effect compounds as the active context is continuously altered.
-It doesn't feel so so dissimilar to how humans drift in conversation topic.
+It doesn't feel so dissimilar to how humans drift in conversation topic.
 
 Once the underlying project or context space grows large enough, the challenge becomes more about
-how the context is structurally managed and accessed, rather than any static instructions alone.
+how the context is structurally managed and accessed, rather than through any static instructions alone.
+
+# Novelty
 
 ## Commons Context: Depth
 
 Rather than thinking in terms of size or raw token count, The Commons provides a solution using **Context Depth**:
-How deep is the longest chain of Committal Propositions, to the nearest stable Closure boundary.
+How deep is the longest chain of Committal Propositions, to the nearest stable Closure boundary?
 
 ```mermaid
+---
+config:
+  flowchart:
+    curve: basis
+  theme: neutral
+---
 graph TD
 
   subgraph CH["Context Horizon"]
@@ -323,17 +338,17 @@ graph TD
   class A,B,E,I,K longestPath
   class D,F,G,H,J,C otherNode
 
-  classDef longestPath fill:#4f46e5,stroke:#312e81,color:#fff
+  classDef longestPath fill:#edf2ff,stroke:#748ffc,color:#748ffc
   classDef otherNode fill:#e5e7eb,stroke:#9ca3af,color:#111
 ```
 
-- The nearest stable Closure boundary is labelled as the [Context Horizon](/commons#context-horizon),
+- The nearest stable Closure boundary is labelled the [Context Horizon](/commons#context-horizon),
   where new commitment shifts Tension direction into the opposite Domain.
 - A Participant's [Perspective](/commons#perspective) determines how many Context Horizons are readable,
   which is calculated by comparing how their individual contributions affect Tension.
 - Compaction occurs as a side-effect; when a Participant's contributions increase Tension then
   their Perspective is decreased, reducing the amount of context available.
-- Perspective may oscillate over a changing substrate, providing a dynamic
+- Perspective may oscillate over a changing context space, representing a dynamic
   MECW that mirrors the Participant's contributions.
 - Drift is exploited as a desired feature; with stabilisation constraints in place,
   drift then functions as a form of [hormesis](https://en.wikipedia.org/wiki/Hormesis) for ideas.
@@ -341,85 +356,46 @@ graph TD
 
 ---
 
-# Documentation
+# Observable System
 
-## Observables
+No new features need to be considered, as various properties can be derived.
 
-```mermaid
-flowchart TD
-    subgraph IM[Independent Measurements]
-        direction LR
+## Measurements
 
-        subgraph COR[Correspondence]
-            C[Consonance]
-            D[Dissonance]
-        end
+The following three measurements are each unique and independent ways of measuring the substrate.
+A change in value of one measurement is entirely independent from the others.
 
-        subgraph CHI[Chirality]
-            A[Alignment]
-            G[Divergence]
-        end
+### 1. Correspondence
 
-        subgraph CLO[Closure]
-            S[Persistence]
-            V[Variability]
-        end
-    end
-
-    subgraph PROJ[Projection]
-        direction LR
-        P[Prominence]
-        U[Turbulence]
-    end
-
-    subgraph FIELD[Field]
-        direction TB
-        T[Tension]
-    end
-
-    C --> P
-    A --> P
-    S --> P
-
-    D --> U
-    G --> U
-    V --> U
-
-    P --> T
-    U --> T
-```
-
-### Measurements
-
-No new features need to be considered. As contributions are written to the ledger, various properties can be derived.
-
-The **Independent Measurements** are simply three unique ways of measuring the same substrate.
-
-#### Correspondence
-
-How similar in structure or shape is one graph region to another,
+How similar in **shape and structure** is one Domain to the other,
 and how strongly is that structure anchored?
 
 Take the structural components of the relational substrate graph;
-Propositions, Supersessions, Classification Registers, and Receipts,
+Propositions, Supersessions (SS), Classification Registers, and Receipts,
 and then categorise them into groups of **nodes** and **edges**:
 
 ```mermaid
+---
+config:
+  flowchart:
+    curve: basis
+  theme: neutral
+---
 flowchart LR
   subgraph MAIN["<strong>Legend:</strong> Structural Components"]
     direction LR
     R(( ))
     G(( ))
     B(( ))
-    R -- "Soft Edge" --> G
-    G == "Hard Edge" ==> B
+    R -- "Soft (SS)" --> G
+    G == "Hard (SS)" ==> B
   end
 
-  KEY1["Red - (Proposition Tier 1)"]
-  KEY2["Green - (Proposition Tier 2)"]
-  KEY3["Blue - (Proposition Tier 3)"]
-  KEY4["Light Fill - (Low Receipts)"]
-  KEY5["Solid Fill - (High Receipts)"]
+  KEY1["Red (Proposition Tier 1)"]
+  KEY2["Green (Proposition Tier 2)"]
+  KEY3["Blue (Proposition Tier 3)"]
+  KEY4["Light Fill (Low Receipts)"]
+  KEY5["Solid Fill (High Receipts)"]
 
   R -.- KEY1
   G -.- KEY2
@@ -441,49 +417,54 @@ flowchart LR
   style MAIN fill:transparent,stroke:#9ca3af
 ```
 
-**Node Labels**
+#### Node Labels
 
-To compare Propositions across the two Domains *structurally*, while disregarding the content itself,
+To compare Propositions across the two Domains structurally while disregarding the content itself,
 the pairings of Classification Registers are reduced down to a single label for each tier.
 Represented as Red, Green, and Blue (RGB) nodes for an easier visual interpretation.
 
-- **R** - Activity & Signal
-- **G** - Frontier & Stance
-- **B** - Canon & Concord
+- **R** - Activity & Signal (Tier 1)
+- **G** - Frontier & Stance (Tier 2)
+- **B** - Canon & Concord (Tier 3)
 
-**Edge Labels**
+The three tiers identifed represent each register position in terms of node hierarchy and possible edge transitions.
+Ultimately, the names and colours used do not matter.
 
-The five Supersession types can be reduced down to either a **soft** or **hard** edge between Propositions,
+#### Edge Labels
+
+The five Supersessional types can be reduced down to either a **soft** or **hard** edge between Propositions,
 whether branching from an existing Proposition or replacing one.
 
-- **S** - Soft Supersession (Thin Line)
-- **H** - Hard Supersession (Thick Line)
+- **S** - Branching, Soft Supersession (Thin Edge)
+- **H** - Reconciling, Hard Supersession (**Thick Edge**)
 
-**Node Weighting**
+#### Node Weighting
 
-One Receipt per Participant counts as an additional weighting extension,
-representing how strongly the structure is anchored by grounding Participation.
+One Receipt per Participant (1PP) counts as an additional weighting extension,
+reinforcing how strongly the structure is anchored.
 
 - **(-)** Light Colour (None/Low Receipts)
-- **(+)** Solid Colour - (Many/High Receipts)
+- **(+)** Solid Colour (Many/High Receipts)
 
-The label names or colours ultimately do not matter, the three tiers
-identifed represent each register position in terms of node hierarchy and possible edge transitions.
-Receipts only play a role in reinforcing the existing structure.
-
-**Graph Kernel**
+#### Graph Kernel
 
 Using the Context Horizon as the graph region for comparison,
-a Correspondence value is computed across domains using a weighted
+a Correspondence value is calculated across Domains using a weighted
 [Weisfeiler-Leman (WL)](https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test)
 graph kernel to differentiate the following poles:
 
-- **Consonance** - Structural similarity
-- **Dissonance** - Structural differentiation
+- **Consonance (1)** - Structural similarity
+- **Dissonance (-1)** - Structural differentiation
 
 ```mermaid
+---
+config:
+  flowchart:
+    curve: basis
+  theme: neutral
+---
 flowchart TB
-  subgraph CON["Consonance"]
+  subgraph CON["<strong>Consonance</strong>"]
     direction LR
     subgraph CA["Domain A"]
       direction TB
@@ -506,7 +487,7 @@ flowchart TB
     CA3 -.-> CB3
   end
 
-  subgraph DIS["Dissonance"]
+  subgraph DIS["<strong>Dissonance</strong>"]
     direction LR
     subgraph DA["Domain A"]
       direction TB
@@ -525,260 +506,359 @@ flowchart TB
       DB2 ==> DB3
     end
     DA1 -.-> DB1
-    DA3 -.-> DB2
   end
 
   class CA1,CB1,DA1,DB1 rNode
   class CA2,CB2,DA2,DB3 gNode
-  class CA3,CB3,DA3,DB2 bNode
+  class DA3 bNode
+  class CA3,CB3,DB2 bSolid
 
   classDef rNode fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
   classDef gNode fill:#dcfce7,stroke:#16a34a,color:#14532d
   classDef bNode fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+  classDef bSolid fill:#2563eb,stroke:#1e3a8a,color:#fff
 
-  linkStyle 4,5,6,11,12 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
+  linkStyle 4,5,6,11 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
 
   style CA fill:transparent,stroke:#9ca3af
   style CB fill:transparent,stroke:#9ca3af
   style DA fill:transparent,stroke:#9ca3af
   style DB fill:transparent,stroke:#9ca3af
-  style CON fill:transparent,stroke:#4f46e5,stroke-width:2px
-  style DIS fill:transparent,stroke:#dc2626,stroke-width:2px
+  style CON fill:transparent,stroke:#8ca3ff,stroke-width:3px
+  style DIS fill:transparent,stroke:#263578,stroke-width:3px
 ```
 
-#### Chirality
+#### Homeostatic Effect
 
-Do Attestation directions align or conflict within a graph region?
+Correspondence plays a balancing role during the **Read** Stage of Phase 5: **Mediate**:
+
+- The only Propositions available to be Read during this Phase are the ones that align
+  with the current Correspondence direction; either Consonant or Dissonant
+  Propositions.
+- This provides an indirect balancing effect that feeds into the next Stage;
+  as the dominant structures are selected, subsequent contributions will
+  more likely affect self Correspondence.
+
+---
+
+### 2. Chirality
+
+How similar is the **direction and magnitude** of Attestations between Domains,
+and how strongly are they endorsed with Rationales and Receipts?
+
+Take the active head nodes within a Context Horizon, i.e. the nodes that haven't yet
+been hard superceded, and then identify the aggregate lean.
 
 ```mermaid
+---
+config:
+  flowchart:
+    curve: basis
+  theme: neutral
+---
 graph TD
 
-    subgraph Alignment["<b>Alignment</b>"]
-        direction LR
+subgraph CH["Context Horizon"]
+  direction LR
 
-        subgraph AlignmentA["Region A"]
-            direction TD
+  subgraph ATT["Attestations"]
+    direction TB
 
-            A(( ))
-            B(( ))
-            C(( ))
-            D(( ))
-            E(( ))
+    A("+ 283")
+    B("+ 486")
+    C("+ 486")
+    D("- 215")
+    E("- 163")
+    F("- 4")
+    G("- 571")
+    H("+ 25")
 
-            A --> B
-            A --> C
-            B --> D
-            C --> E
-        end
+    A --> B
+    B ==> C
+    A --> D
+    A --> E
 
-        subgraph AlignmentB["Region B"]
-            direction TD
+    D ==> F
+    E ==> F
+    A --> G
+    G --> H
+  end
+end
 
-            A2(( ))
-            B2(( ))
-            C2(( ))
-            D2(( ))
-            E2(( ))
+subgraph SUM["Aggregate Sum"]
+  direction TB
 
-            A2 --> B2
-            A2 --> C2
-            B2 --> D2
-            C2 --> E2
-        end
-    end
+  NET("Net: + 219</br>Count: 1369")
 
-    subgraph Divergence["<b>Divergence</b>"]
-        direction LR
+  POS("+ 794")
+  NEG("- 575")
+end
 
-        subgraph DivergenceA["Region A"]
-            direction TD
+POS --> NET
+NEG --> NET
 
-            F(( ))
-            G(( ))
-            H(( ))
-            I(( ))
-            J(( ))
+subgraph AGG["Aggregate Lean"]
+  direction TB
 
-            F --> G
-            F --> H
-            G --> I
-            H --> J
-        end
+  NOR("+ 0.16")
+end
 
-        subgraph DivergenceB["Region B"]
-            direction TD
+ATT --> SUM
+SUM --> AGG
 
-            F2(( ))
-            G2(( ))
-            H2(( ))
-            I2(( ))
-            J2(( ))
+class A,C,H,POS,NOR,NET blueNode
+class F,G,NEG violetNode
+%% class B,D,E supersededNode
 
-            F2 --> G2
-            F2 --> H2
-            G2 --> I2
-            H2 --> J2
-        end
-    end
-
-    %% Alignment correspondence mappings
-    A -.-> A2
-    C -.-> C2
-    E -.-> E2
-
-    %% Divergence: only one surviving correspondence mapping
-    F -.-> F2
-
-    %% Alignment: all same direction
-    class A,B,C,D,E,A2,B2,C2,D2,E2 alignmentNode
-
-    %% Divergence: intentionally mixed
-    class F,H,J,G2,I2 divergenceGrape
-    class G,I,F2,H2,J2 divergencePink
-
-    %% Styles
-    classDef alignmentNode fill:#9c36b5,stroke:#862e9c,color:#fff
-    classDef divergenceGrape fill:#9c36b5,stroke:#862e9c,color:#fff
-    classDef divergencePink fill:#c2255c,stroke:#a61e4d,color:#fff
-
-    %% Group boundaries
-    style Alignment fill:transparent,stroke:none
-    style Divergence fill:transparent,stroke:none
-
-    %% Region boundaries
-    style AlignmentA fill:transparent,stroke:#9ca3af,stroke-width:1px
-    style AlignmentB fill:transparent,stroke:#9ca3af,stroke-width:1px
-    style DivergenceA fill:transparent,stroke:#9ca3af,stroke-width:1px
-    style DivergenceB fill:transparent,stroke:#9ca3af,stroke-width:1px
-
-    %% Correspondence mappings remain indigo
-    linkStyle 16 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
-    linkStyle 17 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
-    linkStyle 18 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
-    linkStyle 19 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
+classDef blueNode fill:#e7f5ff,stroke:#4dabf7,color:#4dabf7
+classDef violetNode fill:#f3f0ff,stroke:#9775fa,color:#9775fa
 ```
 
-#### Closure
+After obtaining the product between Domains, we get a clean separation:
 
-Committal Depth comparison between two graph regions; is the commitment frequency persistent or variable?
+- **Alignment (1)** - Leaning the same direction
+- **Divergence (-1)** - Leaning the opposite direction
+
+It is important to note that Alignment & Divergence are not the same as Support & Refute.
+Alignment between Domains means that they _lean together_, even if that lean is toward
+a Refuting direction. Divergence is where the Domains lean apart in opposing directions.
 
 ```mermaid
-graph TD
+---
+config:
+  flowchart:
+    curve: basis
+  theme: neutral
+---
+flowchart TB
+  subgraph ALI["<strong>Alignment</strong>"]
+    direction LR
 
-    subgraph Consonance["<b>Consonance</b>"]
-        direction LR
-
-        subgraph ConsonanceA["Region A"]
-            direction TD
-
-            A(( ))
-            B(( ))
-            C(( ))
-            D(( ))
-            E(( ))
-
-            A --> B
-            A --> C
-            B --> D
-            C --> E
-        end
-
-        subgraph ConsonanceB["Region B"]
-            direction TD
-
-            A2(( ))
-            B2(( ))
-            C2(( ))
-            D2(( ))
-            E2(( ))
-
-            A2 --> B2
-            A2 --> C2
-            B2 --> D2
-            C2 --> E2
-        end
+    subgraph DA["Domain A"]
+      direction TB
+      L1("- 0.76")
     end
 
-    subgraph Dissonance["<b>Dissonance</b>"]
-        direction LR
+    PROD1("+ 0.46")
 
-        subgraph DissonanceA["Region A"]
-            direction TD
+    subgraph DB["Domain B"]
+      direction TB
 
-            F(( ))
-            G(( ))
-            H(( ))
-            I(( ))
-            J(( ))
+      L2("- 0.61")
+    end
+  end
 
-            F --> G
-            F --> H
-            G --> I
-            H --> J
-        end
+  L1 --> PROD1
+  L2 --> PROD1
 
-        subgraph DissonanceB["Region B"]
-            direction TD
+  subgraph DIV["<strong>Divergence</strong>"]
+    direction LR
 
-            F2(( ))
-            G2(( ))
-            H2(( ))
-            I2(( ))
-            J2(( ))
+    subgraph DA2["Domain A"]
+      direction TB
 
-            F2 --> G2
-            F2 --> H2
-            G2 --> I2
-            H2 --> J2
-        end
+      L3("+ 0.4")
     end
 
-    %% Consonance correspondence mappings
-    A -.-> A2
-    C -.-> C2
-    E -.-> E2
+    PROD2("- 0.3")
 
-    %% Dissonance: only one surviving correspondence mapping
-    F -.-> F2
+    subgraph DB2["Domain B"]
+      direction TB
 
-    %% Significant / committal structures
-    class A,C,E,A2,C2,E2 longestPath
+      L4("- 0.61")
+    end
+  end
 
-    %% Dissonant committal structures intentionally vary
-    class F,G,I,F2,H2,J2 longestPath
+  L3 --> PROD2
+  L4 --> PROD2
 
-    %% Supporting structure
-    class B,D,B2,D2,H,J,G2,I2 otherNode
+  classDef blueNode fill:#e7f5ff,stroke:#4dabf7,color:#4dabf7
+  classDef violetNode fill:#f3f0ff,stroke:#9775fa,color:#9775fa
+  classDef aliNode fill:#edf2ff,stroke:#8ca3ff,color:#8ca3ff,stroke-width:2px
+  classDef divNode fill:#edf2ff,stroke:#263578,color:#263578,stroke-width:2px
 
-    %% Styles
-    classDef longestPath fill:#4f46e5,stroke:#312e81,color:#fff
-    classDef otherNode fill:#e5e7eb,stroke:#9ca3af,color:#111
+  class L3 blueNode
+  class L1,L2,L4 violetNode
+  class PROD1 aliNode
+  class PROD2 divNode
 
-    %% Group boundaries
-    style Consonance fill:transparent,stroke:none
-    style Dissonance fill:transparent,stroke:none
-
-    %% Region boundaries
-    style ConsonanceA fill:transparent,stroke:#9ca3af,stroke-width:1px
-    style ConsonanceB fill:transparent,stroke:#9ca3af,stroke-width:1px
-    style DissonanceA fill:transparent,stroke:#9ca3af,stroke-width:1px
-    style DissonanceB fill:transparent,stroke:#9ca3af,stroke-width:1px
-
-    %% Only correspondence mappings are indigo + dashed
-    linkStyle 16 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
-    linkStyle 17 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
-    linkStyle 18 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
-    linkStyle 19 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
+  style ALI fill:transparent,stroke:#8ca3ff,stroke-width:3px
+  style DIV fill:transparent,stroke:#263578,stroke-width:3px
 ```
 
-### Projections
+#### Reinforcement
+
+Rationales and Receipts (1PP) attached to Attestations count as an additional
+weighting extension, reinforcing the primarily chosen Attestational direction.
+
+A ratio of `4:1:1` Attestations-Rationales-Receipts should
+be reasonable enough for a first implementation, while not set in stone.
+
+This will provide a 50% reinforcement bonus per Participant;
+two Attestations with full reinforcement will count as three non-reinforced ones.
+
+#### Homeostatic Effect
+
+Chirality plays a balancing role during the **Gate** Stage of Phase 6: **Bias**:
+
+- The only Propositions available to be Superceded (Gated) from are the ones that align
+  with the dominant lean direction of the current Context Horizon.
+- The Attestation counts of the superceded Propositions do not carry over,
+  completely resetting the count back to 0 with the new Proposition.
+- This then causes the system to maintain balance between Alignment & Divergence
+  by collapsing the dominant lean direction back towards 0.
+
+---
+
+### 3. Closure
+
+How similar in **depth** are Committal Propositions between Domains,
+and what is the **cadence** of commitment frequency?
+
+#### Committal Depth
+
+Committal Depth is rather self-explanatory; if one Domain has a longer
+chain of Committal Propositions than the other, then depth is Variable.
+If the chain length is similar, then depth is Persistent.
+
+```mermaid
+---
+config:
+  flowchart:
+    curve: basis
+  theme: neutral
+---
+flowchart TB
+  direction LR
+
+  subgraph DA["Depth = 3"]
+    direction TB
+
+    P1(( ))
+    P2(( ))
+    P3(( ))
+    P4(( ))
+    P5(( ))
+  end
+
+  subgraph DB["Depth = 1"]
+    direction TB
+
+    V1(( ))
+    V2(( ))
+    V3(( ))
+  end
+
+  P1 --> P2
+  P2 --> P3
+  P2 --> P4
+  P3 --> P5
+
+  V1 --> V2
+  V1 --> V3
+
+  classDef longestPath fill:#bac8ff,stroke:#4c6ef5,color:#4c6ef5
+
+  class P1,P5,V1 longestPath
+```
+
+##### Depth Reinforcement
+
+One Receipt per Participant (who are not the owner of the Committal Proposition)
+counts as additional weighting extension, to reinforce the commitment represented
+at that depth. A Receipt is a precondition for commitment and so the initial Receipt
+from the owning Participant does not count. The same weighting as Chirality is used
+for a first implementation, with a ratio of `4:1` Commits to Receipts.
+
+#### Committal Cadence
+
+Cadence is measured in number of Participant Cycles, rather than
+using any external measurement of time. This allows the frequency of
+commitment to be made relative to participation, regardless of how much
+real world time passes between Cycles.
+
+Take the number of Participant Cycles that have occurred between each Commit.
+The [Coefficient of Variation (CV)](https://en.wikipedia.org/wiki/Coefficient_of_variation)
+compares how much those intervals vary against their average interval.
+
+@TODO: LaTeX: CV = Standard Deviation of Intervals / Average interval
+
+A low CV means the intervals are similar, indicating Persistence.
+
+A high CV means the intervals vary considerably, indicating Variability.
+
+Commit intervals: 3, 3, 3, 3
+CV: 0
+→ Persistent
+
+Commit intervals: 1, 5, 2, 7
+CV: higher
+→ Variable
+
+Dividing by the average allows Cadence to be compared between Participants even when they
+commit at very different frequencies.
+
+Closure is simply calculated as the average between Depth and Cadence
+
+#### Homeostatic Effect
+
+Closure plays a balancing role during the **Write** Stage of Phase 7: **Order**:
+
+- Commitment is only admissible in the direction leaning towards balance.
+- Both Depth and Cadence must align the same direction for commitment to occur.
+- The above two constraints provide a form of [hysteresis](https://en.wikipedia.org/wiki/Hysteresis),
+  so even when Closure itself flips direction in quick succession, there is still a buffer
+  window
+
+```mermaid
+---
+config:
+  flowchart:
+    curve: basis
+  theme: neutral
+---
+flowchart TD
+
+  subgraph COR[Correspondence]
+    direction LR
+
+    D(Dissonance)
+    C(Consonance)
+  end
+
+  subgraph CHI[Chirality]
+    direction LR
+
+    G(Divergence)
+    A(Alignment)
+  end
+
+  subgraph CLO[Closure]
+    direction LR
+
+    V(Variability)
+    S(Persistence)
+  end
+
+  D <-.-> C
+  G <-.-> A
+  V <-.-> S
+
+  COR --> CHI
+  CHI --> CLO
+
+  %% style PROM fill:transparent,stroke:#8ca3ff,stroke-width:3px
+  %% style TURB fill:transparent,stroke:#263578,stroke-width:3px
+```
+
+## Projections
 
 The positives and negatives from each Primitive get combined to form two polar opposites:
 
-#### Prominence
+### Prominence
 
-Prominence is the stabilising projection that represents accumulated
-structural ordering, made up of the positive poles of the Primitives.
+Prominence is the destabilising projection that represents persistence & dominance,
+made up of the positive poles of the Measurements.
 
 $$
 \mathrm{Prominence}
@@ -792,8 +872,8 @@ $$
 
 #### Turbulence
 
-Turbulence is the destabilising projection that represents
-structural variation, made up of the negative poles of the Primitives.
+Turbulence is the destabilising projection that represents variation & disorder,
+made up of the negative poles of the Primitives.
 
 $$
 \mathrm{Turbulence}
@@ -856,6 +936,12 @@ A Participant consists of:
 #### Cycles and Phases
 
 Participants iterate on Cycles, which is made up of a total of seven Phases.
+
+##### Phase 5 (Mediate)
+
+Correspondence plays a unique role during Phase 5 (Mediate) of a Participant's cycle;
+Only Consonant or Dissonant Propositions are available to read from Canon & Concord,
+depending on which direction Correspondence is leaning.
 
 A Participant's **Age** is determined by the number of Cycles performed
 
@@ -945,7 +1031,7 @@ These rules allow an Attestation to hold significance, while reducing spam behav
 
 ### Receipt
 
-When a Participant utilises an Instrument, then the system will provide a Receipt.
+When a Participant utilises an Instrument, the system will provide a Receipt.
 
 Participants can then re Receipts to retrieve further context
 
@@ -956,11 +1042,17 @@ Participants can then re Receipts to retrieve further context
 
 For a proof of concept, the following receipt types are defined:
 
-- **Cite**: A reference to another Proposition or Attestation.
+- **Citation**: A reference to another Proposition or Attestation.
 - **Artefact**: A file that lives in a configurable Data Storage location.
-- **Hyperlink**: A URL, title and summary for a web page.
+- **Hyperlink**: A URL, title and summary for a page on the world wide web.
 
 Receipt types can be extended as the system evolves and further utility is desired.
+
+### Instruments
+
+Instruments are a way to extend the
+
+- **Cite**: Obtain a reference to another Proposition or Attestation
 
 ---
 
