@@ -31,6 +31,11 @@ Nothing exists without lineage. If something appears, it has a trace. If it pers
 
 Multiple participants can partake; whether biological or artificial, the same rules apply for all.
 
+### Work in Progress
+
+I'm currently developing The Commons and writing the below documentation as I code.
+The content is subject to change as I experiment with the system and refine it further.
+
 ## The Concept
 
 - [Charge](/commons#charge) is provided by the system, as a shared and conserved resource.
@@ -247,8 +252,6 @@ Context Window (MECW) regarding problem accuracy, that varys between models.
 
 Not only does a model's MECW appear _tiny_ compared to its MCW, some older models can outperform newer models depending on the problem type:
 
-@TODO: Insert graph
-
 ### Context Compaction and Drift
 
 Once context size grows larger than a model's MCW, then performance of the model typically
@@ -261,7 +264,7 @@ reducing the active context back down to a size that fits within the model's MCW
 
 To gain a broader insight into the various methods of compaction,
 I highly recommend this article written by [William Waites](https://www.linkedin.com/in/wwaites/),
-as he eloquently describes some modern approaches:
+as he eloquently describes some modern approaches.
 
 [Structural Prompt Preservation: Keeping AI Agents on Track Across Long Sessions](https://leithdocs.com/ldc/documents/outgoing/structural-prompt-preservation.md)
 
@@ -281,11 +284,15 @@ With the main goal in mind of conserving energy and resources,
 can we build a system that aims to use the _least_ amount of
 tokens possible for any given model?
 
+- Rather than mapping one model to a specific problem, can we
+  identify a dynamic MECW per model as the problem space changes?
+- And by model that includes humans also.
+
 ## Commons Context: Depth
 
 Rather than thinking in terms of size or raw token count,
 The Commons provides a solution using **Context Depth**:
-How deep is the longest chain of Committal Propositions, to the nearest stable Closure boundary?
+How deep is the longest chain of Propositions, to the nearest stable Closure boundary?
 
 ```mermaid
 ---
@@ -353,7 +360,7 @@ graph TD
   which is calculated by comparing how their individual contributions affect Tension.
 - Compaction occurs as a side-effect; when a Participant's contributions increase Tension then
   their Perspective is decreased, reducing the amount of context that is readable.
-- Perspective may oscillate over a changing context space, representing a dynamic
+- Perspective may fluctuate over a changing context space, representing a dynamic
   MECW that mirrors the Participant's contributions.
 - Drift is exploited as a desired feature; with stabilisation constraints in place,
   drift then functions as a form of [hormesis](https://en.wikipedia.org/wiki/Hormesis) for ideas.
@@ -372,7 +379,8 @@ No new features need to be considered, as various properties can be derived from
 
 It's important to note that the following implementations are not intended to be final
 or set in stone. They have simply been chosen to demonstrate a working proof of concept.
-The implementation details are intentionally left open for experimentation and may change over time.
+The implementation details are intentionally left open for experimentation and may change
+over time.
 
 ## Measurements
 
@@ -383,8 +391,8 @@ changing structure. A single contribution may influence more than one measuremen
 #### Homeostasis
 
 I've borrowed the term [homeostasis](https://en.wikipedia.org/wiki/Homeostasis)
-from biology, as the intention is for each measurement to provide a feedback loop
-that pulls the system back towards equilibrium, rather than letting it drift.
+from biology as each measurement creates a feedback loop that pulls
+the system back towards equilibrium, rather than letting it drift.
 The homeostatic effects of each measurement are described below.
 
 ### 1. Correspondence
@@ -553,10 +561,12 @@ flowchart TB
 #### Homeostatic Effect
 
 Correspondence plays a balancing role during the **Read** Stage of Phase 5: **Mediate**.
-The only Propositions available to be Read during this Phase are the ones that align
-with the current Correspondence direction; either Consonant or Dissonant Propositions.
-This provides an indirect balancing effect that feeds into the next Stage; as the dominant
-structures are selected, subsequent contributions will more likely affect self Correspondence.
+
+- The only Propositions available to be Read during this Phase are the ones that align
+  with the current Correspondence direction; either Consonant or Dissonant Propositions.
+- This provides an indirect balancing effect that feeds into the next Stage; as the dominant
+  structures are selected (whether Consonant or Dissonant), subsequent contributions
+  will more likely affect the dominant Correspondence value.
 
 ---
 
@@ -724,22 +734,23 @@ depending on how they decide to attest themselves.
 
 Chirality plays a balancing role during the **Gate** Stage of Phase 6: **Bias**:
 
-- The only Propositions available to be Superceded (Gated) from are the ones that align
-  with the dominant lean direction of the current Context Horizon.
-- The Attestation counts of the superceded Propositions do not carry over,
-  completely resetting the count back to 0 with the new Proposition.
-- This then causes the system to maintain balance between Alignment & Divergence
-  by collapsing the dominant lean direction back towards 0.
+- The only Propositions available to be Superceded (Gated) from are the ones that
+  align with the dominant lean direction of the current Context Horizon.
+- Propositions are Reconciled during this Phase, which results in a new
+  Proposition getting written with zero Attestations.
+- This then causes the system to maintain balance between Alignment & Divergence,
+  as the dominant lean direction is forced to collapse towards zero.
 
 ---
 
 ### 3. Closure
 
-How similar in **depth and cadence** are Committal Propositions between Domains,
-and how strongly is commitment reinforced?
+How similar in **depth and cadence** are Propositions between Domains,
+and how strongly is depth reinforced?
 
-The indigo nodes below represent Committal Propositions, while the indigo edges represent
-the number of Participant Cycles that occurred between, highlighting the path to maximum depth.
+The grey and indigo nodes below represent Expressive and Committal
+Propositions, while the edges represent the number of Participant Cycles
+that occurred between, highlighting the path to maximum depth.
 
 ```mermaid
 ---
@@ -762,7 +773,7 @@ flowchart TB
 
   EXP["Expressive Proposition"]
   COM["Committal Proposition"]
-  DEP["Depth: 2"]
+  DEP["Depth: 4"]
 
   V1 -->|"Cycles: 6"| V2
   V1 --> V3
@@ -789,14 +800,11 @@ flowchart TB
   %% linkStyle 6,8,10,12 stroke:#748ffc,color:#748ffc
 ```
 
-#### Committal Depth
+#### Depth
 
-Committal Depth is based on the number of Committal Propositions that form the longest chain.
-Using the diagram above as an example, even though there may be multiple Expressive nodes
-in between, only the Committal nodes count towards depth.
-
-If one Domain has a longer chain of Committal Propositions than the other, then depth is Variable.
-If the chain length is similar, then depth is Persistent.
+Depth is based on the number of Propositions that form the longest chain.
+If one Domain has a longer chain of Propositions than the other, then depths
+are variable. If the chain length is similar, then depths are persistent.
 
 $$
 Depth =
@@ -876,28 +884,24 @@ flowchart TB
 
 ##### Reinforcement
 
-Receipts (1PP) count as additional weighting extension
-to reinforce the commitment represented at that depth.
-The initial Receipt from the owning Participant does not count
-towards reinforcement, as a Receipt is already a precondition
-for a Committal Proposition.
+Receipts (1PP) count as additional weighting extension to reinforce Depth.
 
 The same weighting method as Chirality is used as a default option,
-with a ratio of `3:1` Commits to Receipts. This weighting is intended to be
+with a ratio of `3:1` Depth to Receipts. This weighting is intended to be
 configurable and may change over time through experimentation.
 
-#### Committal Cadence
+#### Cadence
 
 Rather than using an external measurement of time, Cadence is measured in number
 of Participant Cycles.
-This allows the frequency of commitment to be made relative to participation,
-regardless of how much real world time passes between commits.
+This allows the frequency of contributions to be made relative to participation,
+regardless of how much real world time passes between them.
 
-Taking the number of Cycles between each Committal Proposition, the
+Taking the number of Cycles between each Proposition, the
 [Coefficient of Variation (CV)](https://en.wikipedia.org/wiki/Coefficient_of_variation)
-measures how regularly commitment occurs relative to each Domain's average interval.
+measures how regularly they occur relative to each Domain's average interval.
 This allows for temporal dispersion to be compared between each Participant,
-even when they commit at very different frequencies.
+even when they contribute at very different frequencies.
 
 $$
 Cadence =
@@ -973,7 +977,7 @@ flowchart TD
   style VAR2 fill:transparent,stroke:#263578,stroke-width:3px
 ```
 
-#### Committal Closure
+#### Closure
 
 The average between Depth and Cadence represents the final Closure value.
 This is a convenient first option, but implementation details may change with time.
@@ -988,10 +992,12 @@ $$
 
 Closure plays a balancing role during the **Write** Stage of Phase 7: **Order**:
 
-- Both Depth and Cadence must align the same direction for commitment to occur.
+- This is the final Phase where Expressive Propositions get written as Committal.
+- Both Depth and Cadence must align the same sign direction for commitment to occur,
+  forming a hysteretic gate when they diverge to prevent frequent switching.
 - The balancing effect for Closure naturally falls out from the cost of writing;
-  Commitment that causes high Tension allocates Charge, while Tension reducing
-  commitment reclaims Charge.
+  Commitment that causes high Tension allocates global Charge, while Tension reducing
+  commitment reclaims global Charge.
 
 ## Projections
 
@@ -1038,7 +1044,7 @@ flowchart LR
 
 ```
 
-If a stable and balanced substrate lies somewhere in the middle,
+If a stable and balanced substrate sits somewhere in the middle,
 then each projection represents a shift away from stability.
 Neither takes precedence over the other, they are each
 complementary ways of representing imbalance.
@@ -1046,7 +1052,7 @@ complementary ways of representing imbalance.
 ### Prominence
 
 Prominence represents a rigid and over-ordered structure,
-with high dominance pressure favouring a particular direction.
+with high dominance pressure favouring an Attestational direction.
 
 While the active Domain is in Emergence, Propositions with the
 highest Prominence take precedence for participation.
@@ -1084,7 +1090,7 @@ Commons Interpretation:
 
 ## Hysteresis
 
-The above Measurements, Projections and Tension shift direction
+The above Measurements, Projections and Tension shift sign direction
 with [hysteresis](https://en.wikipedia.org/wiki/Hysteresis).
 
 As each of the above properties require
