@@ -21,8 +21,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ul: (props) => <List {...props} />,
     ol: (props) => <List type="ordered" {...props} />,
     li: (props) => <ListItem {...props} />,
-    hr: (props) => <Divider {...props} />,
-    blockquote: (props) => <Blockquote {...props} />,
+    hr: (props) => <Divider {...props} my="xl" />,
+    blockquote: (props) => <Blockquote {...props} py="xs" />,
     code: (props) => <Code {...props} />,
     img: (props) => <Image radius="md" maw={600} {...props} />,
     a: ({ href = "", ...props }) => {

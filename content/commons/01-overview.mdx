@@ -52,7 +52,7 @@ Multiple participants can partake; whether biological or artificial, the same ru
   of the inputs between two complementary [Domains](/commons#domain);
   - Registerial-Supersessional shape & structure -> [Correspondence](/commons#correspondence)
   - Attestational direction & magnitude -> [Chirality](/commons#chirality)
-  - Committal depth & frequency -> [Closure](/commons#closure)
+  - Committal depth & cadence -> [Closure](/commons#closure)
 - [Tension](/commons#tension) becomes a dynamic system output, computed by symmetrically balancing the Observables.
 - Whether a contribution allocates or reclaims Charge depends on how it affects Tension.
 
@@ -76,13 +76,15 @@ flowchart TB
         P(Propositions)
         SS(Supersessions)
         A(Attestations)
-        R(Commits)
+        COM((Commits))
 
         P --> SS
         SS -.-> P
         P --> A
-        P --> R
+        P ==> COM
     end
+
+    %%SS ==> COM
 
     PARTICIPANT -->|"Input"| SUBSTRATE
 
@@ -126,7 +128,7 @@ flowchart TB
 
     SS --> C
     A --> H
-    R --> L
+    COM --> L
 
     subgraph REGISTERS["Classification Registers"]
         direction TB
@@ -156,10 +158,10 @@ flowchart TB
         end
     end
 
-    T --> REGISTERS
+    T -.-> REGISTERS
 
-    TR -.->|"T<small>dir</small> < 0"| TURBULENT
-    TR -.->|"T<small>dir</small> > 0"| PROMINENT
+    TR -.->|"T<small>dir</small> < 0"| SETTLEMENT
+    TR -.->|"T<small>dir</small> > 0"| EMERGENCE
 
     PROMINENT -.->|"P1"| ACTIVITY
     ACTIVITY -.->|"P2, P5"| FRONTIER
@@ -216,11 +218,6 @@ flowchart TB
     linkStyle 6,8,10,12 stroke:#748ffc,color:#748ffc
 ```
 
-The structure forms a [Directed Acyclic Graph (DAG)](https://en.wikipedia.org/wiki/Directed_acyclic_graph),
-where Propositions are the nodes, and Supersessions are the edges. Much like [Git](https://en.wikipedia.org/wiki/Git)
-version control, but with unique constraints based around Participant Phases,
-Classification Registers, Attestations, and Receipts.
-
 ---
 
 # Motivation
@@ -230,7 +227,7 @@ I started developing The Commons to demonstrate two complex ideas:
 1. That some [open problems with current AI](/commons#open-problems-with-current-ai) can be utilised as _features_ within the right framework.
 2. To provide a concrete working implementation of the [Miranova Matrix](/matrix), and observe any emergent ideas that may follow.
 
-![Visual diagram of propositions represented as light-bulbs, surrounded by a context window](/images/commons/ideas-context-spiral.png)
+![Visual illustration of Propositions represented as light-bulbs connected with edges to form a graph-like structure.](/images/commons/ideas-context-spiral.png)
 
 ## Open Problems with Current AI
 
@@ -239,7 +236,7 @@ and many revolve around context.
 
 ### Context Size
 
-LLM providers are releasing newer models with larger [Maximum Context Windows (MCW)](https://en.wikipedia.org/wiki/Context_window),
+LLM providers are releasing newer models with larger [Maximum Context Windows (MCWs)](https://en.wikipedia.org/wiki/Context_window),
 documented as more capable while requiring more energy and resources.
 
 However, the following research paper by [Norman Paulsen](https://www.linkedin.com/in/norman-paulsen/)
@@ -264,22 +261,30 @@ reducing the active context back down to a size that fits within the model's MCW
 
 To gain a broader insight into the various methods of compaction,
 I highly recommend this article written by [William Waites](https://www.linkedin.com/in/wwaites/),
-as he eloquently describes some modern solutions:
+as he eloquently describes some modern approaches:
 
 [Structural Prompt Preservation: Keeping AI Agents on Track Across Long Sessions](https://leithdocs.com/ldc/documents/outgoing/structural-prompt-preservation.md)
 
-The main problem with compaction is that context drifts over time.
-Not only that, the effect compounds as the active context is continuously altered.
+The main problem with compaction is that context drifts over time. The effect
+compounds as the active context increases in size and is continuously altered.
 It doesn't feel so dissimilar to how humans drift in conversation topic.
 
-Once the underlying project or context space grows large enough, the challenge becomes more about
-how the context is structurally managed and accessed, rather than through any static instructions alone.
+Once the underlying project or context space grows large enough,
+the challenge becomes more about how the context is structurally managed and accessed,
+rather than through any static instructions alone.
+
+---
 
 # Novelty
 
+With the main goal in mind of conserving energy and resources,
+can we build a system that aims to use the _least_ amount of
+tokens possible for any given model?
+
 ## Commons Context: Depth
 
-Rather than thinking in terms of size or raw token count, The Commons provides a solution using **Context Depth**:
+Rather than thinking in terms of size or raw token count,
+The Commons provides a solution using **Context Depth**:
 How deep is the longest chain of Committal Propositions, to the nearest stable Closure boundary?
 
 ```mermaid
@@ -294,29 +299,29 @@ graph TD
   subgraph CH["Context Horizon"]
     direction TB
 
-    subgraph D0["Depth 0"]
+    subgraph D0["<strong>Depth 0</strong> (Tension: -0.34)"]
       A["Question"]
     end
 
-    subgraph D1["Depth 1"]
+    subgraph D1["<strong>Depth 1</strong> (Tension: -0.27)"]
       B["Observation"]
       C["Observation"]
     end
 
-    subgraph D2["Depth 2"]
+    subgraph D2["<strong>Depth 2</strong> (Tension: -0.21)"]
       D["Evidence"]
       E["Hypothesis"]
       F["Question"]
     end
 
-    subgraph D3["Depth 3"]
+    subgraph D3["<strong>Depth 3</strong> (Tension: -0.09)"]
       G["Question"]
       H["Evidence"]
       I["Evidence"]
       J["Hypothesis"]
     end
 
-    subgraph D4["Depth 4"]
+    subgraph D4["<strong>Depth 4</strong> (Tension: +0.03)"]
       K["Closure"]
     end
 
@@ -347,23 +352,40 @@ graph TD
 - A Participant's [Perspective](/commons#perspective) determines how many Context Horizons are readable,
   which is calculated by comparing how their individual contributions affect Tension.
 - Compaction occurs as a side-effect; when a Participant's contributions increase Tension then
-  their Perspective is decreased, reducing the amount of context available.
+  their Perspective is decreased, reducing the amount of context that is readable.
 - Perspective may oscillate over a changing context space, representing a dynamic
   MECW that mirrors the Participant's contributions.
 - Drift is exploited as a desired feature; with stabilisation constraints in place,
   drift then functions as a form of [hormesis](https://en.wikipedia.org/wiki/Hormesis) for ideas.
 - Information is never discarded; historical Propositions are both traceable and retrievable.
 
+The structure forms a [Directed Acyclic Graph (DAG)](https://en.wikipedia.org/wiki/Directed_acyclic_graph),
+where Propositions are the nodes, and Supersessions are the edges. Much like [Git](https://en.wikipedia.org/wiki/Git)
+version control, but with unique constraints based around Participant Phases,
+Classification Registers, Attestations, and Receipts.
+
 ---
 
 # Observable System
 
-No new features need to be considered, as various properties can be derived.
+No new features need to be considered, as various properties can be derived from the inputs.
+
+It's important to note that the following implementations are not intended to be final
+or set in stone. They have simply been chosen to demonstrate a working proof of concept.
+The implementation details are intentionally left open for experimentation and may change over time.
 
 ## Measurements
 
-The following three measurements are each unique and independent ways of measuring the substrate.
-A change in value of one measurement is entirely independent from the others.
+Each of the following three measurements captures a distinct property of the substrate.
+None is computed using another measurement's value, though all three draw from the same
+changing structure. A single contribution may influence more than one measurement simultaneously.
+
+#### Homeostasis
+
+I've borrowed the term [homeostasis](https://en.wikipedia.org/wiki/Homeostasis)
+from biology, as the intention is for each measurement to provide a feedback loop
+that pulls the system back towards equilibrium, rather than letting it drift.
+The homeostatic effects of each measurement are described below.
 
 ### 1. Correspondence
 
@@ -419,7 +441,7 @@ flowchart LR
 
 #### Node Labels
 
-To compare Propositions across the two Domains structurally while disregarding the content itself,
+To compare Propositions across the two Domains structurally, while disregarding the content itself,
 the pairings of Classification Registers are reduced down to a single label for each tier.
 Represented as Red, Green, and Blue (RGB) nodes for an easier visual interpretation.
 
@@ -444,7 +466,7 @@ One Receipt per Participant (1PP) counts as an additional weighting extension,
 reinforcing how strongly the structure is anchored.
 
 - **(-)** Light Colour (None/Low Receipts)
-- **(+)** Solid Colour (Many/High Receipts)
+- **(+)** **Solid Colour** (Many/High Receipts)
 
 #### Graph Kernel
 
@@ -530,21 +552,18 @@ flowchart TB
 
 #### Homeostatic Effect
 
-Correspondence plays a balancing role during the **Read** Stage of Phase 5: **Mediate**:
-
-- The only Propositions available to be Read during this Phase are the ones that align
-  with the current Correspondence direction; either Consonant or Dissonant
-  Propositions.
-- This provides an indirect balancing effect that feeds into the next Stage;
-  as the dominant structures are selected, subsequent contributions will
-  more likely affect self Correspondence.
+Correspondence plays a balancing role during the **Read** Stage of Phase 5: **Mediate**.
+The only Propositions available to be Read during this Phase are the ones that align
+with the current Correspondence direction; either Consonant or Dissonant Propositions.
+This provides an indirect balancing effect that feeds into the next Stage; as the dominant
+structures are selected, subsequent contributions will more likely affect self Correspondence.
 
 ---
 
 ### 2. Chirality
 
 How similar is the **direction and magnitude** of Attestations between Domains,
-and how strongly are they endorsed with Rationales and Receipts?
+and how strongly are they endorsed with Receipts?
 
 Take the active head nodes within a Context Horizon, i.e. the nodes that haven't yet
 been hard superceded, and then identify the aggregate lean.
@@ -600,13 +619,13 @@ NEG --> NET
 subgraph AGG["Aggregate Lean"]
   direction TB
 
-  NOR("+ 0.16")
+  LEAN("+ 0.16")
 end
 
 ATT --> SUM
 SUM --> AGG
 
-class A,C,H,POS,NOR,NET blueNode
+class A,C,H,POS,LEAN,NET blueNode
 class F,G,NEG violetNode
 %% class B,D,E supersededNode
 
@@ -614,14 +633,10 @@ classDef blueNode fill:#e7f5ff,stroke:#4dabf7,color:#4dabf7
 classDef violetNode fill:#f3f0ff,stroke:#9775fa,color:#9775fa
 ```
 
-After obtaining the product between Domains, we get a clean separation:
+After obtaining the product between Domains, we get **Chirality**:
 
 - **Alignment (1)** - Leaning the same direction
 - **Divergence (-1)** - Leaning the opposite direction
-
-It is important to note that Alignment & Divergence are not the same as Support & Refute.
-Alignment between Domains means that they _lean together_, even if that lean is toward
-a Refuting direction. Divergence is where the Domains lean apart in opposing directions.
 
 ```mermaid
 ---
@@ -632,7 +647,7 @@ config:
 ---
 flowchart TB
   subgraph ALI["<strong>Alignment</strong>"]
-    direction LR
+    direction TD
 
     subgraph DA["Domain A"]
       direction TB
@@ -652,7 +667,7 @@ flowchart TB
   L2 --> PROD1
 
   subgraph DIV["<strong>Divergence</strong>"]
-    direction LR
+    direction TD
 
     subgraph DA2["Domain A"]
       direction TB
@@ -686,16 +701,24 @@ flowchart TB
   style DIV fill:transparent,stroke:#263578,stroke-width:3px
 ```
 
+It is important to note that Alignment & Divergence are not the same as Support & Refute.
+Alignment between Domains means that they _lean together_, even if that lean is toward
+a Refuting direction. Divergence is where the Domains lean apart in opposing directions.
+
 #### Reinforcement
 
-Rationales and Receipts (1PP) attached to Attestations count as an additional
-weighting extension, reinforcing the primarily chosen Attestational direction.
+Receipts attached to Attestations (1PP) count as an additional
+weighting extension, reinforcing the chosen direction.
 
-A ratio of `4:1:1` Attestations-Rationales-Receipts should
-be reasonable enough for a first implementation, while not set in stone.
+To provide additional weight without taking away from the value of an
+Attestation itself, a ratio of `3:1` Attestations to Receipts is used.
+This is intended to be a starting point for experimentation while being configurable.
 
-This will provide a 50% reinforcement bonus per Participant;
-two Attestations with full reinforcement will count as three non-reinforced ones.
+#### Rationale
+
+A rationale is optional and doesn't count directly towards reinforcement the
+same way Receipts do, however the rationale may still sway another Participant's opinion
+depending on how they decide to attest themselves.
 
 #### Homeostatic Effect
 
@@ -712,14 +735,11 @@ Chirality plays a balancing role during the **Gate** Stage of Phase 6: **Bias**:
 
 ### 3. Closure
 
-How similar in **depth** are Committal Propositions between Domains,
-and what is the **cadence** of commitment frequency?
+How similar in **depth and cadence** are Committal Propositions between Domains,
+and how strongly is commitment reinforced?
 
-#### Committal Depth
-
-Committal Depth is rather self-explanatory; if one Domain has a longer
-chain of Committal Propositions than the other, then depth is Variable.
-If the chain length is similar, then depth is Persistent.
+The indigo nodes below represent Committal Propositions, while the indigo edges represent
+the number of Participant Cycles that occurred between, highlighting the path to maximum depth.
 
 ```mermaid
 ---
@@ -729,86 +749,167 @@ config:
   theme: neutral
 ---
 flowchart TB
-  direction LR
-
-  subgraph DA["Depth = 3"]
-    direction TB
-
-    P1(( ))
-    P2(( ))
-    P3(( ))
-    P4(( ))
-    P5(( ))
-  end
-
-  subgraph DB["Depth = 1"]
+  subgraph CH1["Context Horizon"]
     direction TB
 
     V1(( ))
     V2(( ))
     V3(( ))
+    V4(( ))
+    V5(( ))
+    V6(( ))
   end
 
-  P1 --> P2
-  P2 --> P3
-  P2 --> P4
-  P3 --> P5
+  EXP["Expressive Proposition"]
+  COM["Committal Proposition"]
+  DEP["Depth: 2"]
 
-  V1 --> V2
+  V1 -->|"Cycles: 6"| V2
   V1 --> V3
+  V2 -->|"Cycles: 3"| V4
+  V4 --> V5
+  V4 ==>|"Cycles: 4"| V6
 
-  classDef longestPath fill:#bac8ff,stroke:#4c6ef5,color:#4c6ef5
+  EXP -.- V4
+  COM -.- V3
+  DEP -.- V6
 
-  class P1,P5,V1 longestPath
+  classDef committalNode fill:#bac8ff,stroke:#4c6ef5,color:#4c6ef5
+
+  class P1,P4,P5,P7,P8,P10,V1,V3,V6,V9 committalNode
+
+  style DEP fill:transparent,color:#4c6ef5,stroke:#4c6ef5
+  style EXP fill:transparent
+  style COM fill:transparent
+
+  %% Negative (-) edges
+  linkStyle 0,2,4 stroke:#3b5bdb,color:#3b5bdb
+
+  %% Positive (+) edges
+  %% linkStyle 6,8,10,12 stroke:#748ffc,color:#748ffc
 ```
 
-##### Depth Reinforcement
+#### Committal Depth
 
-One Receipt per Participant (who are not the owner of the Committal Proposition)
-counts as additional weighting extension, to reinforce the commitment represented
-at that depth. A Receipt is a precondition for commitment and so the initial Receipt
-from the owning Participant does not count. The same weighting as Chirality is used
-for a first implementation, with a ratio of `4:1` Commits to Receipts.
+Committal Depth is based on the number of Committal Propositions that form the longest chain.
+Using the diagram above as an example, even though there may be multiple Expressive nodes
+in between, only the Committal nodes count towards depth.
+
+If one Domain has a longer chain of Committal Propositions than the other, then depth is Variable.
+If the chain length is similar, then depth is Persistent.
+
+$$
+Depth =
+1 -
+2\left(
+\frac{\left|D_A - D_B\right|}
+{\max(D_A, D_B)}
+\right)
+$$
+
+- **Persistence (1)** - Similar depths
+- **Variability (-1)** - Varying depths
+
+```mermaid
+---
+config:
+  flowchart:
+    curve: basis
+  theme: neutral
+---
+flowchart TB
+  subgraph PERS1["<strong>Persistence</strong>"]
+    direction TD
+
+    subgraph DAP["Domain A"]
+      direction TB
+
+      C1(( )) -->|"4 Commits"| C2(( ))
+    end
+
+    subgraph DBP["Domain B"]
+      direction TB
+
+      C3(( )) -->|"5 Commits"| C4(( ))
+    end
+
+    DEP("+ 0.6")
+
+    DAP --> DEP
+    DBP --> DEP
+  end
+
+
+  subgraph PERS2["<strong>Variability</strong>"]
+    direction TD
+
+    subgraph DAP2["Domain A"]
+      direction TB
+
+      C5(( )) -->|"2 Commits"| C6(( ))
+    end
+
+    subgraph DBP2["Domain B"]
+      direction TB
+
+      C7(( )) -->|"11 Commits"| C8(( ))
+    end
+
+    DEP2("- 0.63")
+
+    DAP2 --> DEP2
+    DBP2 --> DEP2
+  end
+
+  classDef committalNode fill:#bac8ff,stroke:#4c6ef5,color:#4c6ef5
+  classDef perNode fill:#edf2ff,stroke:#8ca3ff,color:#8ca3ff,stroke-width:2px
+  classDef varNode fill:#edf2ff,stroke:#263578,color:#263578,stroke-width:2px
+
+  class L3 blueNode
+  class C1,C2,C3,C4,C5,C6,C7,C8 committalNode
+  class DEP perNode
+  class DEP2 varNode
+
+  style PERS1 fill:transparent,stroke:#8ca3ff,stroke-width:3px
+  style PERS2 fill:transparent,stroke:#263578,stroke-width:3px
+```
+
+##### Reinforcement
+
+Receipts (1PP) count as additional weighting extension
+to reinforce the commitment represented at that depth.
+The initial Receipt from the owning Participant does not count
+towards reinforcement, as a Receipt is already a precondition
+for a Committal Proposition.
+
+The same weighting method as Chirality is used as a default option,
+with a ratio of `3:1` Commits to Receipts. This weighting is intended to be
+configurable and may change over time through experimentation.
 
 #### Committal Cadence
 
-Cadence is measured in number of Participant Cycles, rather than
-using any external measurement of time. This allows the frequency of
-commitment to be made relative to participation, regardless of how much
-real world time passes between Cycles.
+Rather than using an external measurement of time, Cadence is measured in number
+of Participant Cycles.
+This allows the frequency of commitment to be made relative to participation,
+regardless of how much real world time passes between commits.
 
-Take the number of Participant Cycles that have occurred between each Commit.
-The [Coefficient of Variation (CV)](https://en.wikipedia.org/wiki/Coefficient_of_variation)
-compares how much those intervals vary against their average interval.
+Taking the number of Cycles between each Committal Proposition, the
+[Coefficient of Variation (CV)](https://en.wikipedia.org/wiki/Coefficient_of_variation)
+measures how regularly commitment occurs relative to each Domain's average interval.
+This allows for temporal dispersion to be compared between each Participant,
+even when they commit at very different frequencies.
 
-@TODO: LaTeX: CV = Standard Deviation of Intervals / Average interval
+$$
+Cadence =
+1 -
+2\left(
+\frac{\left|CV_A - CV_B\right|}
+{\max(CV_A, CV_B)}
+\right)
+$$
 
-A low CV means the intervals are similar, indicating Persistence.
-
-A high CV means the intervals vary considerably, indicating Variability.
-
-Commit intervals: 3, 3, 3, 3
-CV: 0
-→ Persistent
-
-Commit intervals: 1, 5, 2, 7
-CV: higher
-→ Variable
-
-Dividing by the average allows Cadence to be compared between Participants even when they
-commit at very different frequencies.
-
-Closure is simply calculated as the average between Depth and Cadence
-
-#### Homeostatic Effect
-
-Closure plays a balancing role during the **Write** Stage of Phase 7: **Order**:
-
-- Commitment is only admissible in the direction leaning towards balance.
-- Both Depth and Cadence must align the same direction for commitment to occur.
-- The above two constraints provide a form of [hysteresis](https://en.wikipedia.org/wiki/Hysteresis),
-  so even when Closure itself flips direction in quick succession, there is still a buffer
-  window
+- **Persistence (1)** - Intervals are similar
+- **Variability (-1)** - Intervals vary considerably
 
 ```mermaid
 ---
@@ -819,75 +920,148 @@ config:
 ---
 flowchart TD
 
-  subgraph COR[Correspondence]
-    direction LR
+  subgraph PER2["<strong>Persistence</strong>"]
+    direction TD
 
-    D(Dissonance)
-    C(Consonance)
+    subgraph DA5["Domain A"]
+      direction TD
+
+      P5(( )) -- "1 Cycle" --> P6(( )) -- "1 Cycles (0)" --> P7(( )) -- "3 Cycles (+2)" --> P8(( ))
+    end
+
+    subgraph DB5["Domain B"]
+      direction TD
+
+      V5(( )) -- "1 Cycle" --> V6(( )) -- "2 Cycles (+1)" --> V7(( )) -- "4 Cycles (+2)" --> V8(( ))
+    end
+
+    CAD2("+ 0.89")
+
+    DA5 --> CAD2
+    DB5 --> CAD2
   end
 
-  subgraph CHI[Chirality]
-    direction LR
+  subgraph VAR2["<strong>Variability</strong>"]
+    direction TD
 
-    G(Divergence)
-    A(Alignment)
+    subgraph DA4["Domain A"]
+      direction TD
+
+      P1(( )) -- "1 Cycle" --> P2(( )) -- "1 Cycle (0)" --> P3(( )) -- "5 Cycles (+4)" --> P4(( ))
+    end
+
+    subgraph DB4["Domain B"]
+      direction TD
+
+      V1(( )) -- "4 Cycles" --> V2(( )) -- "5 Cycles (+1)" --> V3(( )) -- "5 Cycles (0)" --> V4(( ))
+    end
+
+    CAD1("- 0.75")
+    DA4 --> CAD1
+    DB4 --> CAD1
   end
 
-  subgraph CLO[Closure]
-    direction LR
+  classDef committalNode fill:#bac8ff,stroke:#4c6ef5,color:#4c6ef5
+  classDef perNode fill:#edf2ff,stroke:#8ca3ff,color:#8ca3ff,stroke-width:2px
+  classDef varNode fill:#edf2ff,stroke:#263578,color:#263578,stroke-width:2px
 
-    V(Variability)
-    S(Persistence)
-  end
+  class P1,P2,P3,P4,P5,P6,P7,P8,V1,V2,V3,V4,V5,V6,V7,V8 committalNode
+  class CAD1 varNode
+  class CAD2 perNode
 
-  D <-.-> C
-  G <-.-> A
-  V <-.-> S
-
-  COR --> CHI
-  CHI --> CLO
-
-  %% style PROM fill:transparent,stroke:#8ca3ff,stroke-width:3px
-  %% style TURB fill:transparent,stroke:#263578,stroke-width:3px
+  style PER2 fill:transparent,stroke:#8ca3ff,stroke-width:3px
+  style VAR2 fill:transparent,stroke:#263578,stroke-width:3px
 ```
+
+#### Committal Closure
+
+The average between Depth and Cadence represents the final Closure value.
+This is a convenient first option, but implementation details may change with time.
+
+$$
+Closure =
+\frac{Depth + Cadence}
+2
+$$
+
+#### Homeostatic Effect
+
+Closure plays a balancing role during the **Write** Stage of Phase 7: **Order**:
+
+- Both Depth and Cadence must align the same direction for commitment to occur.
+- The balancing effect for Closure naturally falls out from the cost of writing;
+  Commitment that causes high Tension allocates Charge, while Tension reducing
+  commitment reclaims Charge.
 
 ## Projections
 
-The positives and negatives from each Primitive get combined to form two polar opposites:
+The positives and negatives from each measurement get combined to form two polar projections:
+
+```mermaid
+---
+config:
+  flowchart:
+    curve: basis
+  theme: neutral
+---
+flowchart LR
+
+  subgraph TUR[<strong>Turbulence</strong>]
+    direction TD
+
+    D(Dissonance)
+    G(Divergence)
+    V(Variability)
+
+  end
+
+  subgraph PRO[<strong>Prominence</strong>]
+    direction TD
+
+    C(Consonance)
+    A(Alignment)
+    S(Persistence)
+  end
+
+  D <-.->|Correspondence| C
+  G <-.->|Chirality| A
+  V <-.->|Closure| S
+
+  classDef promNode fill:#edf2ff,stroke:#8ca3ff,color:#8ca3ff,stroke-width:2px
+  classDef turbNode fill:#edf2ff,stroke:#263578,color:#263578,stroke-width:2px
+
+  class D,G,V turbNode
+  class C,A,S promNode
+
+  style PRO fill:transparent,stroke:#8ca3ff,stroke-width:3px
+  style TUR fill:transparent,stroke:#263578,stroke-width:3px
+
+```
+
+If a stable and balanced substrate lies somewhere in the middle,
+then each projection represents a shift away from stability.
+Neither takes precedence over the other, they are each
+complementary ways of representing imbalance.
 
 ### Prominence
 
-Prominence is the destabilising projection that represents persistence & dominance,
-made up of the positive poles of the Measurements.
+Prominence represents a rigid and over-ordered structure,
+with high dominance pressure favouring a particular direction.
 
-$$
-\mathrm{Prominence}
-=
-f(
-\mathrm{Consonance},
-\mathrm{Alignment},
-\mathrm{Persistence}
-)
-$$
+While the active Domain is in Emergence, Propositions with the
+highest Prominence take precedence for participation.
 
 #### Turbulence
 
-Turbulence is the destabilising projection that represents variation & disorder,
-made up of the negative poles of the Primitives.
+Turbulence represents a chaotic or unresolved structure with
+strong Attestational conflict.
 
-$$
-\mathrm{Turbulence}
-=
-f(
-\mathrm{Dissonance},
-\mathrm{Divergence},
-\mathrm{Variability}
-)
-$$
+While the active Domain is in Settlement, Propositions with the
+highest Turbulence take precedence for participation.
 
 ### Tension
 
-Tension represents the imbalance between stabilising and destabilising dynamics,
+Tension represents the imbalance between the two projections,
 simply the difference between Prominence and Turbulence.
 
 Magnitudal form:
@@ -907,6 +1081,17 @@ Commons Interpretation:
 - **T > 0** → over-prominent, rigid, over-ordered, dominance pressure.
 - **T < 0** → over-turbulent, chaotic, unstable, unresolved fragmentation.
 - **T ≈ 0** → balanced structural field.
+
+## Hysteresis
+
+The above Measurements, Projections and Tension shift direction
+with [hysteresis](https://en.wikipedia.org/wiki/Hysteresis).
+
+As each of the above properties require
+
+## Bootstrapping
+
+- The first Proposition must be Committal,
 
 ## Closure Horizon
 
@@ -1009,6 +1194,8 @@ An Attestation is a _directional_ participation applied to a Proposition:
 
 It's not your typical like or dislike button. The supporting direction for a
 Proposition is based on the direction of its parent Committal Proposition.
+Another way of looking at it is, do you spin _with_ the current direction
+or do you against it.
 
 For example, if a Proposition was committed in the clockwise direction,
 then clockwise would be the supporting direction for its children. To disagree would be to
@@ -1020,8 +1207,8 @@ Rules for attesting:
 - A Participant can only apply one active Attestation per Proposition.
 - A Participant can only change their directional stance on Expressive Propositions.
 - Attestations can only be applied to Propositions in the writeable Classification Register of the Participant's Phase.
-- Participants can optionally increase the weight of their Attestation by providing
-  a rationale statement and attaching Receipts.
+- Participants can optionally increase the weight of their Attestation by attaching Receipts.
+- A Rationale only provides value by potentially swaying other Participant's opinions.
 
 These rules allow an Attestation to hold significance, while reducing spam behaviour.
 
@@ -1058,4 +1245,7 @@ Instruments are a way to extend the
 
 # Acknowledgements
 
-Authored by Claire Mira Shaw. Proudly written in my own words, without the assistance of AI.
+- Authored by Claire Mira Shaw. Proudly written in my own words, without the assistance of AI.
+- This document is still a working draft and will be subject to change.
+- The implementations provided are working examples, and will be intended to be
+  configurable when creating a substrate, to allow for experimentation with ideas.
