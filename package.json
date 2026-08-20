@@ -19,7 +19,6 @@
     "@vercel/analytics": "^2.0.1",
     "katex": "^0.16.38",
     "next": "^15.5.12",
-    "playwright": "^1.59.1",
     "react": "19.1.1",
     "react-dom": "19.1.1",
     "rehype-katex": "^7.0.1",
@@ -29,6 +28,7 @@
     "sass": "^1.97.3"
   },
   "devDependencies": {
+    "@sparticuz/chromium": "^149.0.0",
     "@types/mdx": "^2.0.13",
     "@types/node": "24.3.3",
     "@types/react": "19.1.13",
@@ -36,6 +36,8 @@
     "eslint": "^8.57.1",
     "eslint-config-next": "15.5.3",
     "eslint-config-prettier": "^10.1.8",
+    "playwright": "^1.62.1",
+    "playwright-core": "^1.62.1",
     "postcss": "^8.5.8",
     "postcss-preset-mantine": "^1.18.0",
     "postcss-simple-vars": "^7.0.1",
