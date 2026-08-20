@@ -33,14 +33,14 @@ Multiple participants can partake; whether biological or artificial, the same ru
 
 ### Work in Progress
 
-I'm currently developing The Commons and writing the documentation as I code.
+I'm currently implementing The Commons in code and writing the documentation as I go.
 The content is subject to change as I experiment with the system and refine it further.
 
 ## The Concept
 
 - [Charge](/commons#charge) is provided by the system, as a shared and conserved resource.
 - [Participants](/commons#participant) can allocate or reclaim Charge by contributing:
-  - [Propositions](/commons#proposition) - Thoughts, ideas, questions, hypotheses, claims.
+  - [Propositions](/commons#proposition) - e.g. Thoughts, ideas, questions, hypotheses, claims.
   - [Attestations](/commons#attestation) - A directional stance; Supporting or Refuting Propositions.
   - [Supersessions](/commons#supersession) - Propositions supercede one another through various branching types;
     Revise, Reclassify, Variant, Reconcile, and Commit.
@@ -78,20 +78,23 @@ flowchart TB
     subgraph SUBSTRATE["Relational Substrate"]
         direction TB
 
+        CYC(Cycles)
+        A(Attestations)
+        R(Receipts)
         P(Propositions)
         SS(Supersessions)
-        A(Attestations)
-        COM((Commits))
 
         P --> SS
         SS -.-> P
-        P --> A
-        P ==> COM
+        CYC --> P
+        CYC --> R
+        R -.-> P
+        R -.-> A
+        CYC --> A
+        A --> P
     end
 
-    %%SS ==> COM
-
-    PARTICIPANT -->|"Input"| SUBSTRATE
+    PARTICIPANT -->|"Input"| CYC
 
     subgraph OBS["Observable System"]
         direction TB
@@ -131,9 +134,10 @@ flowchart TB
         PR ==> T
     end
 
-    SS --> C
-    A --> H
-    COM --> L
+    SS ==> C
+    A ==> H
+    P ==> L
+    CYC ==> L
 
     subgraph REGISTERS["Classification Registers"]
         direction TB
@@ -217,10 +221,10 @@ flowchart TB
     class PROMINENT prominenceRegister
 
     %% Negative (-) edges
-    linkStyle 5,7,9,11 stroke:#3b5bdb,color:#3b5bdb
+    linkStyle 9,11,13,15 stroke:#3b5bdb,color:#3b5bdb
 
     %% Positive (+) edges
-    linkStyle 6,8,10,12 stroke:#748ffc,color:#748ffc
+    linkStyle 10,12,14,16 stroke:#748ffc,color:#748ffc
 ```
 
 ---
@@ -229,8 +233,10 @@ flowchart TB
 
 I started developing The Commons to demonstrate two complex ideas:
 
-1. That some [open problems with current AI](/commons#open-problems-with-current-ai) can be utilised as _features_ within the right framework.
-2. To provide a concrete working implementation of the [Miranova Matrix](/matrix), and observe any emergent ideas that may follow.
+1. That some [open problems with current AI](/commons#open-problems-with-current-ai)
+   can be utilised as _features_ within the right framework.
+2. To provide a concrete working implementation of the [Miranova Matrix](/matrix),
+   and observe any emergent ideas that may follow.
 
 ![Visual illustration of Propositions represented as light-bulbs connected with edges to form a graph-like structure.](/images/commons/ideas-context-spiral.png)
 
@@ -250,7 +256,8 @@ Context Window (MECW) regarding problem accuracy, that varys between models.
 
 [Context Is What You Need: The Maximum Effective Context Window for Real World Limits of LLMs](https://arxiv.org/abs/2509.21361)
 
-Not only does a model's MECW appear _tiny_ compared to its MCW, some older models can outperform newer models depending on the problem type:
+Not only does a model's MECW appear _tiny_ compared to its MCW, some older models can
+outperform newer models depending on the problem type.
 
 ### Context Compaction and Drift
 
@@ -281,7 +288,8 @@ rather than through any static instructions alone.
 # Novelty
 
 With the main goal in mind of conserving energy and resources, can we build a system
-that aims to use the _least_ amount of tokens for any given model?
+that aims to use the _least_ amount of tokens for any given model? How can we
+identify an effective window of context, regardless of the Participant?
 
 ## Commons Context: Depth
 
@@ -298,33 +306,29 @@ config:
 ---
 graph TD
 
-  subgraph CH["Context Horizon"]
+  subgraph CH1["Context Horizon 1"]
     direction TB
 
-    subgraph D0["<strong>Depth 0</strong> (Tension: -0.34)"]
+    subgraph D0["<strong>Depth 1</strong> (Tension: -0.34)"]
       A["Question"]
     end
 
-    subgraph D1["<strong>Depth 1</strong> (Tension: -0.27)"]
+    subgraph D1["<strong>Depth 2</strong> (Tension: -0.27)"]
       B["Observation"]
       C["Observation"]
     end
 
-    subgraph D2["<strong>Depth 2</strong> (Tension: -0.21)"]
+    subgraph D2["<strong>Depth 3</strong> (Tension: -0.21)"]
       D["Evidence"]
       E["Hypothesis"]
       F["Question"]
     end
 
-    subgraph D3["<strong>Depth 3</strong> (Tension: -0.09)"]
+    subgraph D3["<strong>Depth 4</strong> (Tension: -0.09)"]
       G["Question"]
       H["Evidence"]
       I["Evidence"]
       J["Hypothesis"]
-    end
-
-    subgraph D4["<strong>Depth 4</strong> (Tension: +0.03)"]
-      K["Closure"]
     end
 
     A --> B
@@ -338,9 +342,15 @@ graph TD
     E --> H
     E --> I
     F --> J
-
-    I --> K
   end
+
+  subgraph CH2["Context Horizon 2"]
+    subgraph D4["<strong>Depth 1</strong> (Tension: +0.03)"]
+      K["Conclusion"]
+    end
+  end
+
+  I -->|"Closure Boundary"| K
 
   class A,B,E,I,K longestPath
   class D,F,G,H,J,C otherNode
@@ -731,13 +741,14 @@ Chirality plays a balancing role during the **Gate** Stage of Phase 6: **Bias**:
 
 - The only Propositions available to be Superceded (Gated) from are the ones that
   align with the aggregate lean direction of the current Context Horizon.
-- As Propositions get Reconciled, only the new active Proposition get
+- As reconciled Propositions are no longer active, they no longer contribute
+  towards Chirality, therefore trending the aggregate lean towards balance.
 
 ---
 
 ### 3. Closure
 
-How similar in **depth and cadence** are Propositions between Domains,
+How similar in **depth and cadence** are Propositions written between Domains,
 and how strongly is depth reinforced?
 
 The grey and indigo nodes below represent Expressive and Committal
@@ -824,13 +835,13 @@ flowchart TB
     subgraph DAP["Domain A"]
       direction TB
 
-      C1(( )) -->|"4 Commits"| C2(( ))
+      C1(( )) -->|"4 Props"| C2(( ))
     end
 
     subgraph DBP["Domain B"]
       direction TB
 
-      C3(( )) -->|"5 Commits"| C4(( ))
+      C3(( )) -->|"5 Props"| C4(( ))
     end
 
     DEP("+ 0.6")
@@ -839,20 +850,19 @@ flowchart TB
     DBP --> DEP
   end
 
-
   subgraph PERS2["<strong>Variability</strong>"]
     direction TD
 
     subgraph DAP2["Domain A"]
       direction TB
 
-      C5(( )) -->|"2 Commits"| C6(( ))
+      C5(( )) -->|"2 Props"| C6(( ))
     end
 
     subgraph DBP2["Domain B"]
       direction TB
 
-      C7(( )) -->|"11 Commits"| C8(( ))
+      C7(( )) -->|"11 Props"| C8(( ))
     end
 
     DEP2("- 0.63")
@@ -971,8 +981,8 @@ flowchart TD
 
 #### Closure
 
-The average between Depth and Cadence represents the final Closure value.
-This is a convenient first option, but implementation details may change with time.
+The average between Depth and Cadence represents the final Closure value. This
+is a convenient first option, but exact implementation details may change with time.
 
 $$
 Closure =
@@ -985,7 +995,7 @@ $$
 Closure plays a balancing role during the **Write** Stage of Phase 7: **Order**:
 
 - This is the final Phase where Expressive Propositions get written as Committal.
-- Both Depth and Cadence must align the same sign direction for commitment to occur,
+- Both Depth and Cadence must align the same direction for commitment to occur,
   forming a hysteretic gate when they diverge to prevent frequent switching.
 - Expressive Propositions only affect local Charge, while Committal Propositions
   affect global Charge.
@@ -995,7 +1005,7 @@ Closure plays a balancing role during the **Write** Stage of Phase 7: **Order**:
 
 ## Projections
 
-The positives and negatives from each measurement get combined to form two polar projections:
+The positives and negatives from each measurement get combined to form two polar projections.
 
 ```mermaid
 ---
@@ -1038,23 +1048,25 @@ flowchart LR
 
 ```
 
-If a stable and balanced substrate sits somewhere in the middle,
-then each projection represents a shift away from stability.
-Neither takes precedence over the other, they are each
-complementary ways of representing imbalance.
+If a stable and balanced substrate is represented somewhere in the middle,
+then each projection represents a shift away from stability. Neither takes
+precedence over the other, they are each complementary ways of representing imbalance.
 
 ### Prominence
 
 Prominence represents a rigid and over-ordered structure,
 with high dominance pressure favouring an Attestational direction.
+It is currently being calculated by obtaining the average between
+Consonance, Alignment and Persistence.
 
 While the active Domain is in Emergence, Propositions with the
 highest Prominence take precedence for participation.
 
-#### Turbulence
+### Turbulence
 
 Turbulence represents a chaotic or unresolved structure with
-strong Attestational conflict.
+strong Attestational conflict. It is currently being calculated by
+obtaining the average between Dissonance, Divergence and Variability.
 
 While the active Domain is in Settlement, Propositions with the
 highest Turbulence take precedence for participation.
@@ -1076,54 +1088,92 @@ $$
 \mathrm{Tension}_{d} = \mathrm{Prominence} - \mathrm{Turbulence}
 $$
 
-Commons Interpretation:
-
+- **T ≈ 0** → balanced structural field.
 - **T > 0** → over-prominent, rigid, over-ordered, dominance pressure.
 - **T < 0** → over-turbulent, chaotic, unstable, unresolved fragmentation.
-- **T ≈ 0** → balanced structural field.
 
-## Hysteresis
+### Hysteresis
 
-The above Measurements, Projections and Tension shift sign direction
+The above Measurements, Projections and Tension shift direction
 with [hysteresis](https://en.wikipedia.org/wiki/Hysteresis).
 
-As directional state is a requirement, when each of the above observables
-reaches a value of zero, the previous direction remains the active
-directional state until the value changes to the other direction.
+Directional state is a requirement to satisfy the constraints, and so when each of
+the above observables reaches a value of zero (neither positive or negative),
+the previous direction remains active until the value changes to the opposite direction.
+
+However on a fresh substrate, no historical direction yet exists.
+One would assume a sensible default might be positive (+) for these
+values, however a unique combination is required to satisfy the constraints.
+
+These default directions must be considered:
+
+- Tension **(+)**
+  - Correspondence **(+)**
+  - Chirality **(+)**
+  - Closure **(-)**
+    - Depth **(-)**
+    - Cadence **(-)**
+
+The default direction for Closure must be negative (-), as Depth & Cadence directions
+form the admissibility gate for commitment, which gets explained below in the bootstrapping
+process.
+
+Tension's sign is defaulted positive (+), as the average of (+, +, -) from
+Correspondence, Chirality, and Closure respectively.
 
 ## Bootstrapping
 
-The bootstrapping process demonstrates how a substrate gets created,
-while simultaneously providing it with Charge.
+The bootstrapping process demonstrates how a substrate is created, while simultaneously
+providing it with Charge.
 
-- Before any Proposition exists, the empty substrate is perfectly balanced with
-  a Tension of 0.
-- Tension's sign direction is defaulted positive (+) towards the Emergence
-  Domain, as the Settlement Domain requires existing Propositions to resolve.
-- The very first Proposition must be Committal, as Expressive Propositions
+We simply follow the constraints:
+
+- Before any Proposition exists, an empty substrate is perfectly
+  balanced with a Tension of `0`.
+- The active Domain is Emergence, due to the initial positive (+) Tension direction.
+- The initial Proposition must be Committal, as Expressive Propositions
   can only exist as variants from existing Propositions.
-- Committal Propositions can only get written into Canon & Concord registers,
-  therefore the first written register is Canon.
-- The initial Proposition gets written, and with it begins the first Context Horizon.
-  - Producing 100% Turbulence, as there is nothing in the other Domain to compare to.
-  - Flips Tension's sign direction to (-1), the active Domain for this
+- Committal Propositions can only get written into Canon & Concord
+  registers, therefore the first written register is Canon.
+- The initial Committal Proposition is labelled the [Origin](/commons#origin).
+- Both an Attestation and Receipt are preconditions for commitment,
+  so they must also be provided along with the Origin.
+- The default hysteretic gate for Depth & Cadence allows for a variable commit.
+- The Origin then gets written into Canon:
+  - Becoming the entry point for the initial Context Horizon.
+  - As nothing exists in Settlement to compare to, 100% Turbulence is produced.
+  - Tension's sign flips negative (-).
+  - The current Context Horizon is then closed off in Emergence,
+    and the active Domain switches to Settlement.
+- The system is now in a state of maximum Tension, i.e. reclaimable Charge.
 
 ## Charge
 
-Charge is a shared and conserved resource. It's simply what remains with lack of Tension.
+_This section is incomplete._
 
-Charge = 1 - Tension
+Charge is a shared and conserved resource. It's simply what remains without Tension.
 
-### Local & Global
+$$
+Charge = 1 - \left|Tension\right|
+$$
+
+### Local & Global Charge
+
+_This section is incomplete._
 
 Global Charge is the shared pool which gets consumed by Committal Propositions,
-while local Charge
+while local Charge is only affected by the Expressive Propositions underneath.
+
+Once an Expressive Proposition becomes Committal, then the expressive
+Charge gets realised and affects global Charge.
 
 ## Closure Horizon
 
-@TODO
+_This section is incomplete._
 
 ## Classification Registers
+
+_This section is incomplete._
 
 <ClassificationRegisters />
 
@@ -1132,6 +1182,8 @@ while local Charge
 ## Model
 
 ### Participant
+
+_This section is incomplete._
 
 <IconUserHexagon size={64} />
 
@@ -1146,19 +1198,17 @@ A Participant consists of:
 
 #### Cycles and Phases
 
+_This section is incomplete._
+
 Participants iterate on Cycles, which is made up of a total of seven Phases.
 
-##### Phase 5 (Mediate)
-
-Correspondence plays a unique role during Phase 5 (Mediate) of a Participant's cycle;
-Only Consonant or Dissonant Propositions are available to read from Canon & Concord,
-depending on which direction Correspondence is leaning.
-
-A Participant's **Age** is determined by the number of Cycles performed
+A Participant's age is determined by the number of Cycles performed
 
 ---
 
 ### Proposition
+
+_This section is incomplete._
 
 <IconBulb size={64} />
 
@@ -1187,9 +1237,9 @@ A Proposition can exist in one of two **Tiers**:
   <GridCol span={6}>
     <PropositionCard
       proposition={{
-        tier: "expressive",
-        title: "Expressive",
-        statement: "Light-weight. No receipt or support required. Fades faster from context.",
+        tier: "committal",
+        title: "Committal",
+        statement: "Requires an Attestation and Receipt. Affects global Charge.",
       }}
     />
   </GridCol>
@@ -1197,19 +1247,22 @@ A Proposition can exist in one of two **Tiers**:
   <GridCol span={6}>
     <PropositionCard
       proposition={{
-        tier: "committal",
-        title: "Committal",
-        statement: "Heavy-weight. Requires receipt and high support. Fades slower from context.",
+        tier: "expressive",
+        title: "Expressive",
+        statement: "No Receipt or Attestation required. Only affects local Charge.",
       }}
     />
   </GridCol>
 </Grid>
 
-Propositions begin as Expressive, and can progress to Committal with high support.
+- Committal Propositions require both an Attestation and Receipt to exist.
+- Expressive Propositions can only become variants from existing Propositions.
 
 ---
 
 ### Attestation
+
+_This section is incomplete._
 
 <IconWhirl size={64} />
 
@@ -1220,12 +1273,12 @@ An Attestation is a _directional_ participation applied to a Proposition:
 
 It's not your typical like or dislike button. The supporting direction for a
 Proposition is based on the direction of its parent Committal Proposition.
-Another way of looking at it is, do you spin _with_ the current direction
-or do you against it.
+Another way of looking at it; do you spin _with_ the current direction
+or do you pull against it?
 
-For example, if a Proposition was committed in the clockwise direction,
+For example, if a Proposition was committed in the clockwise (+) direction,
 then clockwise would be the supporting direction for its children. To disagree would be to
-attest in the anti-clockwise direction. Once a Proposition gets committed in the opposite
+attest in the anti-clockwise (-) direction. Once a Proposition gets committed in the opposite
 direction to its Committal parent, then the supporting and refuting directions switch.
 
 Rules for attesting:
@@ -1246,11 +1299,11 @@ These rules allow an Attestation to hold significance, while reducing spam behav
 
 When a Participant utilises an Instrument, the system will provide a Receipt.
 
-Participants can then re Receipts to retrieve further context
+Participants can then read Receipts to retrieve further context.
 
-- Contains metadata results specific to the Instrument used (file storage location, URL, dataset, hash, etc.).
+- Contains metadata specific to the Instrument used (file storage location, URL, dataset, hash, etc.).
 - Can be attached to both Propositions and Attestations.
-- Act as anchors for Committal Propositions.
+- Acts as reinforcement for existing structure.
 - No committal proposition can exist without a Receipt.
 
 For a proof of concept, the following receipt types are defined:
@@ -1263,7 +1316,7 @@ Receipt types can be extended as the system evolves and further utility is desir
 
 ### Instruments
 
-Instruments are a way to extend the
+_This section is incomplete._
 
 - **Cite**: Obtain a reference to another Proposition or Attestation
 
@@ -1273,5 +1326,5 @@ Instruments are a way to extend the
 
 - Authored by Claire Mira Shaw. Proudly written in my own words, without the assistance of AI.
 - This document is still a working draft and will be subject to change.
-- The implementations provided are working examples, and will be intended to be
-  configurable when creating a substrate, to allow for experimentation with ideas.
+- The implementations provided are working examples, and are intended to be
+  configurable upon creation of a substrate.

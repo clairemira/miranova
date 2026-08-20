@@ -1,4 +1,15 @@
-import { Container, Title, Text, Divider, Anchor, Group, Center, Image, Box } from "@mantine/core";
+import {
+  Container,
+  Title,
+  Text,
+  Divider,
+  Anchor,
+  Group,
+  Center,
+  Image,
+  Box,
+  Stack,
+} from "@mantine/core";
 import Link from "next/link";
 import classes from "./page.module.css";
 import Article from "../../components/Layout/Article/Article";
@@ -94,6 +105,13 @@ export default function TheCommonsPage() {
       <Article>
         <Overview />
       </Article>
+
+      <Container my="lg" size="sm">
+        <Stack gap={0}>
+          <Text size="xs">Created on: 23rd May 2026</Text>
+          <Text size="xs">Last updated: 20th August 2026</Text>
+        </Stack>
+      </Container>
     </Page>
   );
 }
