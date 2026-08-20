@@ -33,7 +33,7 @@ Multiple participants can partake; whether biological or artificial, the same ru
 
 ### Work in Progress
 
-I'm currently developing The Commons and writing the below documentation as I code.
+I'm currently developing The Commons and writing the documentation as I code.
 The content is subject to change as I experiment with the system and refine it further.
 
 ## The Concept
@@ -280,13 +280,8 @@ rather than through any static instructions alone.
 
 # Novelty
 
-With the main goal in mind of conserving energy and resources,
-can we build a system that aims to use the _least_ amount of
-tokens possible for any given model?
-
-- Rather than mapping one model to a specific problem, can we
-  identify a dynamic MECW per model as the problem space changes?
-- And by model that includes humans also.
+With the main goal in mind of conserving energy and resources, can we build a system
+that aims to use the _least_ amount of tokens for any given model?
 
 ## Commons Context: Depth
 
@@ -391,7 +386,7 @@ changing structure. A single contribution may influence more than one measuremen
 #### Homeostasis
 
 I've borrowed the term [homeostasis](https://en.wikipedia.org/wiki/Homeostasis)
-from biology as each measurement creates a feedback loop that pulls
+from biology, as each measurement creates a feedback loop that pulls
 the system back towards equilibrium, rather than letting it drift.
 The homeostatic effects of each measurement are described below.
 
@@ -735,11 +730,8 @@ depending on how they decide to attest themselves.
 Chirality plays a balancing role during the **Gate** Stage of Phase 6: **Bias**:
 
 - The only Propositions available to be Superceded (Gated) from are the ones that
-  align with the dominant lean direction of the current Context Horizon.
-- Propositions are Reconciled during this Phase, which results in a new
-  Proposition getting written with zero Attestations.
-- This then causes the system to maintain balance between Alignment & Divergence,
-  as the dominant lean direction is forced to collapse towards zero.
+  align with the aggregate lean direction of the current Context Horizon.
+- As Propositions get Reconciled, only the new active Proposition get
 
 ---
 
@@ -895,7 +887,7 @@ configurable and may change over time through experimentation.
 Rather than using an external measurement of time, Cadence is measured in number
 of Participant Cycles.
 This allows the frequency of contributions to be made relative to participation,
-regardless of how much real world time passes between them.
+regardless of how much real world time passes between.
 
 Taking the number of Cycles between each Proposition, the
 [Coefficient of Variation (CV)](https://en.wikipedia.org/wiki/Coefficient_of_variation)
@@ -995,8 +987,10 @@ Closure plays a balancing role during the **Write** Stage of Phase 7: **Order**:
 - This is the final Phase where Expressive Propositions get written as Committal.
 - Both Depth and Cadence must align the same sign direction for commitment to occur,
   forming a hysteretic gate when they diverge to prevent frequent switching.
+- Expressive Propositions only affect local Charge, while Committal Propositions
+  affect global Charge.
 - The balancing effect for Closure naturally falls out from the cost of writing;
-  Commitment that causes high Tension allocates global Charge, while Tension reducing
+  commitment that causes high Tension allocates global Charge, while Tension reducing
   commitment reclaims global Charge.
 
 ## Projections
@@ -1093,11 +1087,37 @@ Commons Interpretation:
 The above Measurements, Projections and Tension shift sign direction
 with [hysteresis](https://en.wikipedia.org/wiki/Hysteresis).
 
-As each of the above properties require
+As directional state is a requirement, when each of the above observables
+reaches a value of zero, the previous direction remains the active
+directional state until the value changes to the other direction.
 
 ## Bootstrapping
 
-- The first Proposition must be Committal,
+The bootstrapping process demonstrates how a substrate gets created,
+while simultaneously providing it with Charge.
+
+- Before any Proposition exists, the empty substrate is perfectly balanced with
+  a Tension of 0.
+- Tension's sign direction is defaulted positive (+) towards the Emergence
+  Domain, as the Settlement Domain requires existing Propositions to resolve.
+- The very first Proposition must be Committal, as Expressive Propositions
+  can only exist as variants from existing Propositions.
+- Committal Propositions can only get written into Canon & Concord registers,
+  therefore the first written register is Canon.
+- The initial Proposition gets written, and with it begins the first Context Horizon.
+  - Producing 100% Turbulence, as there is nothing in the other Domain to compare to.
+  - Flips Tension's sign direction to (-1), the active Domain for this
+
+## Charge
+
+Charge is a shared and conserved resource. It's simply what remains with lack of Tension.
+
+Charge = 1 - Tension
+
+### Local & Global
+
+Global Charge is the shared pool which gets consumed by Committal Propositions,
+while local Charge
 
 ## Closure Horizon
 
