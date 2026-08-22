@@ -91,10 +91,10 @@ flowchart TB
         SS -.-> P
         CYC --> P
         CYC --> R
+        P --> A
         R -.-> P
         R -.-> A
         CYC --> A
-        A --> P
     end
 
     PARTICIPANT -->|"Input"| CYC

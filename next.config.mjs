@@ -14,6 +14,8 @@ const nextConfig = {
   },
 };
 
+const isVercel = process.env.VERCEL === "1";
+
 const withMDX = createMDX({
   extension: /\.(md|mdx)$/,
   options: {
@@ -25,11 +27,13 @@ const withMDX = createMDX({
         rehypeMermaid,
         {
           strategy: "inline-svg",
-          launchOptions: {
-            executablePath: await chromium.executablePath(),
-            args: chromium.args,
-            headless: true,
-          },
+          launchOptions:
+            isVercel
+              ? {
+                  executablePath: await chromium.executablePath(),
+                  args: chromium.args,
+                }
+              : {},
         },
       ],
     ],
