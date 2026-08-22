@@ -6,21 +6,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: `${base}/`,
-      lastModified: new Date("2026-03-16"),
-      changeFrequency: "weekly",
+      lastModified: new Date("2026-08-22"),
+      changeFrequency: "monthly",
       priority: 1,
     },
     {
       url: `${base}/matrix`,
-      lastModified: new Date("2026-03-16"),
-      changeFrequency: "weekly",
-      priority: 0.9,
+      lastModified: new Date("2026-08-22"),
+      changeFrequency: "monthly",
+      priority: 0.7,
     },
     {
       url: `${base}/commons`,
-      lastModified: new Date("2026-03-16"),
+      lastModified: new Date("2026-08-22"),
       changeFrequency: "monthly",
-      priority: 0.7,
+      priority: 0.9,
     },
   ];
 }

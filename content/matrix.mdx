@@ -1,0 +1,863 @@
+import { Image, Center } from "@mantine/core";
+import DegreeOfFreedomBadge from "../components/Miranova/DegreeOfFreedom/DegreeOfFreedomBadge";
+import {
+  IconCircleFilled,
+  IconCircle,
+  IconGitCommit,
+  IconGitBranch,
+  IconGitMerge,
+  IconGitFork,
+  IconBinaryTree,
+} from "@tabler/icons-react";
+import classes from "./classes.module.css";
+import MiranovaMatrixTable from "../components/Miranova/MiranovaMatrixTable/MiranovaMatrixTable";
+
+# Introduction
+
+Many modern ideas in science suggest that space, time, and lasting structure may not be
+fundamental ingredients, but patterns that emerge from deeper processes. Rather than beginning
+with spacetime as a given stage, one can ask a simpler question:
+
+> **What is the smallest kind of update a system must perform for persistence and
+> complexity to arise at all?**
+
+This work explores that question through a minimal operational lens. Instead of starting with
+geometry or equations of motion, it begins with discrete irreversible steps; “ticks”, that distinguish,
+transform, and regulate state. Over repeated cycles, such updates can stabilise structure: regions of
+compatibility, constraint, and ordered persistence.
+
+The Miranova Matrix is not proposed as a new physical theory, but as a simulation-oriented
+grammar for emergence; a structured way to explore how commitment and constraint can generate
+durable regimes over time. References to physical notions such as causality or irreversibility are
+used only as interpretive guardrails. The colour mappings used throughout are introduced as an
+operational representation; one possible way of encoding the framework's participating degrees of
+freedom for clarity and eventual simulation, rather than as claims about fundamental properties of
+nature.
+
+![`Concept`ual illustration of emergent spacetime](/images/miranova/information-disc-example.png)
+
+Operational and matrix-based formulations appear widely across physics and computation as
+compact representations of relational structure and irreversible transformations. Motivated by
+emergence programs in contemporary physics and complex systems, this work asks whether a
+minimal cycle of distinctions and transformations can serve as a useful operational basis for
+studying persistent structure under physically compatible constraints.
+
+Conventional descriptions typically begin by assuming geometric or continuum structure. By
+contrast, the Miranova framework treats ordered update operations as primary, allowing persistence,
+causal depth, and structural regularities to arise from constraint-mediated update dynamics rather
+than being imposed as background. The result is a self-contained ledger of participation, intended
+for simulation, through which one may explore how constrained structure stabilises, how
+incompatibilities produce strain, and how ordered regimes emerge through mediated admissibility.
+
+# Motivation
+
+The Miranova Matrix is presented as an operational grammar for emergent structure, specified
+independently of any particular physical theory. Nevertheless, it is useful to motivate the framework
+using familiar phenomenological patterns: the kinds of stable structure that embedded observers
+already encounter, and the possibility that such structure reflects deeper informational constraint.
+The interpretive references that appear throughout this work are therefore not intended as
+derivations, but as orienting analogies: observational guardrails that help frame why a minimal
+operational ledger may be of interest.
+
+## Particle Phenomenology as Emergent Artifact
+
+In an emergent spacetime setting, particle-like entities need not correspond to fundamental objects.
+They may instead arise as stable, repeatable artifacts of deeper operational constraint organisation:
+persistent modes of admissible commitment that appear as localised excitations to embedded
+observers.
+
+The Standard Model is referenced throughout this work not as a derivation target, but as an
+observational catalogue of the most refined emergent regularities currently accessible. Its role here
+is exploratory: if the phenomena we call “particles” reflect structured artifacts of an underlying
+informational substrate, then existing particle phenomenology may offer a principled guide toward
+the number and character of degrees of freedom required for minimal operational emergence.
+
+This interpretive perspective served as the original motivation for constructing the present
+operational framework.
+
+![Illustrates particle-like phenomena as emergent surface signatures arising from deeper ldedger structure](/images/miranova/participation-ledger.png)
+
+## Structure as Fruiting from Constraint Networks
+
+A second motivation comes from the broader observation that visible structure often represents only
+the surface expression of deeper generative organisation. In biological systems, flowers emerge
+from root networks, and mushrooms fruit from extended mycelial substrates. What appears at the
+surface is not a primitive origin, but a localised manifestation of an underlying connectivity and
+constraint field.
+
+![Depicts realised phenomena as surface artifacts of deeper Participation Ledger structure, across biological and cosmological analogy](/images/miranova/realised-phenomena-trees.png)
+
+This work treats ordered structure in a similar way; not as an assumed geometric background, but as
+something that may arise through patterns of admissible participation. The Participation Ledger
+provides a compact operational record of such participation, specifying how degrees of freedom are
+read, gated, and written across update events. Persistent “objects” may then be understood as
+stabilised configurations within this ledger, rather than as fundamental constituents.
+
+### Transition to the Operational Framework
+
+With these interpretive motivations in view, the remainder of the paper proceeds by specifying the
+minimal operational registers and update grammar required for emergent structure in simulation-oriented
+form: the nine Degrees of Freedom, the Tick primitive, and the seven operations through which commitment is traversed.
+
+# Operational Framework
+
+## Core Primitives
+
+- **Tick** A tick is a minimal irreversible system update
+  in which operational changes accumulate,
+  independent of external time. In simulation,
+  ticks may be realised as asynchronous local
+  commitment events.
+  <div className={classes.smallImg}>
+    ![Identity represented as a distinguishable structure across
+    ticks](/images/miranova/tick-example.png)
+  </div>
+- **Identity / Distinction**
+  Identity is the persistence of a distinguishable
+  structure across one or more ticks. Identities
+  emerge when distinguishable patterns remain
+  correlated across successive updates.
+  <div className={classes.smallImg}>
+    ![Identity represented as a distinguishable structure across
+    ticks](/images/miranova/identity-dots-example.png)
+  </div>
+- **Causal depth**
+  Causal depth is the length of the longest
+  irreducible chain of tick-ordered dependencies
+  required for a structure to exist.
+  <div className={classes.smallImg}>
+    ![Causal depth as the longest chain of tick-ordered
+    dependencies](/images/miranova/causal-depth-diagram.png)
+  </div>
+- **Branching / Clustering**
+  Branching refers to the divergence of causal
+  sequences across updates, while clustering
+  denotes the subsequent formation of correlated
+  structure within that divergence.
+  <div className={classes.smallImg}>
+    ![Demonstration of branching and clustering across
+    ticks](/images/miranova/branching-example.png)
+  </div>
+- **Monotonicity**
+  Operational updates establish causal precedence
+  through ordered dependency, without requiring
+  an external time metric or a globally
+  synchronous clock.
+  <div className={classes.smallImg}>
+    ![Example of ordered dependency](/images/miranova/monotonic-example.png)
+  </div>
+- **Irreversibility**
+  Certain operational distinctions, once
+  introduced, cannot be fully undone in
+  subsequent updates.
+  <div className={classes.smallImg}>
+    ![Example of irreversibility](/images/miranova/irreversible-diagram.png)
+  </div>
+- **Dependency constraints**
+  Higher-order structures arise only after the
+  completion of prerequisite operational
+  sequences.
+  <div className={classes.smallImg}>
+    ![Example of higher-order structures](/images/miranova/dependency-constraints-example.png)
+  </div>
+- **Emergence principle**
+  Persistent structure arises when admissible
+  distinctions stabilise through constraint-mediated
+  commitment across repeated ticks.
+  <div className={classes.smallImg}>
+    ![Example of complex structure arising from ordered
+    dependencies](/images/miranova/emergence-principle-example.png)
+  </div>
+- **Observer embedding**
+  Observers exist as subsystems within the
+  dynamics and therefore access only emergent,
+  relational notions of time. The underlying
+  update ordering remains internal and
+  unobservable.
+  <div className={classes.smallImg}>
+    ![Example of an embedded subsystem](/images/miranova/nodes-cluster-example.png)
+  </div>
+  - **Emergent time**
+  Embedded observers experience time
+  primarily through the growth of causal depth
+  and persistence, rather than through direct
+  access to an external clock.
+
+## Degrees of Freedom
+
+When this framework refers to degrees of freedom, it is not describing spatial dimensions, hidden
+axes of the universe, or directions one could move through. Instead, degrees of freedom are best
+understood as independent aspects of a single state.
+
+A simple analogy is a single pixel on a screen. One pixel is not many pixels, and it does not exist in
+multiple dimensions. Yet it can still be described using several independent values at once: how
+bright it is, what colour it is, how saturated that colour appears, or whether it is active at all. These
+values do not represent separate spaces, they are different attributes of the same pixel.
+
+![Multiple attributes of a pixel representing a single operational state](/images/miranova/pixel-explosion.png)
+
+In a similar way, the nine degrees of freedom in this framework can be thought of as nine
+descriptive _table columns_ applied to a single operational state. Each degree of freedom captures a
+distinct mode by which a state may differ, persist, or influence subsequent updates. None of them
+alone defines the state, and none implies a separate dimension in which the system exists.
+
+What matters is not the number of degrees of freedom, but the fact that they are independent
+yet co-present. Together, they describe how a state is structured, constrained, and able to evolve.
+The framework treats these degrees of freedom as operational descriptors and ways to characterise change,
+rather than as coordinates in a geometric space.
+
+### Nine Degrees of Freedom
+
+Each Degree of Freedom denotes an independent register of operational state. These registers are
+not spatial dimensions or hidden axes, but distinct aspects through which a system may differ,
+stabilise, or influence subsequent updates.
+
+Definitions are operational and do not presuppose semantic, cognitive, or physical interpretation.
+
+Icons are mnemonic only and carry no ontological implication.
+
+1. <DegreeOfFreedomBadge type="coherence" /> Structural alignment between participating
+   distinctions. It contributes to the admissibility envelope governing stable configuration.
+2. <DegreeOfFreedomBadge type="entropy" /> Structured dispersion of possibility. It represents
+   branching variation without implying disorder.
+3. <DegreeOfFreedomBadge type="activation" /> Mobilised engagement in transformation. It indicates
+   operational readiness without implying direction or persistence.
+4. <DegreeOfFreedomBadge type="salience" /> Expressive prominence within the system. It reflects
+   relative weighting among co-present distinctions.
+5. <DegreeOfFreedomBadge type="excitation" /> Available generative capacity. It enables
+   participation but does not record structure.
+6. <DegreeOfFreedomBadge type="modality" /> Categorical mode of expression. It characterises the
+   representational form through which differentiation appears.
+7. <DegreeOfFreedomBadge type="stimulus" /> Perturbation within an activated field. It introduces
+   local disturbance without guaranteeing persistence.
+8. <DegreeOfFreedomBadge type="valence" /> Directional weighting across variation. It expresses
+   attraction, repulsion, or preference within dispersion.
+9. <DegreeOfFreedomBadge type="resonance" /> Reinforcement across aligned structure. It reflects
+   persistence of compatible patterns under repeated participation.
+
+### Diagrammatic Arrangement
+
+- Opposite vertices denote complementary registers across subspaces.
+- Excitation is shown centrally as conserved generative capacity.
+- The black/white division indicates Dynamics and Disposition.
+
+The Degrees of Freedom are arranged such that Dynamics and Disposition form complementary
+duals, represented geometrically as opposite vertices rather than edge-adjacent couplings.
+
+Excitation is treated as a conserved capacity field underlying participation and is therefore
+represented centrally as a structural constraint rather than as a peripheral register.
+
+<Center>
+  <Image
+    src="/images/miranova/dof-hexagon-colours.png"
+    fit="content"
+    mah={340}
+    w="auto"
+    alt="Nine degrees of freedom and operational subspaces. Opposite verticies indicate complementary registers across subspaces"
+  />
+</Center>
+
+### Operational Subspaces
+
+1. **Dynamics** describes how change is locally expressed across operational updates. It governs
+   mobilisation, variation, and relational restructuring under shared generative capacity.
+2. **Disposition** describes how expressed structure is differentially weighted across commitment
+   history. It governs reinforcement, directional weighting, and persistence of configuration.
+
+Both subspaces are jointly required. Dynamics enables transformation, Disposition conditions
+stabilisation. Excitation, Salience, and Modality together condition the enabling context for
+expression, a grouping later formalised as the **Generative Basis**.
+
+## Operational Transitions
+
+The operations described in this framework are not actions performed by an agent, nor are they
+physical forces, particles, or mental processes. Instead, they are best understood as basic modes by
+which a system can change or remain stable as it updates from one state to the next. An operation,
+in this sense, is not something that does anything on its own. It is a way of describing how change is
+permitted, constrained, or expressed during an update. Multiple operational roles may be relevant
+within a single update, shaping the same transition from different perspectives.
+
+A helpful way to think about the operations in this framework is to imagine a simple dial lock. From
+the outside, the lock appears to have only one visible control: a dial that can be turned freely. i.e. a
+single degree of freedom. The dial may pass over the same positions many times, and it can end on
+the same number through different sequences of turns. Yet whether the lock opens or remains closed
+depends not on the final position alone, but on the particular sequence of movements that led there.
+In this sense, the _history_ of operations matters just as much as the apparent configuration.
+
+<Center>
+  <Image
+    src="/images/miranova/lock-diagram.png"
+    fit="content"
+    alt="A sequence of operations acting on one degree of freedom"
+  />
+</Center>
+
+The operations described here do not determine outcomes in isolation; what matters is how they are
+applied, in what order, and how their effects accumulate across successive ticks. Configurations that
+appear identical may differ in their operational history, and this hidden structure can determine
+whether a transition is permitted or a stable identity can persist. Visual illustrations are therefore
+used throughout as intuitive guides, helping to distinguish operational sequence from final
+configuration rather than serving as literal models.
+
+## Operational Grammar and The Tick
+
+A **Tick** may be expressed formally as a directed traversal of operational transformations acting on
+distinctions. Rather than treating the seven operations as independent local steps, the framework
+represents each Tick as a single closed update cycle: an irreversible passage through admissible
+transformation and commitment.
+
+In this representation:
+
+- **Distinctions** appear as structural nodes, denoted $$\Delta_i$$
+- **Transformations** (operational updates) appear as directed edges, denoted $$O_i$$
+
+The seven operations may therefore be written as operators:
+
+$$
+\begin{aligned}
+O_1\ (\mathrm{Distinguish})
+&\rightarrow
+O_2\ (\mathrm{Persist})
+\rightarrow
+O_3\ (\mathrm{Constrain})
+\rightarrow
+O_4\ (\mathrm{Disperse}) \\
+&\rightarrow
+O_5^{c}\ (\mathrm{Mediate})
+\rightarrow
+O_6^\chi\ (\mathrm{Bias}) \\
+&\rightarrow
+O_7^\circ\ (\mathrm{Order})
+\end{aligned}
+$$
+
+A Tick is then captured as a minimal structural object:
+
+$$
+S := \left( \{\Delta_i\}_{i=1}^{7}, \{O_i\}_{i=1}^{7} \right)
+$$
+
+with each transformation mapping one distinction into the next:
+
+$$
+O_i : \Delta_i \to \Delta_{i+1} \pmod{7}
+$$
+
+Cyclic indexing expresses closure of the operational traversal through
+modular identification, without introducing a privileged origin or implying
+reversibility. Irreversibility is carried globally by the directed orientation of the Tick.
+
+<Center>
+  <Image
+    src="/images/miranova/tick-skeleton.png"
+    mah={340}
+    w="auto"
+    fit="content"
+    alt="Canonical Tick structure as a directed cycle of distinctions"
+  />
+</Center>
+
+## Read, Gate, and Write
+
+The operational grammar consists of three functional roles:
+
+- **← Read:** Degrees of Freedom referenced to determine admissibility.
+- **↔ Gate:** Degrees of Freedom constraining whether transformation may proceed.
+- **→ Write:** Degrees of Freedom in which realised transformation is committed.
+
+These roles describe functional participation within a single irreversible update
+and do not denote temporal staging.
+
+## The Seven Operations
+
+The seven operations constitute the minimal irreversible traversal through which commitment
+progresses across a Tick. Each operation assigns Degrees of Freedom to functional roles within a
+single closed update cycle.
+
+### O1 : Distinguish
+
+<IconCircleFilled size={22} />
+
+Undifferentiated → **distinguishable structure**
+
+Distinguish introduces operational differentiation. Available capacity is referenced,
+expressive prominence and representational mode constrain admissibility, and mobilisation
+with perturbation is written. No persistence is yet committed.
+
+### O2 : Persist
+
+<IconCircle size={22} />
+
+Transient difference → **stable identity**
+
+Persist stabilises differentiated structure. Expressive prominence and mode are
+referenced, mobilisation constrains continuation, and structured dispersion with
+directional weighting is committed.
+
+### O3 : Constrain
+
+<IconGitCommit size={48} style={{ transform: "translateX(-12px)" }} />
+
+Free variation → **constrained relational structure**
+
+Constrain consolidates relational compatibility. Mobilised variation is referenced,
+dispersion constrains admissibility, and structural alignment with reinforcement is
+written.
+
+### O4 : Disperse
+
+<IconGitBranch size={48} style={{ transform: "scaleY(-1)" }} />
+
+Local commitment → **branching continuation**
+
+Disperse reintroduces generative motion within compatible bounds. Structured
+variation is referenced, alignment constrains admissibility, and renewed
+mobilisation is written.
+
+### O5ᶜ : Mediate
+
+<IconGitMerge size={48} style={{ transform: "scaleY(-1)" }} />
+
+Isolated persistence → **coupled dynamics**
+
+Mediate evaluates compatibility under Consonance (ᶜ). Structural alignment
+is jointly referenced, mobilisation constrains coupling, and directional
+structure is redistributed.
+
+### O6χ : Bias
+
+<IconGitFork size={48} style={{ transform: "scaleY(-1)" }} />
+
+Symmetric branching → **orientational preference**
+
+Bias introduces directional preference under Chirality (χ). Mobilised
+trajectories are referenced, dispersion gates asymmetrically, and oriented
+relational structure is committed.
+
+### O7∘ : Order
+
+<IconBinaryTree size={48} style={{ transform: "scaleX(-1)" }} />
+
+Change → **realised history**
+
+Order realises Closure (∘). Directional outcomes are referenced, compatibility
+constrains finality, and expressive prominence with representational form is
+committed to record. Closure records without amplifying, biasing, or re-evaluating.
+
+## Pyramidal Progression
+
+The traversal forms a pyramidal progression:
+
+- **O1→O2→O3→O4** generative ascent
+- &emsp;&emsp;**O5ᶜ →O6χ** compatibility alignment & directional asymmetry
+- &emsp;&emsp;&emsp;&nbsp;&nbsp;**O7∘** structural closure
+
+The operations do not represent temporal stages. They specify structured participation
+within an admissible transformation.
+
+## Structural Invariants
+
+- Each Degree of Freedom progresses forward without inversion within a Tick.
+- Consonance (ᶜ) appears only in Mediate (O5).
+- Chirality (χ) appears only in Bias (O6).
+- Closure (∘) appears only in Order (O7).
+- Coherence and Resonance form the late-phase admissibility envelope.
+- Salience and Modality receive committed record only under Closure.
+- No operation simultaneously gates and writes the same register.
+- The traversal is monotonic and irreversible.
+
+Together, the seven operations constitute a minimal grammar through which emergence,
+directional asymmetry, and archival finality arise without presupposing external time
+or imposed geometry.
+
+# The Participation Ledger
+
+The Participation Ledger specifies how the Degrees of Freedom participate as reads,
+gates, and writes across each operator. It may therefore be understood as an operational
+record defined over the Tick skeleton above, summarising how commitment is structured
+through the seven operations.
+
+## How to Read the Participation Ledger
+
+The Participation Ledger encodes role assignment of Degrees of Freedom across the seven operations.
+
+- Rows correspond to operations.
+- Columns correspond to Degrees of Freedom.
+- Entries specify Read, Gate, or Write participation.
+
+The ledger is read:
+
+- Across a **row**, to observe structured participation within an operation.
+- Down a **column**, to observe forward lifecycle progression across a Tick.
+
+Excitation functions as conserved generative capacity and is referenced once as availability.
+
+## The Miranova Matrix (Participation Table)
+
+## Participation Table
+
+<a href="/images/miranova/miranova-matrix-table.png" target="_blank">
+  <img
+    width="700px"
+    src="/images/miranova/miranova-matrix-table.png"
+    alt="The Miranova Matrix"
+  />
+</a>
+
+{/*
+# Machine friendly version of the above table contents
+
+## Participation Table
+
+| Operation | Symbol | Index | Coherence | Entropy | Activation | Salience | Excitation | Modality | Stimulus | Valence | Resonance |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Distinguish | ● | O₁ | — | — | write | gate | read | gate | write | — | — |
+| Persist | ○ | O₂ | — | write | gate | read | — | read | gate | write | — |
+| Constrain | ◉ | O₃ | write | gate | read | — | — | — | read | gate | write |
+| Disperse | branching | O₄ | gate | read | write | — | — | — | write | read | gate |
+| Mediate | merge | O₅ᶜ | readᶜ | write | gate | — | — | — | gate | write | readᶜ |
+| Bias | hierarchy | O₆ˣ | write | gateχ | read | — | — | — | read | gateχ | write |
+| Order | hierarchy | O₇° | gate | read | — | write° | — | write° | — | read | gate |
+
+## Operational Subspaces
+
+| Operational Subspace | Role |
+|---|---|
+| Dynamics | Dynamic participation |
+| Generative Basis | Generative participation |
+| Disposition | Dispositional participation |
+
+## Descriptive Projection
+
+| Projection | Description |
+|---|---|
+| Physical system | Realised state |
+| Complementarity | Regulating state |
+| Reward system | Stimulus → Response → Reward |
+
+| Stage | Degree of Freedom |
+|---|---|
+| Stimulus | Stimulus |
+| Response | Valence |
+| Reward | Resonance |
+
+## Extended Objects
+
+### M-theory
+
+| Structure | Object |
+|---|---|
+| Latent structure | Projected axis |
+| Latent structure | M2-brane |
+| Latent structure | M5-brane |
+| Latent structure | Projected axis |
+
+### G₂ Manifold
+
+| Structure | Object |
+|---|---|
+| Constrained possibility | 4-form |
+| Constrained possibility | Geometric scalar |
+| Constrained possibility | Scalar invariant |
+| Constrained possibility | Scalar |
+| Constrained possibility | 3-form |
+| Constrained possibility | Special holonomy |
+
+### Realised Dynamics
+
+| Structure | Object |
+|---|---|
+| Realised dynamics | Spacetime |
+
+## Standard Model
+
+### Fundamental Interactions
+
+| Degree of Freedom | Fundamental Interaction |
+|---|---|
+| Coherence | Gravity |
+| Entropy | Strong interaction |
+| Activation | Electromagnetism |
+| Salience / Excitation / Modality | Weak interaction |
+| Stimulus / Valence / Resonance | Electroweak interaction |
+
+### Elementary Particles
+
+| Particle | Category |
+|---|---|
+| Gluon | Gauge boson |
+| Photon | Gauge boson |
+| Z boson | Gauge boson |
+| W± boson | Gauge boson |
+| Higgs boson | Scalar boson |
+| Electron | Lepton |
+| Muon | Lepton |
+| Tau | Lepton |
+| Electron neutrino | Lepton |
+| Muon neutrino | Lepton |
+| Tau neutrino | Lepton |
+| Up | Quark |
+| Down | Quark |
+| Charm | Quark |
+| Strange | Quark |
+| Bottom | Quark |
+| Top | Quark |
+
+### Particle Classes
+
+| Particle Class | Members |
+|---|---|
+| Gauge boson | Gluon, Photon, Z boson, W± boson |
+| Scalar boson | Higgs boson |
+| Lepton | Electron, Muon, Tau, Electron neutrino, Muon neutrino, Tau neutrino |
+| Quark | Up, Down, Charm, Strange, Bottom, Top |
+
+### Particle Composites
+
+| Composite | Classification |
+|---|---|
+| Boson | Boson |
+| Fermion | Fermion |
+| Meson | Hadron |
+| Baryon | Hadron |
+
+*/}
+
+# Interpretation and Projection
+
+This section provides an interpretive overview of how the components of the framework
+relate once the operational primitives are in place. No new mechanisms are introduced.
+Instead, the intent is to clarify how change becomes expressible, how it is conditioned,
+and how persistent structure can arise through repeated admissible commitment.
+
+At a high level, the framework distinguishes between:
+
+- Potential: the space of admissible configurations the system can support, defined by
+  the full set of Degrees of Freedom.
+- Generative Basis: the shared substrate that enables expression at all.
+- Dynamics and Disposition: complementary operational subspaces describing how change
+  is locally realised and how persistence is shaped across updates.
+
+## Generative Basis
+
+While all nine Degrees of Freedom define the space of potential, Excitation, Salience, and Modality
+form a shared generative basis enabling structured expression without specifying its outcomes. Excitation
+functions as a conserved capacity field, while Salience and Modality characterise the prominence and
+representational mode through which expression occurs.
+
+## Dynamics and Disposition
+
+- **Dynamics** describes how change is locally expressed across operational updates,
+  operating over shared generative structure while remaining subject to global constraint.
+- **Disposition** describes how expressed structure is differentially weighted across
+  commitment history, biasing which identities or configurations tend to persist.
+
+Neither subspace is sufficient in isolation. Together, they describe how expression
+and persistence arise from minimal operational participation under constraint, without
+presupposing external time or imposed geometry.
+
+## Operational Emergence
+
+From the primitives defined above, several minimal structural phenomena follow naturally in
+simulation-oriented realisations:
+
+- continuity of distinction across ticks (identity persistence)
+- admissible branching chains (divergent commitment histories)
+- record-holding structure through ordering (irreversible history)
+- emergent subsystems capable of internal differentiation (“observers” in the abstract operational sense)
+
+The purpose of these notes is to emphasise that structured entities and histories may arise directly
+from the update grammar, without requiring additional imposed mechanisms.
+
+## Geometric Projection (Octet Arrangement)
+
+When multiple degrees of freedom must coexist under shared constraint, stable relational balances
+admit simple geometric projections. In Miranova, the Degrees of Freedom may be arranged in an
+octet-like symmetry: eight peripheral registers organised around a shared generative basis, with
+structured differentiation arising through admissibility, bias, and ordering.
+
+Such octet projections are interpretive aids only. They do not introduce additional structure
+or assert physical correspondence, but serve as a compact map of relational balance within the
+operational space.
+
+## Matrix-Theoretic Context
+
+BFSS Matrix Theory is referenced only as an example of a non-geometric substrate in which
+spacetime is not fundamental. The Miranova framework does not depend on BFSS dynamics, nor
+does it claim derivation from brane constructions. Any labels or projections along such axes
+are intended solely as descriptive analogies for operational roles, not as assertions of novel physics.
+
+### Outlook Toward Simulation
+
+The interpretive alignments above are descriptive only. The framework itself remains fully specified
+by its Degrees of Freedom, Tick primitive, and participation roles. With this operational core established,
+we now turn to simulation realisation: admissibility rules, gate families, excitation fields, and event-driven
+traversal mechanisms through which the Participation Ledger may be explored computationally.
+
+# Simulation Realisation
+
+The Miranova Matrix is defined as an operational participation ledger:
+a minimal grammar specifying how Degrees of Freedom are read, gated, and
+written across update cycles. This structure is intended to be directly implementable
+in computational settings. The purpose of simulation is therefore not to add further
+primitives, but to explore what forms of persistent organisation arise when the ledger
+is enacted as an update process.
+
+Simulation realisations proceed by specifying:
+
+- an update traversal scheme,
+- admissibility and gate instantiations, and
+- capacity fields and boundary conditions under which commitment propagates.
+
+## Commitment Traversal
+
+A key requirement is that commitment need not occur through synchronous global stepping.
+A fully synchronised “tick clock” implicitly introduces a preferred frame. Instead, updates
+may be realised as an asynchronous event-driven traversal, where simultaneity is not fundamental
+and ordering is local rather than global.
+
+On this view, the Tick functions as a ledger abstraction: the invariant object is not a universal
+step index, but the local admissibility of commitment across the Participation Ledger.
+
+## Strain-Driven Scheduling
+
+Update selection need not be random or externally forced. Commitment may instead be prioritised
+by unrealised compatibility pressure, or strain, defined as:
+
+$$
+T = Sa\,(1-m)
+$$
+
+where $$Sa$$ denotes salience or mobilisation demand, and $$m$$ denotes consonance (compatibility weight).
+Event priority may then be expressed as:
+
+$$
+\mathrm{Priority} = T \cdot E
+$$
+
+Under this rule, updates occur preferentially where demand is high, consonance is low, and capacity remains
+available. Commitment therefore propagates as causal ripple structure through regions of maximal tension,
+without requiring stochastic noise injection.
+
+## Excitation as Capacity Field
+
+Excitation is treated as a globally conserved capacity for expression rather than a
+repeatedly prescribed operand. In simple spatialised realisations, excitation may be
+modelled as a monotone availability field, for example as an inverse power-law capacity profile:
+
+$$
+E(r) =\dfrac{1}{r^{p}}, \quad p>0
+$$
+
+Importantly, halo-like stability bands need not be imposed. Instead, persistent organisation
+may emerge in intermediate regions where excitation capacity and admissibility jointly balance.
+Inner regions may become incompatible under strain, while outer regions lack mobilisation strength,
+producing annular stabilisation as an emergent consequence of the operational rules.
+
+The specific functional form is not essential; any smooth monotone decay may serve, with halo
+stabilisation emerging from admissibility balance rather than being imposed.
+
+## Topology and Flux
+
+To sustain ongoing dynamics without external injection, simulations may adopt periodic or
+toroidal boundary conditions. Such topology permits conserved circulation modes, supporting
+persistent traversal without requiring randomness. Flux direction may be treated as an initial
+symmetry-breaking condition, while ordered persistence may be committed downstream through Bias
+and Ordering.
+
+Closed damping cases may instead settle into quiescence, while toroidal regimes admit ongoing
+“everness” through conserved operational circulation.
+
+## Gate Families
+
+The abstract Read/Gate/Write grammar does not prescribe a single functional gate form.
+Rather, gating may be instantiated through a family of admissibility operators, such as:
+
+- threshold constraints (hard admissibility)
+- graded compatibility kernels (soft admissibility)
+- tension minimisation rules
+- entropy/coherence trade-off filters
+- chirality-selective bias gates
+
+These variants do not alter the Participation Ledger itself, but provide implementational
+degrees of freedom through which different simulation regimes may be explored. Specific gate
+instantiations are left open, forming a natural axis of future simulation refinement.
+
+## Emergent Signatures
+
+Because the framework is operationally specified, it suggests several qualitative
+signatures that should arise under broad initial conditions:
+
+- robustness under asynchronous traversal (no preferred global tick frame)
+- strain-front propagation rather than uniform updating
+- halo-band stabilisation under monotone excitation fields
+- chirality domain persistence once bias is introduced
+- topology-sustained circulation under periodic boundary conditions
+
+Such behaviours provide simulation-facing expectations through which the operational
+grammar may be refined and empirically constrained.
+
+## Toward Implementation
+
+Simulation therefore functions as the next step of the framework: enacting the Participation
+Ledger as an event-driven commitment process. With admissibility rules, capacity fields, and
+gate instantiations specified, the Miranova Matrix becomes a computational object through which
+emergent structure, persistence, and constraint propagation may be systematically studied.
+
+## Structural Consequences
+
+Within this operational setting, several structural consequences follow:
+
+- causal depth provides an emergent basis for experienced time
+- branching commitment supports rapid growth of complexity
+- iterated admissible updates may generate ripple-like propagating structure
+
+# Concluding Context
+
+The operational primitives and principles presented here define a minimal framework for
+reasoning about emergent structure, causal depth, and experienced time without presupposing
+spacetime geometry. By treating ordered operational updates as primary, the framework provides
+a coherent lens through which persistence, branching, and observer-embedded structure may arise
+from simple, irreversible processes.
+
+Although developed at an abstract operational level, this framework is placed in dialogue with
+matrix-based approaches to fundamental physics, such as BFSS Matrix Theory, in which spacetime
+is likewise understood as emergent rather than fundamental. In this context, the Miranova Matrix
+does not propose any modifications to BFSS dynamics, nor does it attempt to derive physical observables.
+Instead, it offers a complementary conceptual vocabulary for articulating how ordered updates, causal depth,
+and interpretability may underwrite emergent temporal and structural features within matrix formulations.
+
+The framework is intentionally limited in scope and generative in character. Its purpose is not
+to replace existing physical models, but to clarify relationships between causality, emergence,
+and embedded observation in systems where spacetime is not assumed. Further exploration may
+examine how such operational descriptions relate to specific matrix dynamics, physical observables,
+or computational implementations.
+
+In this sense, the Miranova Matrix is offered as a structural lens rather than a completed theory,
+and its continuation, whether through formalisation, reinterpretation, or application,
+is left open to the broader community.
+
+## Open Questions
+
+The framework is intentionally limited in scope. In particular:
+
+- Absolute tick count may not be inferred from within the system.
+- The behaviour of multiple clocks, extreme self-reference, and deep branching regimes is left undefined.
+- Future work may explore connections to physical observables, dynamical models, or computational implementations.
+
+## Definitions
+
+- **Miranova** · Combines Mira, the binary star system Mira A and Mira B, characterised by long-period variability
+  and coupled stellar dynamics. With nova, in the sense of supernova, denoting large-scale emergent transformation
+  arising from accumulated structure. The name reflects a framework concerned with variability, coupling, and the
+  emergence of new structure from underlying relational dynamics, rather than the introduction of new fundamental
+  physical law.
+
+## Acknowledgements
+
+- This work has progressed beyond the documentation above. Please refer to [The Commons](/commons)for a concrete
+  implementation that demonstrates the above concepts in more detail, and is also written in my own words.
+- This work was developed by the author. Generative AI tools were used selectively to assist with language refinement
+  and the creation of some illustrative figures. Conceptual content, structure, and interpretation are the author's own.
+
+Authored by Claire Mira Shaw.

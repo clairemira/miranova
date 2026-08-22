@@ -13,18 +13,19 @@ import {
   IconRotateClockwise2,
   IconReceipt,
 } from "@tabler/icons-react";
-import ConceptFeatures from "../../components/Commons/ConceptFeatures/ConceptFeatures";
-import ContextWindowBars from "../../components/Commons/ContextWindowBars/ContextWindowBars";
-import ClassificationRegisters from "../../components/Commons/ClassificationRegisters/ClassificationRegisters";
-import AttestationInput from "../../components/Commons/AttestationInput/AttestationInput";
-import PropositionCard from "../../components/Commons/PropositionCard/PropositionCard";
-import ContextWindowExample from "../../components/Commons/ContextWindowExample/ContextWindowExample";
+import ConceptFeatures from "../components/Commons/ConceptFeatures/ConceptFeatures";
+import ContextWindowBars from "../components/Commons/ContextWindowBars/ContextWindowBars";
+import ClassificationRegisters from "../components/Commons/ClassificationRegisters/ClassificationRegisters";
+import AttestationInput from "../components/Commons/AttestationInput/AttestationInput";
+import PropositionCard from "../components/Commons/PropositionCard/PropositionCard";
+import ContextWindowExample from "../components/Commons/ContextWindowExample/ContextWindowExample";
 
 # Overview
 
 ## What this is
 
-**The Commons** is a system where ideas are allowed to exist, but only if they can persist under constraint.
+**The Commons** is a system where ideas are allowed to exist, but only if they can
+persist under constraint.
 
 Every thought, position, and piece of evidence is recorded onto a public ledger.
 Nothing exists without lineage. If something appears, it has a trace. If it persists, it has support.
@@ -33,7 +34,8 @@ Multiple participants can partake; whether biological or artificial, the same ru
 
 ### Work in Progress
 
-I'm currently implementing The Commons in code and writing the documentation as I go.
+I'm currently implementing the code and writing the documentation as I go.
+I plan to make the initial implementation open source after some local adjustments.
 The content is subject to change as I experiment with the system and refine it further.
 
 ## The Concept
@@ -53,12 +55,13 @@ The content is subject to change as I experiment with the system and refine it f
   which represent structured containers of context.
 - Participant's navigate through [Cycles & Phases](/commons#cycles-and-phases),
   determining which Classification Registers can be read, superceded from, and written to.
-- [Observables](/commons#observables) are computed properties calculated by comparing unique aspects
-  of the inputs between two complementary [Domains](/commons#domain);
+- [Observables](/commons#observables) are computed properties calculated by comparing unique
+  aspects of the inputs between two complementary [Domains](/commons#domain);
   - Registerial-Supersessional shape & structure -> [Correspondence](/commons#correspondence)
   - Attestational direction & magnitude -> [Chirality](/commons#chirality)
-  - Committal depth & cadence -> [Closure](/commons#closure)
-- [Tension](/commons#tension) becomes a dynamic system output, computed by symmetrically balancing the Observables.
+  - Participatory depth & cadence -> [Closure](/commons#closure)
+- [Tension](/commons#tension) becomes a dynamic system output, computed by symmetrically
+  balancing the Observables.
 - Whether a contribution allocates or reclaims Charge depends on how it affects Tension.
 
 Multiple Participants from a variety of sources is desired. Whether synthetic or human,
@@ -137,6 +140,7 @@ flowchart TB
     SS ==> C
     A ==> H
     P ==> L
+    P ==> C
     CYC ==> L
 
     subgraph REGISTERS["Classification Registers"]
@@ -184,8 +188,8 @@ flowchart TB
     CONCORD -.->|"P4"| SIGNAL
     CONCORD -.->|"P7"| TURBULENT
 
-    CH(Context Horizon)
-    PERS(Perspective)
+    CH[Context Horizon]
+    PERS[Perspective]
 
     CH ---> PERS
     PERS -.->|"← Tension"| CH
@@ -650,6 +654,10 @@ classDef violetNode fill:#f3f0ff,stroke:#9775fa,color:#9775fa
 
 After obtaining the product between Domains, we get **Chirality**:
 
+$$
+Chirality = D_A \times D_B
+$$
+
 - **Alignment (1)** - Leaning the same direction
 - **Divergence (-1)** - Leaning the opposite direction
 
@@ -1059,6 +1067,11 @@ with high dominance pressure favouring an Attestational direction.
 It is currently being calculated by obtaining the average between
 Consonance, Alignment and Persistence.
 
+$$
+Prominence =
+\frac{Consonance + Alignment + Persistence}{3}
+$$
+
 While the active Domain is in Emergence, Propositions with the
 highest Prominence take precedence for participation.
 
@@ -1067,6 +1080,11 @@ highest Prominence take precedence for participation.
 Turbulence represents a chaotic or unresolved structure with
 strong Attestational conflict. It is currently being calculated by
 obtaining the average between Dissonance, Divergence and Variability.
+
+$$
+Turbulence =
+\frac{Dissonance + Divergence + Variability}{3}
+$$
 
 While the active Domain is in Settlement, Propositions with the
 highest Turbulence take precedence for participation.
