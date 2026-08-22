@@ -1,0 +1,9 @@
+# Miranova
+
+> Personal portfolio page for Claira Mira Shaw.
+> Publishes exploratory work on emergence, shared cognitive substrates, and structural participation.
+
+## Core Work
+
+- [The Commons](https://miranova.dev/commons.md): A shared cognitive substrate built using the Miranova Matrix.
+- [The Miranova Matrix](https://miranova.dev/matrix.md): Framework for describing structural properties of emergence.

@@ -1,23 +1,22 @@
 import {
-  IconArrowUpRight,
   IconBrandMantine,
   IconBrandTabler,
-  IconBrandTablerFilled,
   IconBrandWikipedia,
-  IconCookie,
   IconFile,
-  IconGauge,
-  IconIcons,
   IconKeyboard,
-  IconLock,
-  IconMessage2,
-  IconUser,
+  IconPhoto,
 } from "@tabler/icons-react";
-import { Anchor, Container, Group, SimpleGrid, Text, ThemeIcon, Title } from "@mantine/core";
+import { Container, Group, SimpleGrid, Text, ThemeIcon, Title } from "@mantine/core";
 import classes from "./Biases.module.css";
 import SmartLink from "../SmartLink/SmartLink";
 
 export const biases = [
+  {
+    icon: IconFile,
+    title: "The Big Issue",
+    description: "I'm a huge supporter of the kind people that make up the pillars of our community.",
+    link: "https://thebigissue.org.au",
+  },
   {
     icon: IconKeyboard,
     title: "Keychron",
@@ -26,10 +25,17 @@ export const biases = [
     link: "https://keychron.com.au",
   },
   {
+    icon: IconBrandWikipedia,
+    title: "Wikipedia",
+    description:
+      "The largest collaborative knowledge project in human history. A testament to what open knowledge and collective effort can achieve.",
+    link: "https://www.wikipedia.org",
+  },
+  {
     icon: IconBrandMantine,
     title: "Mantine",
     description:
-      "A thoughtfully designed React component library that prioritises developer experience, accessibility, and composability. It makes building polished interfaces feel effortless.",
+      "A thoughtfully designed React component library that makes building polished, accessible interfaces effortless.",
     link: "https://mantine.dev",
   },
   {
@@ -40,18 +46,11 @@ export const biases = [
     link: "https://tabler.io/icons",
   },
   {
-    icon: IconBrandWikipedia,
-    title: "Wikipedia",
-    description:
-      "The largest collaborative knowledge project in human history. A testament to what open knowledge and collective effort can achieve.",
-    link: "https://www.wikipedia.org",
-  },
-  {
-    icon: IconBrandTabler,
+    icon: IconPhoto,
     title: "Photopea",
     description:
-      "A beautifully crafted open-source icon set. Clean, consistent, and perfectly suited for modern UI design without visual noise.",
-    link: "https://tabler.io/icons",
+      "Free online version of Photoshop, directly in your browser.",
+    link: "https://www.photopea.com",
   },
   {
     icon: IconFile,

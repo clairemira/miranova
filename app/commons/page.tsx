@@ -19,7 +19,9 @@ import Page from "../../components/Layout/Page/Page";
 import type { Metadata } from "next";
 
 // MDX
-import Overview from "../../content/commons/01-overview.mdx";
+import CommonsContent from "../../content/commons.mdx";
+import Head from "next/head";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "The Commons",
@@ -35,21 +37,32 @@ export const metadata: Metadata = {
     url: "https://miranova.dev/commons",
     siteName: "miranova.dev",
     type: "website",
-    images: [{ url: "https://miranova.dev/images/commons-bordered.png" }],
+    images: [{ url: "https://miranova.dev/images/commons/commons-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "The Commons",
     description:
       "A shared cognitive substrate exploring ideas and emergence through Human-AI collaboration.",
-    images: ["https://miranova.dev/images/commons-bordered.png"],
+    images: ["https://miranova.dev/images/commons/commons-logo.png"],
   },
 };
 
 export default function TheCommonsPage() {
   return (
     <Page>
-      <script
+      <Head>
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href="https://miranova.dev/commons.md"
+        />
+        <link
+          rel="describedby"
+          href="https://miranova.dev/llms.txt"
+        />
+      </Head>
+      <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -66,7 +79,6 @@ export default function TheCommonsPage() {
           }),
         }}
       />
-
       <Box py="xl" className={classes.header}>
         <Container size="sm">
           {/* Back link */}
@@ -103,13 +115,13 @@ export default function TheCommonsPage() {
 
       {/* Content */}
       <Article>
-        <Overview />
+        <CommonsContent />
       </Article>
 
       <Container my="lg" size="sm">
         <Stack gap={0}>
           <Text size="xs">Created on: 23rd May 2026</Text>
-          <Text size="xs">Last updated: 20th August 2026</Text>
+          <Text size="xs">Last updated: 22nd August 2026</Text>
         </Stack>
       </Container>
     </Page>

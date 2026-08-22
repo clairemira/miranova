@@ -8,10 +8,8 @@ import {
   Image,
   Box,
   Container,
-  Button,
   Stack,
   Badge,
-  TableOfContents,
 } from "@mantine/core";
 import Link from "next/link";
 
@@ -21,15 +19,10 @@ import Page from "../../components/Layout/Page/Page";
 import SmartLink from "../../components/SmartLink/SmartLink";
 
 // MDX
-import Introduction from "../../content/miranova/01-introduction.mdx";
-import Motivation from "../../content/miranova/02-motivation.mdx";
-import OperationalFramework from "../../content/miranova/03-operational-framework.mdx";
-import ParticipationLedger from "../../content/miranova/04-participation-ledger.mdx";
-import InterpretationAndProjection from "../../content/miranova/05-interpretation-and-projection.mdx";
-import SimulationRealisation from "../../content/miranova/06-simulation-realisation.mdx";
-import ConcludingContext from "../../content/miranova/07-concluding-context.mdx";
+import MatrixContent from "../../content/matrix.mdx";
 
 import type { Metadata } from "next";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "The Miranova Matrix",
@@ -59,6 +52,17 @@ export const metadata: Metadata = {
 export default function TheMiranovaMatrixPage() {
   return (
     <Page>
+      <Head>
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href="https://miranova.dev/matrix.md"
+        />
+        <link
+          rel="describedby"
+          href="https://miranova.dev/llms.txt"
+        />
+      </Head>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -140,19 +144,7 @@ export default function TheMiranovaMatrixPage() {
       {/* Content */}
       <Article>
         <div id="mdx">
-          <Introduction />
-          <Divider variant="dotted" my="xl" />
-          <Motivation />
-          <Divider variant="dotted" my="xl" />
-          <OperationalFramework />
-          <Divider variant="dotted" my="xl" />
-          <ParticipationLedger />
-          <Divider variant="dotted" my="xl" />
-          <InterpretationAndProjection />
-          <Divider variant="dotted" my="xl" />
-          <SimulationRealisation />
-          <Divider variant="dotted" my="xl" />
-          <ConcludingContext />
+          <MatrixContent />
         </div>
       </Article>
     </Page>
