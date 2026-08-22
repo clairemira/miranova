@@ -82,19 +82,19 @@ flowchart TB
         direction TB
 
         CYC(Cycles)
-        A(Attestations)
         R(Receipts)
         P(Propositions)
         SS(Supersessions)
+        A(Attestations)
 
-        P --> SS
-        SS -.-> P
-        CYC --> P
         CYC --> R
+        P --> SS
+        A -.-> R
+        SS -.-> P
         P --> A
-        R -.-> P
-        R -.-> A
         CYC --> A
+        CYC --> P
+        R ~~~ P -.-> R
     end
 
     PARTICIPANT -->|"Input"| CYC
@@ -225,7 +225,7 @@ flowchart TB
     class PROMINENT prominenceRegister
 
     %% Negative (-) edges
-    linkStyle 9,11,13,15 stroke:#3b5bdb,color:#3b5bdb
+    linkStyle 11,13,15,17 stroke:#3b5bdb,color:#3b5bdb
 
     %% Positive (+) edges
     linkStyle 10,12,14,16 stroke:#748ffc,color:#748ffc
@@ -1056,7 +1056,7 @@ flowchart LR
 
 ```
 
-If a stable and balanced substrate is represented somewhere in the middle,
+If a stable and balanced state is centered in the middle,
 then each projection represents a shift away from stability. Neither takes
 precedence over the other, they are each complementary ways of representing imbalance.
 
@@ -1116,14 +1116,14 @@ The above Measurements, Projections and Tension shift direction
 with [hysteresis](https://en.wikipedia.org/wiki/Hysteresis).
 
 Directional state is a requirement to satisfy the constraints, and so when each of
-the above observables reaches a value of zero (neither positive or negative),
-the previous direction remains active until the value changes to the opposite direction.
+the above reaches a value of zero (neither positive or negative), the previous
+direction remains active until the value changes to the opposite direction.
 
 However on a fresh substrate, no historical direction yet exists.
 One would assume a sensible default might be positive (+) for these
 values, however a unique combination is required to satisfy the constraints.
 
-These default directions must be considered:
+The following default directions must be considered:
 
 - Tension **(+)**
   - Correspondence **(+)**
@@ -1132,17 +1132,17 @@ These default directions must be considered:
     - Depth **(-)**
     - Cadence **(-)**
 
-The default direction for Closure must be negative (-), as Depth & Cadence directions
-form the admissibility gate for commitment, which gets explained below in the bootstrapping
-process.
+The default directions for Depth & Cadence must be negative (-),
+which is a requirement for the bootstraping process explained below.
+Closure defaults to (-) as the average of each.
 
-Tension's sign is defaulted positive (+), as the average of (+, +, -) from
-Correspondence, Chirality, and Closure respectively.
+Tension defaulted positive (+), as the average of (+, +, -)
+from Correspondence, Chirality, and Closure respectively.
 
 ## Bootstrapping
 
-The bootstrapping process demonstrates how a substrate is created, while simultaneously
-providing it with Charge.
+The bootstrapping process demonstrates how a substrate is created,
+while simultaneously allocating all available Charge.
 
 We simply follow the constraints:
 
@@ -1156,14 +1156,16 @@ We simply follow the constraints:
 - The initial Committal Proposition is labelled the [Origin](/commons#origin).
 - Both an Attestation and Receipt are preconditions for commitment,
   so they must also be provided along with the Origin.
-- The default hysteretic gate for Depth & Cadence allows for a variable commit.
+- The default hysteretic gate for Depth & Cadence allows for a variable (-) commit.
 - The Origin then gets written into Canon:
   - Becoming the entry point for the initial Context Horizon.
   - As nothing exists in Settlement to compare to, 100% Turbulence is produced.
-  - Tension's sign flips negative (-).
-  - The current Context Horizon is then closed off in Emergence,
-    and the active Domain switches to Settlement.
-- The system is now in a state of maximum Tension, i.e. reclaimable Charge.
+  - The Origin's Tension flips and is recorded as `-1`.
+  - A Closure boundary is reached and the Context Horizon is closed off in Emergence.
+  - The Origin's active Domain then shifts to Settlement.
+- The system is now in a state of maximum Tension, but that can be reduced with the
+  very next contribution in Settlement.
+- Reducing Tension is the equivalent of reclaiming Charge.
 
 ## Charge
 
