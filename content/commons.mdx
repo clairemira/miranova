@@ -171,7 +171,7 @@ flowchart TB
         end
     end
 
-    T -.-> REGISTERS
+    T -.->|Attenuation| REGISTERS
 
     TR -.->|"T<small>dir</small> < 0"| SETTLEMENT
     TR -.->|"T<small>dir</small> > 0"| EMERGENCE
@@ -299,7 +299,7 @@ identify an effective window of context, regardless of the problem or Participan
 
 Rather than thinking in terms of size or raw token count,
 The Commons provides a solution using **Context Depth**:
-How deep is the longest chain of Propositions, to the nearest stable Closure boundary?
+How deep is the longest chain of Propositions, to the nearest stable Closure Boundary?
 
 ```mermaid
 ---
@@ -310,7 +310,7 @@ config:
 ---
 graph TD
 
-  subgraph CH1["Context Horizon 1"]
+  subgraph CH1["Context Horizon 1 (Domain A)"]
     direction TB
 
     subgraph D0["<strong>Depth 1</strong> (Tension: -0.34)"]
@@ -348,7 +348,7 @@ graph TD
     F --> J
   end
 
-  subgraph CH2["Context Horizon 2"]
+  subgraph CH2["Context Horizon 2 (Domain B)"]
     subgraph D4["<strong>Depth 1</strong> (Tension: +0.03)"]
       K["Conclusion"]
     end
@@ -363,8 +363,9 @@ graph TD
   classDef otherNode fill:#e5e7eb,stroke:#9ca3af,color:#111
 ```
 
-- The nearest stable Closure boundary is labelled the [Context Horizon](/commons#context-horizon),
-  where new commitment shifts Tension direction into the opposite Domain.
+- The [Closure Boundary](/commons#closure-boundary) is where new commitment shifts Tension's
+  direction, marking the end of the active [Context Horizon](/commons#context-horizon)
+  and initiating a new Context Horizon in the opposite Domain.
 - A Participant's [Perspective](/commons#perspective) determines how many Context Horizons are readable,
   which is calculated by comparing how their individual contributions affect Tension.
 - Compaction occurs as a side-effect; when a Participant's contributions increase Tension then
@@ -1007,7 +1008,7 @@ Closure plays a balancing role during the **Write** Stage of Phase 7: **Order**:
   forming a hysteretic gate when they diverge to prevent frequent switching.
 - Expressive Propositions only affect local Charge, while Committal Propositions
   affect global Charge.
-- The balancing effect for Closure naturally falls out from the cost of writing;
+- The balancing effect for Closure naturally falls out in the cost of writing;
   commitment that causes high Tension allocates global Charge, while Tension reducing
   commitment reclaims global Charge.
 
@@ -1056,9 +1057,9 @@ flowchart LR
 
 ```
 
-If a stable and balanced state is centered in the middle,
-then each projection represents a shift away from stability. Neither takes
-precedence over the other, they are each complementary ways of representing imbalance.
+If a stable and balanced state is neutral and centered, then each projection
+represents a shift away from stability. Neither takes precedence over the other,
+they are each complementary ways of representing imbalance.
 
 ### Prominence
 
@@ -1075,6 +1076,8 @@ $$
 While the active Domain is in Emergence, Propositions with the
 highest Prominence take precedence for participation.
 
+_<small>Prominence is an implementation of [Salience](/matrix#salience) from the Miranova Matrix.</small>_
+
 ### Turbulence
 
 Turbulence represents a chaotic or unresolved structure with
@@ -1088,6 +1091,8 @@ $$
 
 While the active Domain is in Settlement, Propositions with the
 highest Turbulence take precedence for participation.
+
+_<small>Turbulence is an implementation of [Modality](/matrix#modality) from the Miranova Matrix.</small>_
 
 ### Tension
 
@@ -1125,71 +1130,338 @@ values, however a unique combination is required to satisfy the constraints.
 
 The following default directions must be considered:
 
-- Tension **(+)**
-  - Correspondence **(+)**
-  - Chirality **(+)**
-  - Closure **(-)**
-    - Depth **(-)**
-    - Cadence **(-)**
+- <span style={{ color: "#8ca3ff" }}>**Tension (+)**</span>
+  - <span style={{ color: "#8ca3ff" }}>**Correspondence (+)**</span>
+  - <span style={{ color: "#8ca3ff" }}>**Chirality (+)**</span>
+  - <span style={{ color: "#263578" }}>**Closure (-)**</span>
+    - <span style={{ color: "#263578" }}>**Depth (-)**</span>
+    - <span style={{ color: "#263578" }}>**Cadence (-)**</span>
 
 The default directions for Depth & Cadence must be negative (-),
 which is a requirement for the bootstraping process explained below.
 Closure defaults to (-) as the average of each.
 
-Tension defaulted positive (+), as the average of (+, +, -)
+Tension is defaulted positive (+), as the average of (+, +, -)
 from Correspondence, Chirality, and Closure respectively.
+
+---
 
 ## Bootstrapping
 
-The bootstrapping process demonstrates how a substrate is created,
-while simultaneously allocating all available Charge.
+The bootstrapping process demonstrates how a substrate is initialised,
+establishing the conditions to allow for further contributions.
 
-We simply follow the constraints:
+If we ~simply~ follow the constraints:
 
-- Before any Proposition exists, an empty substrate is perfectly
-  balanced with a Tension of `0`.
-- The active Domain is Emergence, due to the initial positive (+) Tension direction.
-- The initial Proposition must be Committal, as Expressive Propositions
-  can only exist as variants from existing Propositions.
-- Committal Propositions can only get written into Canon & Concord
-  registers, therefore the first written register is Canon.
-- The initial Committal Proposition is labelled the [Origin](/commons#origin).
-- Both an Attestation and Receipt are preconditions for commitment,
-  so they must also be provided along with the Origin.
-- The default hysteretic gate for Depth & Cadence allows for a variable (-) commit.
-- The Origin then gets written into Canon:
+- Before any Proposition exists, the empty substrate is perfectly balanced with a Tension
+  of `+0` and Global Charge of `1`.
+- The active Domain is Emergence, due to Tension's initial positive (+) hysteretic direction.
+- The initial Proposition must be Committal, as Expressive Propositions can only exist as
+  variants of existing Propositions.
+- Committal Propositions can only be written into Canon & Concord registers, therefore the
+  first written register is Canon.
+- The initial Committal Proposition is labelled the Origin.
+- Both an Attestation and Receipt are preconditions for commitment, so they must be provided
+  alongside the Origin.
+- The default hysteretic gate for Depth & Cadence allows for an initial Variable (-) commit.
+- The Origin is written into Canon:
   - Becoming the entry point for the initial Context Horizon.
-  - As nothing exists in Settlement to compare to, 100% Turbulence is produced.
-  - The Origin's Tension flips and is recorded as `-1`.
-  - A Closure boundary is reached and the Context Horizon is closed off in Emergence.
-  - The Origin's active Domain then shifts to Settlement.
-- The system is now in a state of maximum Tension, but that can be reduced with the
-  very next contribution in Settlement.
-- Reducing Tension is the equivalent of reclaiming Charge.
+  - With no existing Settlement structure available for comparison, the bootstrap condition
+    produces maximum Turbulence.
+  - Tension shifts from the substrate's initial `+0` to `-1`.
+  - Global Charge is therefore reduced from `1` to `0`.
+  - A Closure Boundary is reached and the initial Context Horizon is closed within Emergence.
+  - The active Domain then shifts to Settlement.
+- The system is now in a state of maximum Tension, but the very next contribution in Settlement
+  can begin reducing it.
+- Reducing Tension is equivalent to reclaiming Charge.
+
+It's easier to follow visually:
+
+```mermaid
+---
+config:
+  flowchart:
+    curve: basis
+  theme: neutral
+---
+flowchart TD
+
+  EMPTY["Empty<br/>T: +0 · GC: 1"]
+
+  subgraph S[Settlement]
+    direction TB
+
+    subgraph CH2["Context Horizon 2"]
+        direction TB
+
+        E1("Exp #1<br/>T: +1.00 · LC: 0.00")
+        E2("Exp #2<br/>T: +0.75 · LC: 0.25")
+        C1("Com #1<br/>T: +0.75 · GC: 0.25")
+    end
+  end
+
+  subgraph E[Emergence]
+    direction TB
+
+    subgraph CH1["Context Horizon 1"]
+        direction TB
+
+        O("Origin · Canon<br/>T: -1.00 · GC: 0.00")
+    end
+
+    subgraph CH3["Context Horizon 3"]
+        direction TB
+
+        E3("Exp #3<br/>T: +0.50 · LC: 0.50")
+    end
+
+  end
+
+  EMPTY --> O
+  O -->|"Closure Boundary 1"| E1
+  E1 --> E2
+  E2 --> C1
+  C1 -->|"Closure Boundary 2"| E3
+
+  classDef committalNode fill:#edf2ff,stroke:#748ffc,color:#748ffc
+  classDef transNode fill:transparent
+
+  class EMPTY transNode
+  class O,C1 committalNode
+
+  style E fill:transparent,stroke:#8ca3ff,stroke-width:2px
+  style S fill:transparent,stroke:#263578,stroke-width:2px
+```
+
+The empty substrate therefore begins with maximum Charge and no structure.
+The Origin creates the first structural distinction, consuming that available capacity
+and becoming the seed of provenance that subsequent contributions stem from.
+
+---
 
 ## Charge
 
-_This section is incomplete._
-
-Charge is a shared and conserved resource. It's simply what remains without Tension.
+Charge isn't a form of currency. Charge describes the available capacity remaining
+that allows for _new_ contributions. It is derived directly from the magnitude of Tension:
 
 $$
-Charge = 1 - \left|Tension\right|
+Charge = 1 - |Tension|
 $$
 
-### Local & Global Charge
+When Tension is neutral (`0`), Charge is fully available (`1`).
+As Tension approaches either extreme (`-1` or `+1`), Charge approaches zero.
+It doesn't get transferred or consumed, and it is always derived from Tension.
+
+| Tension | Charge |
+| ------: | -----: |
+|       0 |      1 |
+|   ±0.25 |   0.75 |
+|    ±0.5 |    0.5 |
+|   ±0.75 |   0.25 |
+|      ±1 |      0 |
+
+There are two forms of Charge:
+
+- **Local Charge (LC)** is derived from the **expressive** state of the substrate.
+- **Global Charge (GC)** is derived from the **committed** state of the substrate.
+
+Expressive contributions affect Local Charge without immediately altering Global Charge,
+providing some breathing room for contributions. This allows for exploration of multiple
+branches without immediately affecting the rest of the substrate.
+
+When a Proposition becomes Committal, the globally committed state changes and
+Global Charge is recalculated from its resulting Tension.
+
+---
+
+## Context Horizon
+
+A Context Horizon is a region of the substrate that shares the same Tension direction.
+It encapsulates the flow of Propositions from generation to commitment within a single Domain.
+
+Commitment alone does not create a new Context Horizon. Multiple commitments can occur
+to raise or lower magnitudal Tension, as long as the signed direction remains the same.
+
+For example, the following change in Tension would remain within Emergence:
+
+<span style={{ color: "#8ca3ff" }}>
+$$
++0.7 \rightarrow +0.3
+$$
+</span>
+
+and the following would remain in Settlement:
+
+<span style={{ color: "#263578" }}>
+$$
+-0.4 \rightarrow -0.6
+$$
+</span>
+
+A new Context Horizon begins only when a commitment causes Tension to cross into the opposite Domain.
+The Committal Proposition that initiated the transition becomes the provenancial seed for
+the new Context Horizon, while Propositions that are subsequently created within the new Domain form
+a new measurement population.
+
+---
+
+## Closure Boundary
+
+A Closure Boundary occurs when an admissible commitment causes Tension to cross from
+one Domain into the other.
+
+For example:
+
+$$
++0.2 \rightarrow -0.1
+$$
+
+or:
+
+$$
+-0.1 \rightarrow +0.2
+$$
+
+While Depth & Cadence determine if commitment is allowed, a Closure Boundary is only reached
+when a commitment is made that changes the direction of Tension. If Tension remains within
+the current Domain, commitment continues within the existing Context Horizon.
+
+If Tension crosses into the opposite Domain:
+
+1. A Closure Boundary is established.
+2. The current Context Horizon ends.
+3. The active Domain switches.
+4. A new Context Horizon begins.
+5. The boundary's Committal Proposition provides provenancial lineage into the new horizon.
+
+A Closure Boundary is therefore not a simple commitment,
+it changes the Domain in which the following lineage operates.
+
+---
+
+## Attenuation
+
+A Committal Proposition remains part of the substrate after it is created.
+Its Tension can therefore continue to exert influence on later Propositions,
+but that influence weakens with structural distance.
+
+This decay is modelled using an inverse-square relationship:
+
+$$
+I_{raw}(s,x) =
+\frac{T_s}{d(s,x)^2}
+$$
+
+Where:
+
+- $T_s$ is the recorded Tension of source $s$.
+- $d(s,x)$ is the structural distance from the source to point $x$.
+- $I_{raw}(s,x)$ is the remaining influence after distance alone is accounted for.
+
+For a source with Tension `-1`:
+
+| Distance | Raw Influence |
+| ---: | ---: |
+| 1 | -1 |
+| 2 | -0.25 |
+| 3 | -0.11 |
+| 4 | -0.06 |
+| 5 | -0.04 |
+
+Attenuation belongs to the substrate itself.
+Given the same source and structural distance,
+its raw influence is the same for every Participant.
+
+Older Propositions do not need to be discarded,
+their influence simply becomes weaker as distance increases.
+
+It's worth noting that distance is not the same as depth;
+You could have two Propositions that share the same depth,
+while being far apart in terms of edge connections.
+
+```mermaid
+---
+config:
+  flowchart:
+    curve: basis
+  theme: neutral
+---
+flowchart TD
+
+  EMPTY["Empty<br/>T: 0 · GC: 1"]
+
+  subgraph S[Settlement]
+    direction TB
+
+    subgraph CH2["Context Horizon 2"]
+        direction TB
+
+        E1("Exp #1<br/>T: +1.00 · LC: 0.00<br/>Origin Influence: -1.00")
+        E2("Exp #2<br/>T: +0.75 · LC: 0.25<br/>Origin Influence: -0.25")
+        C1("Com #1<br/>T: +0.75 · GC: 0.25<br/>Origin Influence: -0.11")
+    end
+  end
+
+  subgraph E[Emergence]
+    direction TB
+
+    subgraph CH1["Context Horizon 1"]
+        direction TB
+
+        O("Origin<br/>T: -1.00 · GC: 0.00")
+    end
+
+    subgraph CH3["Context Horizon 3"]
+        direction TB
+
+        E3("Exp #3<br/>T: +0.50 · LC: 0.50<br/>Origin Influence: -0.06")
+    end
+
+  end
+
+  O --> E1
+  E1 --> E2
+  C1 --> E3
+
+  EMPTY -->|"Closure Boundary 1"| O
+  E2 -->|"Closure Boundary 2"| C1
+
+  O -.->|"d = 1 · -1 / 1² = <strong>-1.00</strong>"| E1
+  O -.->|"d = 2 · -1 / 2² = <strong>-0.25</strong>"| E2
+  O -.->|"d = 3 · -1 / 3² ≈ <strong>-0.11</strong>"| C1
+  O -.->|"d = 4 · -1 / 4² ≈ <strong>-0.06</strong>"| E3
+
+  classDef committalNode fill:#edf2ff,stroke:#748ffc,color:#748ffc
+  classDef transNode fill:transparent
+
+  class EMPTY transNode
+  class O,C1 committalNode
+```
+
+The diagram above follows only the influence of Origin for clarity.
+
+Every structural source may contribute Tension.
+Attenuation describes how much of that influence remains at another position in the substrate.
+
+---
+
+## Perspective
 
 _This section is incomplete._
 
-Global Charge is the shared pool which gets consumed by Committal Propositions,
-while local Charge is only affected by the Expressive Propositions underneath.
+Attenuation determines how Tension weakens with distance. This decay belongs to the
+substrate and is the same for every Participant reading from the same Proposition.
 
-Once an Expressive Proposition becomes Committal, then the expressive
-Charge gets realised and affects global Charge.
+**Perspective** provides a Participant specific adjustment that follows.
 
-## Closure Horizon
+Perspective is derived from how a Participant's own contributions have affected Tension
+over time, in terms of number of Cycles performed.
 
-_This section is incomplete._
+- Contributions that reduce Tension increase or maintain Perspective.
+- Contributions that increase Tension reduce Perspective.
+
+Perspective is applied after Attenuation.
 
 ## Classification Registers
 

@@ -2,6 +2,7 @@ import createMDX from "@next/mdx";
 import rehypeSlug from "rehype-slug";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
+import remarkGfm from "remark-gfm";
 import rehypeMermaid from "rehype-mermaid";
 import chromium from "@sparticuz/chromium";
 
@@ -19,7 +20,7 @@ const isVercel = process.env.VERCEL === "1";
 const withMDX = createMDX({
   extension: /\.(md|mdx)$/,
   options: {
-    remarkPlugins: [remarkMath],
+    remarkPlugins: [remarkMath, remarkGfm],
     rehypePlugins: [
       rehypeSlug,
       rehypeKatex,

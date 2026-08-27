@@ -121,7 +121,7 @@ export default function TheCommonsPage() {
       <Container my="lg" size="sm">
         <Stack gap={0}>
           <Text size="xs">Created on: 23rd May 2026</Text>
-          <Text size="xs">Last updated: 22nd August 2026</Text>
+          <Text size="xs">Last updated: 28th August 2026</Text>
         </Stack>
       </Container>
     </Page>
