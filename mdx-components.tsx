@@ -1,16 +1,6 @@
 import type { MDXComponents } from "mdx/types";
-import {
-  Text,
-  Title,
-  List,
-  ListItem,
-  Divider,
-  Anchor,
-  Blockquote,
-  Code,
-  Image,
-} from "@mantine/core";
-import Link from "next/link";
+import { Text, Title, List, ListItem, Divider, Blockquote, Code, Image } from "@mantine/core";
+import SmartLink from "./components/SmartLink/SmartLink";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -25,14 +15,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     blockquote: (props) => <Blockquote {...props} py="xs" />,
     code: (props) => <Code {...props} />,
     img: (props) => <Image radius="md" maw={600} {...props} />,
-    a: ({ href = "", ...props }) => {
-      const isInternal = href.startsWith("/");
-      return isInternal ? (
-        <Anchor component={Link} href={href} {...props} />
-      ) : (
-        <Anchor href={href} target="_blank" rel="noopener noreferrer" {...props} />
-      );
-    },
+    a: ({ href = "", ...props }) => <SmartLink {...props} />,
     ...components,
   };
 }

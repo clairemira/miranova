@@ -1,16 +1,4 @@
-import {
-  Container,
-  Title,
-  Text,
-  Divider,
-  Anchor,
-  Group,
-  Center,
-  Image,
-  Box,
-  Stack,
-} from "@mantine/core";
-import Link from "next/link";
+import { Container, Title, Text, Divider, Center, Image, Box, Stack } from "@mantine/core";
 import classes from "./page.module.css";
 import Article from "../../components/Layout/Article/Article";
 import SmartLink from "../../components/SmartLink/SmartLink";
@@ -22,6 +10,7 @@ import type { Metadata } from "next";
 import CommonsContent from "../../content/commons.mdx";
 import Head from "next/head";
 import Script from "next/script";
+import HomeLink from "../../components/HomeLink/HomeLink";
 
 export const metadata: Metadata = {
   title: "The Commons",
@@ -52,15 +41,8 @@ export default function TheCommonsPage() {
   return (
     <Page>
       <Head>
-        <link
-          rel="alternate"
-          type="text/markdown"
-          href="https://miranova.dev/commons.md"
-        />
-        <link
-          rel="describedby"
-          href="https://miranova.dev/llms.txt"
-        />
+        <link rel="alternate" type="text/markdown" href="https://miranova.dev/commons.md" />
+        <link rel="describedby" href="https://miranova.dev/llms.txt" />
       </Head>
       <Script
         type="application/ld+json"
@@ -82,11 +64,7 @@ export default function TheCommonsPage() {
       <Box py="xl" className={classes.header}>
         <Container size="sm">
           {/* Back link */}
-          <Group>
-            <Anchor component={Link} href="/" size="sm">
-              ← Home
-            </Anchor>
-          </Group>
+          <HomeLink />
 
           {/* Header */}
           <Center>

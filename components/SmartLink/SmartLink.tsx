@@ -5,13 +5,13 @@ import { Anchor, MantineSize, UnstyledButton } from "@mantine/core";
 import type { PropsWithChildren } from "react";
 
 type SmartLinkProps = PropsWithChildren & {
-  href: string;
+  href?: string;
   className?: string;
   style?: React.CSSProperties;
   size?: MantineSize;
 };
 
-export default function SmartLink({ href, children, style, size, ...props }: SmartLinkProps) {
+export default function SmartLink({ href = "", children, style, size, ...props }: SmartLinkProps) {
   const isExternal =
     href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:");
 
