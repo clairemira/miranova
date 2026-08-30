@@ -1,14 +1,13 @@
 import { Box, Container, Divider, Title, Text, MantineSize } from "@mantine/core";
 import classes from "./Article.module.css";
-import { ReactNode } from "react";
+import { ComponentType, ReactNode } from "react";
 import HomeLink from "../../HomeLink/HomeLink";
 import DotsWrapper from "../DotsWrapper/DotsWrapper";
-import { MDXContent } from "mdx/types";
 
 export type ArticleProps = {
   title: string;
   description?: string | ReactNode;
-  content: MDXContent[];
+  content: ComponentType[];
   header?: ReactNode;
   footer?: ReactNode;
   size?: number | string | MantineSize;

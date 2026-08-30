@@ -1,20 +1,11 @@
 import type { ReactNode } from "react";
-import {
-  Box,
-  Card,
-  Divider,
-  Grid,
-  GridCol,
-  Group,
-  MantineColor,
-  Stack,
-  StyleProp,
-  Text,
-} from "@mantine/core";
+import { Box, Card, Divider, Grid, GridCol, Group, MantineColor, Stack, Text } from "@mantine/core";
 import classes from "./ActionsGrid.module.css";
 import Tag, { TagProps } from "../Tags/Tag/Tag";
-import { ColSpan } from "@mantine/core/components/Grid/GridCol/GridCol";
 import SmartLink from "../SmartLink/SmartLink";
+import type { ComponentProps } from "react";
+
+type ColSpan = ComponentProps<typeof Grid.Col>["span"];
 
 export type Action = {
   title: string;
@@ -29,7 +20,7 @@ export type Action = {
 export type ActionsGridProps = {
   gridTitle: string;
   actions: Action[];
-  span?: StyleProp<ColSpan>;
+  span?: ColSpan;
 };
 
 export function ActionsGrid({ gridTitle, actions, span = "auto" }: ActionsGridProps) {

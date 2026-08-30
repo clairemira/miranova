@@ -1,6 +1,7 @@
 .smallImg {
   max-width: 420px;
   max-height: 220px;
+  content: fit-content;
 }
 
 .smallImg img {
