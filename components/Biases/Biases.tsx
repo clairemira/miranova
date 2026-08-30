@@ -14,15 +14,9 @@ export const biases = [
   {
     icon: IconFile,
     title: "The Big Issue",
-    description: "I'm a huge supporter of the kind people that make up the pillars of our community.",
-    link: "https://thebigissue.org.au",
-  },
-  {
-    icon: IconKeyboard,
-    title: "Keychron",
     description:
-      "Customisable mechanical keyboards that strike a balance between quality hardware and thoughtful design. Satisfying to type on every day.",
-    link: "https://keychron.com.au",
+      "I'm a huge supporter of the kind people that make up the pillars of our community.",
+    link: "https://thebigissue.org.au",
   },
   {
     icon: IconBrandWikipedia,
@@ -30,6 +24,13 @@ export const biases = [
     description:
       "The largest collaborative knowledge project in human history. A testament to what open knowledge and collective effort can achieve.",
     link: "https://www.wikipedia.org",
+  },
+  {
+    icon: IconKeyboard,
+    title: "Keychron",
+    description:
+      "Customisable mechanical keyboards that strike a balance between quality hardware and thoughtful design. Satisfying to type on every day.",
+    link: "https://keychron.com.au",
   },
   {
     icon: IconBrandMantine,
@@ -48,8 +49,7 @@ export const biases = [
   {
     icon: IconPhoto,
     title: "Photopea",
-    description:
-      "Free online version of Photoshop, directly in your browser.",
+    description: "Free online version of Photoshop, directly in your browser.",
     link: "https://www.photopea.com",
   },
   {

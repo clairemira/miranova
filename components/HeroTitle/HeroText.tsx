@@ -26,10 +26,10 @@ export function HeroText() {
           className={classes.description}
           // display="inline"
         >
-          I build and maintain software systems, translating ambiguous
-          requirements into structures that remain stable over time. Alongside
-          engineering, I publish exploratory work on emergence, constraint, and
-          the principles behind organised complexity.
+          I like building systems and understanding what makes them hold together. Professionally,
+          that means turning ambiguous requirements into practical software that can survive change.
+          In my personal work, I explore the same curiosity more broadly; how simple rules,
+          constraints, and participation can give rise to organised complexity over time.
         </Text>
       </Container>
     </Container>

@@ -1,20 +1,6 @@
-import {
-  Title,
-  Text,
-  Divider,
-  Anchor,
-  Group,
-  Center,
-  Image,
-  Box,
-  Container,
-  Stack,
-  Badge,
-} from "@mantine/core";
-import Link from "next/link";
+import { Group, Center, Image, Stack, Badge } from "@mantine/core";
 
 import Article from "../../components/Layout/Article/Article";
-import classes from "./page.module.css";
 import Page from "../../components/Layout/Page/Page";
 import SmartLink from "../../components/SmartLink/SmartLink";
 
@@ -23,6 +9,7 @@ import MatrixContent from "../../content/matrix.mdx";
 
 import type { Metadata } from "next";
 import Head from "next/head";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "The Miranova Matrix",
@@ -51,19 +38,13 @@ export const metadata: Metadata = {
 
 export default function TheMiranovaMatrixPage() {
   return (
-    <Page>
+    <Page hideDots>
       <Head>
-        <link
-          rel="alternate"
-          type="text/markdown"
-          href="https://miranova.dev/matrix.md"
-        />
-        <link
-          rel="describedby"
-          href="https://miranova.dev/llms.txt"
-        />
+        <link rel="alternate" type="text/markdown" href="https://miranova.dev/matrix.md" />
+        <link rel="describedby" href="https://miranova.dev/llms.txt" />
       </Head>
-      <script
+
+      <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -83,16 +64,9 @@ export default function TheMiranovaMatrixPage() {
         }}
       />
 
-      <Box py="xl" className={classes.header}>
-        <Container size="sm">
-          {/* Back link */}
-          <Group>
-            <Anchor component={Link} href="/" size="sm">
-              ← Home
-            </Anchor>
-          </Group>
-
-          {/* Header */}
+      <Article
+        title="The Miranova Matrix"
+        header={
           <Center>
             <Image
               src="/images/miranova-matrix-logo-bordered.png"
@@ -100,22 +74,19 @@ export default function TheMiranovaMatrixPage() {
               alt="Miranova Matrix logo"
             />
           </Center>
-
-          <div>
-            <Title order={1}>The Miranova Matrix</Title>
-            <Text c="dimmed" mt="sm">
-              The Miranova Matrix is an operational framework for studying how persistent structure
-              may arise from minimal irreversible update rules. System progression is modelled as
-              discrete “Ticks”: closed traversals in which defined Degrees of Freedom are read,
-              gated, and written under admissibility constraints. The resulting Participation Ledger
-              specifies a minimal grammar through which commitment, compatibility, directional bias,
-              and closure can be expressed without presupposing geometry or external time. Miranova
-              is presented not as a physical theory, but as a simulation-oriented formalism for
-              exploring constraint propagation and emergent organisation under physically compatible
-              principles.
-            </Text>
-          </div>
-
+        }
+        description={`
+            The Miranova Matrix is an operational framework for studying how persistent structure
+            may arise from minimal irreversible update rules. System progression is modelled as
+            discrete “Ticks”: closed traversals in which defined Degrees of Freedom are read, gated,
+            and written under admissibility constraints. The resulting Participation Ledger
+            specifies a minimal grammar through which commitment, compatibility, directional bias,
+            and closure can be expressed without presupposing geometry or external time. Miranova is
+            presented not as a physical theory, but as a simulation-oriented formalism for exploring
+            constraint propagation and emergent organisation under physically compatible principles.
+        `}
+        content={[MatrixContent]}
+        footer={
           <Stack gap="xs" justify="flex-end" align="flex-end">
             <Group gap="xs">
               <Badge variant="filled" color="blue">
@@ -127,26 +98,17 @@ export default function TheMiranovaMatrixPage() {
             </Group>
 
             <Group gap="xs">
-              <Anchor
+              <SmartLink
                 href="/pdf/miranova/The Miranova Matrix (1.4.1).pdf"
                 target="_blank"
                 size="sm"
               >
                 Download Latest (PDF)
-              </Anchor>
+              </SmartLink>
             </Group>
           </Stack>
-        </Container>
-      </Box>
-
-      <Divider />
-
-      {/* Content */}
-      <Article>
-        <div id="mdx">
-          <MatrixContent />
-        </div>
-      </Article>
+        }
+      />
     </Page>
   );
 }

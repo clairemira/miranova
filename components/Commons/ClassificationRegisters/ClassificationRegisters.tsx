@@ -70,13 +70,13 @@ export const domains: Domain[] = [
 
 export default function ClassificationRegisters() {
   return (
-    <Grid gutter="xs" my="lg">
+    <Grid gap="xs" my="lg">
       {domains.map((domain) => (
         <GridCol key={domain.name} span={{ base: 12, sm: 6 }}>
           <MetaCard
             meta={domain}
             bottomSection={
-              <Grid gutter="xs" mt="xs">
+              <Grid gap="xs" mt="xs">
                 {domain.registers.map((register) => (
                   <GridCol key={register.name} span={{ base: 12, xs: 4 }}>
                     <MetaCard

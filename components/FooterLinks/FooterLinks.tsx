@@ -1,9 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import cx from "clsx";
-import { Box, Container, RemoveScroll, Text } from "@mantine/core";
-import { useWindowEvent } from "@mantine/hooks";
+import { Box, Container, Text } from "@mantine/core";
 import classes from "./FooterLinks.module.css";
 import { LinksGroupProps } from "./LinksGroup/LinksGroup";
 import { LinksGroup } from "./LinksGroup/LinksGroup";
@@ -38,8 +36,8 @@ export const footerLinks: LinksGroupProps[] = [
   {
     title: "Projects",
     data: [
-      { type: "next", label: "The Miranova Matrix", link: "/matrix" },
       { type: "next", label: "The Commons", link: "/commons" },
+      { type: "next", label: "The Miranova Matrix", link: "/matrix" },
     ],
   },
 ];

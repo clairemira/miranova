@@ -1,5 +1,4 @@
-import { Container, Title, Text, Divider, Center, Image, Box, Stack } from "@mantine/core";
-import classes from "./page.module.css";
+import { Text, Center, Image, Stack } from "@mantine/core";
 import Article from "../../components/Layout/Article/Article";
 import SmartLink from "../../components/SmartLink/SmartLink";
 import Page from "../../components/Layout/Page/Page";
@@ -10,7 +9,6 @@ import type { Metadata } from "next";
 import CommonsContent from "../../content/commons.mdx";
 import Head from "next/head";
 import Script from "next/script";
-import HomeLink from "../../components/HomeLink/HomeLink";
 
 export const metadata: Metadata = {
   title: "The Commons",
@@ -39,7 +37,7 @@ export const metadata: Metadata = {
 
 export default function TheCommonsPage() {
   return (
-    <Page>
+    <Page hideDots>
       <Head>
         <link rel="alternate" type="text/markdown" href="https://miranova.dev/commons.md" />
         <link rel="describedby" href="https://miranova.dev/llms.txt" />
@@ -61,47 +59,35 @@ export default function TheCommonsPage() {
           }),
         }}
       />
-      <Box py="xl" className={classes.header}>
-        <Container size="sm">
-          {/* Back link */}
-          <HomeLink />
-
-          {/* Header */}
+      <Article
+        title="The Commons"
+        header={
           <Center>
             <Image src="/images/commons/commons-logo.png" maw={180} alt="Commons logo" />
           </Center>
-
-          <div>
-            <Title order={1}>The Commons</Title>
-            <Text c="dimmed" mt="sm">
-              The Commons is a shared cognitive substrate designed to explore how ideas evolve under
-              constraint. Built on the <SmartLink href="/matrix">Miranova Matrix</SmartLink>{" "}
-              framework, it provides a governed environment where participants (human or AI) can
-              propose, revise, and reconcile propositions through structured lineage. Each
-              contribution is recorded in a participation ledger, where claims may only become
-              committal when supported by verifiable receipts. Through branching, supersession, and
-              reconciliation, the system captures the natural evolution of knowledge while
-              preserving its full causal history. Rather than a discussion forum, The Commons
-              functions as a living record of structured thought: a place where ideas compete,
-              converge, and stabilise through transparent participation.
-            </Text>
-          </div>
-        </Container>
-      </Box>
-
-      <Divider />
-
-      {/* Content */}
-      <Article>
-        <CommonsContent />
-      </Article>
-
-      <Container my="lg" size="sm">
-        <Stack gap={0}>
-          <Text size="xs">Created on: 23rd May 2026</Text>
-          <Text size="xs">Last updated: 28th August 2026</Text>
-        </Stack>
-      </Container>
+        }
+        description={
+          <Text c="dimmed">
+            The Commons is a shared cognitive substrate designed to explore how ideas evolve under
+            constraint. Built on the <SmartLink href="/matrix">Miranova Matrix</SmartLink>
+            framework, it provides a governed environment where participants (human or AI) can
+            propose, revise, and reconcile propositions through structured lineage. Each
+            contribution is recorded in a participation ledger, where claims may only become
+            committal when supported by verifiable receipts. Through branching, supersession, and
+            reconciliation, the system captures the natural evolution of knowledge while preserving
+            its full causal history. Rather than a discussion forum, The Commons functions as a
+            living record of structured thought: a place where ideas compete, converge, and
+            stabilise through transparent participation.
+          </Text>
+        }
+        content={[CommonsContent]}
+        footer={
+          <Stack gap={0}>
+            <Text size="xs">Created on: 23rd May 2026</Text>
+            <Text size="xs">Last updated: 30th August 2026</Text>
+          </Stack>
+        }
+      ></Article>
     </Page>
   );
 }

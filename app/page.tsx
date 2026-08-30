@@ -5,6 +5,7 @@ import PersonalWork from "../components/PersonalWork/PersonalWork";
 import ProfessionalWork from "../components/ProfessionalWork/ProfessionalWork";
 import { Biases } from "../components/Biases/Biases";
 import Page from "../components/Layout/Page/Page";
+import Script from "next/script";
 
 export default function HomePage() {
   const jsonLd = {
@@ -25,7 +26,7 @@ export default function HomePage() {
 
   return (
     <Page>
-      <script
+      <Script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -43,7 +44,7 @@ export default function HomePage() {
 
       <Box my="xl">
         <Container size="lg" mt="xl">
-          <Grid gutter="lg" justify="center">
+          <Grid gap="lg" justify="center">
             <GridCol span={{ base: 12, sm: 6, md: 8 }}>
               <PersonalWork />
             </GridCol>

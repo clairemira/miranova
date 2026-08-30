@@ -3,7 +3,6 @@ import {
   IconBinaryTree2,
   IconBulb,
   IconWhirl,
-  IconEditCircle,
   IconHexagon,
   IconReceipt,
   IconUserHexagon,
@@ -39,7 +38,7 @@ const features: FeatureProps[] = [
 
 export default function ConceptFeatures() {
   return (
-    <Grid gutter="md" my="lg">
+    <Grid gap="md" my="lg">
       {features.map((feature) => (
         <GridCol key={feature.name} span={{ base: 4, md: 2 }}>
           <Feature {...feature} />

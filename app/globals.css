@@ -10,25 +10,124 @@
   stroke: light-dark(var(--mantine-color-gray-9), var(--mantine-color-dark-8));
 }
 
-.node rect p {
-  line-height: 0 !important;
-}
-
 span .nodeLabel {
   color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-dark-0));
   stroke: light-dark(var(--mantine-color-gray-9), var(--mantine-color-dark-8)) !important;
 }
 
-.frontier rect {
-  fill: var(--mantine-color-green-light) !important;
-  stroke: var(--mantine-color-green-outline) !important;
+.print-none {
+  @media print {
+    display: none;
+  }
 }
 
-.activity rect {
+/* Mermaid mappings */
+
+[data-mantine-color-scheme="dark"] {
+  .node rect {
+    fill: var(--mantine-color-dark-6) !important;
+    stroke: var(--mantine-color-dark-4) !important;
+  }
+
+  .nodeLabel {
+    color: var(--mantine-color-dark-1) !important;
+  }
+
+  .edgeLabel p {
+    color: var(--mantine-color-gray-text) !important;
+    background-color: var(--mantine-color-dark-7) !important;
+  }
+
+  .cluster rect {
+    fill: var(--mantine-color-dark-8) !important;
+    stroke: var(--mantine-color-dark-outline) !important;
+  }
+}
+
+.activity.node rect {
   fill: var(--mantine-color-red-light) !important;
   stroke: var(--mantine-color-red-outline) !important;
 }
+.activity p {
+  color: var(--mantine-color-red-text);
+}
 
-.canon rect {
+.frontier.node rect {
+  fill: var(--mantine-color-green-light) !important;
+  stroke: var(--mantine-color-green-outline) !important;
+}
+.frontier p {
+  color: var(--mantine-color-green-text);
+}
+
+.canon.node rect {
   fill: var(--mantine-color-blue-light) !important;
+  stroke: var(--mantine-color-blue-outline) !important;
+}
+.canon p {
+  color: var(--mantine-color-blue-text);
+}
+
+.signal.node rect {
+  fill: var(--mantine-color-yellow-light) !important;
+  stroke: var(--mantine-color-yellow-outline) !important;
+}
+.signal p {
+  color: var(--mantine-color-yellow-text);
+}
+
+.stance.node rect {
+  fill: var(--mantine-color-pink-light) !important;
+  stroke: var(--mantine-color-pink-outline) !important;
+}
+.stance p {
+  color: var(--mantine-color-pink-text);
+}
+
+.concord.node rect {
+  fill: var(--mantine-color-cyan-light) !important;
+  stroke: var(--mantine-color-cyan-outline) !important;
+}
+.concord p {
+  color: var(--mantine-color-cyan-text);
+}
+
+.committal.node rect {
+  fill: var(--mantine-color-indigo-light) !important;
+  stroke: var(--mantine-color-indigo-outline) !important;
+}
+.committal p {
+  color: var(--mantine-color-indigo-text);
+}
+
+.prominence.node rect {
+  fill: light-dark(var(--mantine-color-indigo-0), rgba(27, 40, 100, 1)) !important;
+  stroke: light-dark(var(--mantine-color-indigo-6), var(--mantine-color-indigo-4)) !important;
+}
+.prominence p {
+  color: var(--mantine-color-indigo-3);
+}
+
+.turbulence.node rect {
+  fill: light-dark(var(--mantine-color-indigo-2), rgb(18, 28, 66)) !important;
+  stroke: light-dark(var(--mantine-color-indigo-7), var(--mantine-color-indigo-5)) !important;
+}
+.turbulence p {
+  color: var(--mantine-color-indigo-5);
+}
+
+.positive.node rect {
+  fill: var(--mantine-color-violet-light) !important;
+  stroke: var(--mantine-color-violet-outline) !important;
+}
+.positive p {
+  color: var(--mantine-color-violet-text);
+}
+
+.negative.node rect {
+  fill: var(--mantine-color-blue-light) !important;
+  stroke: var(--mantine-color-blue-outline) !important;
+}
+.negative p {
+  color: var(--mantine-color-blue-text);
 }

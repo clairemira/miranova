@@ -32,11 +32,7 @@ export type ActionsGridProps = {
   span?: StyleProp<ColSpan>;
 };
 
-export function ActionsGrid({
-  gridTitle,
-  actions,
-  span = "auto",
-}: ActionsGridProps) {
+export function ActionsGrid({ gridTitle, actions, span = "auto" }: ActionsGridProps) {
   const items = actions.map((item) => (
     <GridCol key={item.title} span={span} className={classes.col}>
       <SmartLink href={item.link} className={classes.item}>

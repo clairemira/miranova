@@ -15,7 +15,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     blockquote: (props) => <Blockquote {...props} py="xs" />,
     code: (props) => <Code {...props} />,
     img: (props) => <Image radius="md" maw={600} {...props} />,
-    a: ({ href = "", ...props }) => <SmartLink {...props} />,
+    a: (props) => <SmartLink {...props} />,
     ...components,
   };
 }

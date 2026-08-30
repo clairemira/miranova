@@ -146,7 +146,7 @@ flowchart TB
     subgraph REGISTERS["Classification Registers"]
         direction TB
 
-        TR("↑ Tension <small>(Potential Charge)</small>")
+        TR("↑ Tension <small>(Potential Charge)</small>"):::committal
 
         subgraph DOMAIN["Active Domain"]
             direction LR
@@ -154,19 +154,19 @@ flowchart TB
             subgraph EMERGENCE["Emergence"]
                 direction TB
 
-                PROMINENT(↑ Prominence)
-                ACTIVITY(Activity):::activityRegister
-                FRONTIER(Frontier):::frontierRegister
-                CANON(Canon):::canonRegister
+                PROMINENT(↑ Prominence):::prominence
+                ACTIVITY(Activity):::activity
+                FRONTIER(Frontier):::frontier
+                CANON(Canon):::canon
             end
 
             subgraph SETTLEMENT["Settlement"]
                 direction TB
 
-                TURBULENT(↑ Turbulence)
-                SIGNAL(Signal):::signalRegister
-                STANCE(Stance):::stanceRegister
-                CONCORD(Concord):::concordRegister
+                TURBULENT(↑ Turbulence):::turbulence
+                SIGNAL(Signal):::signal
+                STANCE(Stance):::stance
+                CONCORD(Concord):::concord
             end
         end
     end
@@ -199,30 +199,6 @@ flowchart TB
     REGISTERS --> CH
 
     PERS -->|"Output"| PARTICIPANT_OUT
-
-    classDef activityRegister fill:#fee2e2,stroke:#dc2626,color:#7f1d1d,stroke-width:2px
-    classDef frontierRegister fill:#dcfce7,stroke:#16a34a,color:#14532d,stroke-width:2px
-    classDef canonRegister fill:#dbeafe,stroke:#2563eb,color:#1e3a8a,stroke-width:2px
-
-    classDef signalRegister fill:#fef9c3,stroke:#ca8a04,color:#713f12,stroke-width:2px
-    classDef stanceRegister fill:#fae8ff,stroke:#c026d3,color:#701a75,stroke-width:2px
-    classDef concordRegister fill:#cffafe,stroke:#0891b2,color:#164e63,stroke-width:2px
-
-    classDef pcRegister fill:#dbe4ff,stroke:#3b5bdb,color:#3b5bdb,stroke-width:2px
-    classDef turbulenceRegister fill:#dbe4ff,stroke:#263578,color:#263578,stroke-width:2px
-    classDef prominenceRegister fill:#edf2ff,stroke:#8ca3ff,color:#8ca3ff,stroke-width:2px
-
-    class ACTIVITY activityRegister
-    class FRONTIER frontierRegister
-    class CANON canonRegister
-
-    class SIGNAL signalRegister
-    class STANCE stanceRegister
-    class CONCORD concordRegister
-
-    class TR pcRegister
-    class TURBULENT turbulenceRegister
-    class PROMINENT prominenceRegister
 
     %% Negative (-) edges
     linkStyle 10,12,14,16 stroke:#3b5bdb,color:#3b5bdb
@@ -314,25 +290,25 @@ graph TD
     direction TB
 
     subgraph D0["<strong>Depth 1</strong> (Tension: -0.34)"]
-      A["Question"]
+      A("Question"):::committal
     end
 
     subgraph D1["<strong>Depth 2</strong> (Tension: -0.27)"]
-      B["Observation"]
-      C["Observation"]
+      B("Observation"):::committal
+      C("Observation")
     end
 
     subgraph D2["<strong>Depth 3</strong> (Tension: -0.21)"]
-      D["Evidence"]
-      E["Hypothesis"]
-      F["Question"]
+      D("Evidence")
+      E("Hypothesis"):::committal
+      F("Question")
     end
 
     subgraph D3["<strong>Depth 4</strong> (Tension: -0.09)"]
-      G["Question"]
-      H["Evidence"]
-      I["Evidence"]
-      J["Hypothesis"]
+      G("Question")
+      H("Evidence")
+      I("Evidence"):::committal
+      J("Hypothesis")
     end
 
     A --> B
@@ -350,17 +326,12 @@ graph TD
 
   subgraph CH2["Context Horizon 2 (Domain B)"]
     subgraph D4["<strong>Depth 1</strong> (Tension: +0.03)"]
-      K["Conclusion"]
+      K("Conclusion"):::committal
     end
   end
 
   I -->|"Closure Boundary"| K
 
-  class A,B,E,I,K longestPath
-  class D,F,G,H,J,C otherNode
-
-  classDef longestPath fill:#edf2ff,stroke:#748ffc,color:#748ffc
-  classDef otherNode fill:#e5e7eb,stroke:#9ca3af,color:#111
 ```
 
 - The [Closure Boundary](/commons#closure-boundary) is where new commitment shifts Tension's
@@ -431,9 +402,9 @@ flowchart LR
     G == "Hard (SS)" ==> B
   end
 
-  KEY1["Red (Proposition Tier 1)"]
-  KEY2["Green (Proposition Tier 2)"]
-  KEY3["Blue (Proposition Tier 3)"]
+  KEY1["Red (Proposition Tier 1)"]:::activity
+  KEY2["Green (Proposition Tier 2)"]:::frontier
+  KEY3["Blue (Proposition Tier 3)"]:::canon
   KEY4["Light Fill (Low Receipts)"]
   KEY5["Solid Fill (High Receipts)"]
 
@@ -450,11 +421,6 @@ flowchart LR
   classDef rLight fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
   classDef gLight fill:#dcfce7,stroke:#16a34a,color:#14532d
   classDef bSolid fill:#2563eb,stroke:#1e3a8a,color:#fff
-
-  style KEY1 fill:transparent,stroke:#9ca3af,color:#374151
-  style KEY2 fill:transparent,stroke:#9ca3af,color:#374151
-  style KEY3 fill:transparent,stroke:#9ca3af,color:#374151
-  style MAIN fill:transparent,stroke:#9ca3af
 ```
 
 #### Node Labels
@@ -558,14 +524,12 @@ flowchart TB
   classDef bNode fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
   classDef bSolid fill:#2563eb,stroke:#1e3a8a,color:#fff
 
-  linkStyle 4,5,6,11 stroke:#6366f1,stroke-width:2px,stroke-dasharray:5 5
+  linkStyle 4,5,6,11 stroke:#6366f1,stroke-width:1px,stroke-dasharray:5 5
 
   style CA fill:transparent,stroke:#9ca3af
   style CB fill:transparent,stroke:#9ca3af
   style DA fill:transparent,stroke:#9ca3af
   style DB fill:transparent,stroke:#9ca3af
-  style CON fill:transparent,stroke:#8ca3ff,stroke-width:3px
-  style DIS fill:transparent,stroke:#263578,stroke-width:3px
 ```
 
 #### Homeostatic Effect
@@ -603,14 +567,15 @@ subgraph CH["Context Horizon"]
   subgraph ATT["Attestations"]
     direction TB
 
-    A("+ 283")
+    %% Active nodes have a class
+    A("+ 283"):::positive
     B("+ 486")
-    C("+ 486")
+    C("+ 486"):::positive
     D("- 215")
     E("- 163")
-    F("- 4")
-    G("- 571")
-    H("+ 25")
+    F("- 4"):::negative
+    G("- 571"):::negative
+    H("+ 25"):::positive
 
     A --> B
     B ==> C
@@ -627,10 +592,10 @@ end
 subgraph SUM["Aggregate Sum"]
   direction TB
 
-  NET("Net: + 219</br>Count: 1369")
+  NET("Net: + 219</br>Count: 1369"):::positive
 
-  POS("+ 794")
-  NEG("- 575")
+  POS("+ 794"):::positive
+  NEG("- 575"):::negative
 end
 
 POS --> NET
@@ -639,18 +604,11 @@ NEG --> NET
 subgraph AGG["Aggregate Lean"]
   direction TB
 
-  LEAN("+ 0.16")
+  LEAN("+ 0.16"):::positive
 end
 
 ATT --> SUM
 SUM --> AGG
-
-class A,C,H,POS,LEAN,NET blueNode
-class F,G,NEG violetNode
-%% class B,D,E supersededNode
-
-classDef blueNode fill:#e7f5ff,stroke:#4dabf7,color:#4dabf7
-classDef violetNode fill:#f3f0ff,stroke:#9775fa,color:#9775fa
 ```
 
 After obtaining the product between Domains, we get **Chirality**:
@@ -675,15 +633,15 @@ flowchart TB
 
     subgraph DA["Domain A"]
       direction TB
-      L1("- 0.76")
+      L1("- 0.76"):::negative
     end
 
-    PROD1("+ 0.46")
+    PROD1("+ 0.46"):::prominence
 
     subgraph DB["Domain B"]
       direction TB
 
-      L2("- 0.61")
+      L2("- 0.61"):::negative
     end
   end
 
@@ -696,33 +654,20 @@ flowchart TB
     subgraph DA2["Domain A"]
       direction TB
 
-      L3("+ 0.4")
+      L3("+ 0.4"):::positive
     end
 
-    PROD2("- 0.3")
+    PROD2("- 0.3"):::turbulence
 
     subgraph DB2["Domain B"]
       direction TB
 
-      L4("- 0.61")
+      L4("- 0.61"):::negative
     end
   end
 
   L3 --> PROD2
   L4 --> PROD2
-
-  classDef blueNode fill:#e7f5ff,stroke:#4dabf7,color:#4dabf7
-  classDef violetNode fill:#f3f0ff,stroke:#9775fa,color:#9775fa
-  classDef aliNode fill:#edf2ff,stroke:#8ca3ff,color:#8ca3ff,stroke-width:2px
-  classDef divNode fill:#edf2ff,stroke:#263578,color:#263578,stroke-width:2px
-
-  class L3 blueNode
-  class L1,L2,L4 violetNode
-  class PROD1 aliNode
-  class PROD2 divNode
-
-  style ALI fill:transparent,stroke:#8ca3ff,stroke-width:3px
-  style DIV fill:transparent,stroke:#263578,stroke-width:3px
 ```
 
 It is important to note that Alignment & Divergence are not the same as Support & Refute.
@@ -801,15 +746,7 @@ flowchart TB
 
   class P1,P4,P5,P7,P8,P10,V1,V3,V6,V9 committalNode
 
-  style DEP fill:transparent,color:#4c6ef5,stroke:#4c6ef5
-  style EXP fill:transparent
-  style COM fill:transparent
-
-  %% Negative (-) edges
   linkStyle 0,2,4 stroke:#3b5bdb,color:#3b5bdb
-
-  %% Positive (+) edges
-  %% linkStyle 6,8,10,12 stroke:#748ffc,color:#748ffc
 ```
 
 #### Depth
@@ -853,7 +790,7 @@ flowchart TB
       C3(( )) -->|"5 Props"| C4(( ))
     end
 
-    DEP("+ 0.6")
+    DEP("+ 0.6"):::prominence
 
     DAP --> DEP
     DBP --> DEP
@@ -874,23 +811,11 @@ flowchart TB
       C7(( )) -->|"11 Props"| C8(( ))
     end
 
-    DEP2("- 0.63")
+    DEP2("- 0.63"):::turbulence
 
     DAP2 --> DEP2
     DBP2 --> DEP2
   end
-
-  classDef committalNode fill:#bac8ff,stroke:#4c6ef5,color:#4c6ef5
-  classDef perNode fill:#edf2ff,stroke:#8ca3ff,color:#8ca3ff,stroke-width:2px
-  classDef varNode fill:#edf2ff,stroke:#263578,color:#263578,stroke-width:2px
-
-  class L3 blueNode
-  class C1,C2,C3,C4,C5,C6,C7,C8 committalNode
-  class DEP perNode
-  class DEP2 varNode
-
-  style PERS1 fill:transparent,stroke:#8ca3ff,stroke-width:3px
-  style PERS2 fill:transparent,stroke:#263578,stroke-width:3px
 ```
 
 ##### Reinforcement
@@ -950,7 +875,7 @@ flowchart TD
       V5(( )) -- "1 Cycle" --> V6(( )) -- "2 Cycles (+1)" --> V7(( )) -- "4 Cycles (+2)" --> V8(( ))
     end
 
-    CAD2("+ 0.89")
+    CAD2("+ 0.89"):::prominence
 
     DA5 --> CAD2
     DB5 --> CAD2
@@ -971,21 +896,10 @@ flowchart TD
       V1(( )) -- "4 Cycles" --> V2(( )) -- "5 Cycles (+1)" --> V3(( )) -- "5 Cycles (0)" --> V4(( ))
     end
 
-    CAD1("- 0.75")
+    CAD1("- 0.75"):::turbulence
     DA4 --> CAD1
     DB4 --> CAD1
   end
-
-  classDef committalNode fill:#bac8ff,stroke:#4c6ef5,color:#4c6ef5
-  classDef perNode fill:#edf2ff,stroke:#8ca3ff,color:#8ca3ff,stroke-width:2px
-  classDef varNode fill:#edf2ff,stroke:#263578,color:#263578,stroke-width:2px
-
-  class P1,P2,P3,P4,P5,P6,P7,P8,V1,V2,V3,V4,V5,V6,V7,V8 committalNode
-  class CAD1 varNode
-  class CAD2 perNode
-
-  style PER2 fill:transparent,stroke:#8ca3ff,stroke-width:3px
-  style VAR2 fill:transparent,stroke:#263578,stroke-width:3px
 ```
 
 #### Closure
@@ -1031,7 +945,6 @@ flowchart LR
     D(Dissonance)
     G(Divergence)
     V(Variability)
-
   end
 
   subgraph PRO[<strong>Prominence</strong>]
@@ -1046,15 +959,8 @@ flowchart LR
   G <-.->|Chirality| A
   V <-.->|Closure| S
 
-  classDef promNode fill:#edf2ff,stroke:#8ca3ff,color:#8ca3ff,stroke-width:2px
-  classDef turbNode fill:#edf2ff,stroke:#263578,color:#263578,stroke-width:2px
-
-  class D,G,V turbNode
-  class C,A,S promNode
-
-  style PRO fill:transparent,stroke:#8ca3ff,stroke-width:3px
-  style TUR fill:transparent,stroke:#263578,stroke-width:3px
-
+  class D,G,V turbulence
+  class C,A,S prominence
 ```
 
 If a stable and balanced state is neutral and centered, then each projection
@@ -1128,14 +1034,39 @@ However on a fresh substrate, no historical direction yet exists.
 One would assume a sensible default might be positive (+) for these
 values, however a unique combination is required to satisfy the constraints.
 
-The following default directions must be considered:
+```mermaid
+---
+config:
+  flowchart:
+    curve: basis
+  theme: neutral
+---
+flowchart TD
 
-- <span style={{ color: "#8ca3ff" }}>**Tension (+)**</span>
-  - <span style={{ color: "#8ca3ff" }}>**Correspondence (+)**</span>
-  - <span style={{ color: "#8ca3ff" }}>**Chirality (+)**</span>
-  - <span style={{ color: "#263578" }}>**Closure (-)**</span>
-    - <span style={{ color: "#263578" }}>**Depth (-)**</span>
-    - <span style={{ color: "#263578" }}>**Cadence (-)**</span>
+  subgraph HYS[<strong>Default Hysteretic Direction</strong>]
+    direction TD
+
+    DEP("Depth (-)")
+    CAD("Cadence (-)")
+
+    CLO("Closure (-)")
+    CHI("Chirality (+)")
+    COR("Correspondence (+)")
+
+    TEN("Tension (+)")
+  end
+
+  DEP --> CLO
+  CAD --> CLO
+
+  COR --> TEN
+  CHI --> TEN
+  CLO --> TEN
+
+
+  class DEP,CAD,CLO turbulence
+  class COR,CHI,TEN prominence
+```
 
 The default directions for Depth & Cadence must be negative (-),
 which is a requirement for the bootstraping process explained below.
@@ -1149,7 +1080,7 @@ from Correspondence, Chirality, and Closure respectively.
 ## Bootstrapping
 
 The bootstrapping process demonstrates how a substrate is initialised,
-establishing the conditions to allow for further contributions.
+establishing the conditions which allow for further contributions.
 
 If we ~simply~ follow the constraints:
 
@@ -1224,14 +1155,10 @@ flowchart TD
   E2 --> C1
   C1 -->|"Closure Boundary 2"| E3
 
-  classDef committalNode fill:#edf2ff,stroke:#748ffc,color:#748ffc
   classDef transNode fill:transparent
 
   class EMPTY transNode
-  class O,C1 committalNode
-
-  style E fill:transparent,stroke:#8ca3ff,stroke-width:2px
-  style S fill:transparent,stroke:#263578,stroke-width:2px
+  class O,C1 committal
 ```
 
 The empty substrate therefore begins with maximum Charge and no structure.
@@ -1243,7 +1170,7 @@ and becoming the seed of provenance that subsequent contributions stem from.
 ## Charge
 
 Charge isn't a form of currency. Charge describes the available capacity remaining
-that allows for _new_ contributions. It is derived directly from the magnitude of Tension:
+that allows for _destabilising_ contributions. It is derived directly from the magnitude of Tension:
 
 $$
 Charge = 1 - |Tension|
@@ -1278,26 +1205,18 @@ Global Charge is recalculated from its resulting Tension.
 ## Context Horizon
 
 A Context Horizon is a region of the substrate that shares the same Tension direction.
-It encapsulates the flow of Propositions from generation to commitment within a single Domain.
+It encapsulates the flow of Propositions from generation to reconciliation within a single Domain.
 
 Commitment alone does not create a new Context Horizon. Multiple commitments can occur
 to raise or lower magnitudal Tension, as long as the signed direction remains the same.
 
 For example, the following change in Tension would remain within Emergence:
 
-<span style={{ color: "#8ca3ff" }}>
-$$
-+0.7 \rightarrow +0.3
-$$
-</span>
+<span style={{ color: "#8ca3ff" }}>$$ +0.7 \rightarrow +0.3 $$</span>
 
 and the following would remain in Settlement:
 
-<span style={{ color: "#263578" }}>
-$$
--0.4 \rightarrow -0.6
-$$
-</span>
+<span style={{ color: "#263578" }}>$$ -0.4 \rightarrow -0.6 $$</span>
 
 A new Context Horizon begins only when a commitment causes Tension to cross into the opposite Domain.
 The Committal Proposition that initiated the transition becomes the provenancial seed for
@@ -1362,12 +1281,12 @@ Where:
 For a source with Tension `-1`:
 
 | Distance | Raw Influence |
-| ---: | ---: |
-| 1 | -1 |
-| 2 | -0.25 |
-| 3 | -0.11 |
-| 4 | -0.06 |
-| 5 | -0.04 |
+| -------: | ------------: |
+|        1 |            -1 |
+|        2 |         -0.25 |
+|        3 |         -0.11 |
+|        4 |         -0.06 |
+|        5 |         -0.04 |
 
 Attenuation belongs to the substrate itself.
 Given the same source and structural distance,
@@ -1397,9 +1316,9 @@ flowchart TD
     subgraph CH2["Context Horizon 2"]
         direction TB
 
-        E1("Exp #1<br/>T: +1.00 · LC: 0.00<br/>Origin Influence: -1.00")
-        E2("Exp #2<br/>T: +0.75 · LC: 0.25<br/>Origin Influence: -0.25")
-        C1("Com #1<br/>T: +0.75 · GC: 0.25<br/>Origin Influence: -0.11")
+        E1("Exp #1<br/>T: +1.00 · LC: 0.00")
+        E2("Exp #2<br/>T: +0.75 · LC: 0.25")
+        C1("Com #1<br/>T: +0.75 · GC: 0.25")
     end
   end
 
@@ -1415,7 +1334,7 @@ flowchart TD
     subgraph CH3["Context Horizon 3"]
         direction TB
 
-        E3("Exp #3<br/>T: +0.50 · LC: 0.50<br/>Origin Influence: -0.06")
+        E3("Exp #3<br/>T: +0.50 · LC: 0.50")
     end
 
   end
@@ -1432,11 +1351,10 @@ flowchart TD
   O -.->|"d = 3 · -1 / 3² ≈ <strong>-0.11</strong>"| C1
   O -.->|"d = 4 · -1 / 4² ≈ <strong>-0.06</strong>"| E3
 
-  classDef committalNode fill:#edf2ff,stroke:#748ffc,color:#748ffc
   classDef transNode fill:transparent
 
   class EMPTY transNode
-  class O,C1 committalNode
+  class O,C1 committal
 ```
 
 The diagram above follows only the influence of Origin for clarity.

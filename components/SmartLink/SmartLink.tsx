@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { Anchor, MantineSize, UnstyledButton } from "@mantine/core";
-import type { PropsWithChildren } from "react";
+import type { HTMLAttributeAnchorTarget, PropsWithChildren } from "react";
 
 type SmartLinkProps = PropsWithChildren & {
   href?: string;
+  target?: HTMLAttributeAnchorTarget;
   className?: string;
   style?: React.CSSProperties;
   size?: MantineSize;
@@ -27,7 +28,6 @@ export default function SmartLink({ href = "", children, style, size, ...props }
     rel: isExternal ? "noopener noreferrer" : undefined,
     ...props,
   };
-
   const ParentComponent = typeof children === "string" ? Anchor : UnstyledButton;
 
   if (isExternal) {
