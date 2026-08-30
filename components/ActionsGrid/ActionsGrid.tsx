@@ -13,7 +13,7 @@ import {
 } from "@mantine/core";
 import classes from "./ActionsGrid.module.css";
 import Tag, { TagProps } from "../Tags/Tag/Tag";
-import { ColSpan } from "@mantine/core/lib/components/Grid/GridCol/GridCol";
+import { ColSpan } from "@mantine/core/components/Grid/GridCol/GridCol";
 import SmartLink from "../SmartLink/SmartLink";
 
 export type Action = {

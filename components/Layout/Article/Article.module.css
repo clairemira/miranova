@@ -1,3 +1,7 @@
+.header {
+  background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
+}
+
 .article {
   font-size: 18px;
   line-height: 1.7;

@@ -57,7 +57,9 @@ export default function Article({
       </Container>
 
       {/* Footer */}
-      {footer}
+      <Container size={size} p="lg">
+        {footer}
+      </Container>
     </>
   );
 }

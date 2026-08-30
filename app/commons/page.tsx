@@ -2,13 +2,12 @@ import { Text, Center, Image, Stack } from "@mantine/core";
 import Article from "../../components/Layout/Article/Article";
 import SmartLink from "../../components/SmartLink/SmartLink";
 import Page from "../../components/Layout/Page/Page";
-
+import Head from "next/head";
+import Script from "next/script";
 import type { Metadata } from "next";
 
 // MDX
 import CommonsContent from "../../content/commons.mdx";
-import Head from "next/head";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "The Commons",
@@ -69,7 +68,7 @@ export default function TheCommonsPage() {
         description={
           <Text c="dimmed">
             The Commons is a shared cognitive substrate designed to explore how ideas evolve under
-            constraint. Built on the <SmartLink href="/matrix">Miranova Matrix</SmartLink>
+            constraint. Built on the <SmartLink href="/matrix">Miranova Matrix</SmartLink>{" "}
             framework, it provides a governed environment where participants (human or AI) can
             propose, revise, and reconcile propositions through structured lineage. Each
             contribution is recorded in a participation ledger, where claims may only become
@@ -82,9 +81,13 @@ export default function TheCommonsPage() {
         }
         content={[CommonsContent]}
         footer={
-          <Stack gap={0}>
-            <Text size="xs">Created on: 23rd May 2026</Text>
-            <Text size="xs">Last updated: 30th August 2026</Text>
+          <Stack gap={0} align="flex-end">
+            <Text size="xs" c="dimmed">
+              Created on: 23rd May 2026
+            </Text>
+            <Text size="xs" c="dimmed">
+              Last updated: 30th August 2026
+            </Text>
           </Stack>
         }
       ></Article>

@@ -14,7 +14,6 @@ import {
   IconReceipt,
 } from "@tabler/icons-react";
 import ConceptFeatures from "../components/Commons/ConceptFeatures/ConceptFeatures";
-import ContextWindowBars from "../components/Commons/ContextWindowBars/ContextWindowBars";
 import ClassificationRegisters from "../components/Commons/ClassificationRegisters/ClassificationRegisters";
 import AttestationInput from "../components/Commons/AttestationInput/AttestationInput";
 import PropositionCard from "../components/Commons/PropositionCard/PropositionCard";
@@ -239,6 +238,8 @@ Context Window (MECW) regarding problem accuracy, that varys between models.
 Not only does a model's MECW appear _tiny_ compared to its MCW, some older models can
 outperform newer models depending on the problem type.
 
+<ContextWindowExample />
+
 ### Context Compaction and Drift
 
 Once context size grows larger than a model's MCW, then performance of the model typically
@@ -289,25 +290,25 @@ graph TD
   subgraph CH1["Context Horizon 1 (Domain A)"]
     direction TB
 
-    subgraph D0["<strong>Depth 1</strong> (Tension: -0.34)"]
-      A("Question"):::committal
+    subgraph D1["<strong>Depth 1</strong> (Tension: -0.34)"]
+      A("Question")
     end
 
-    subgraph D1["<strong>Depth 2</strong> (Tension: -0.27)"]
-      B("Observation"):::committal
+    subgraph D2["<strong>Depth 2</strong> (Tension: -0.27)"]
+      B("Observation")
       C("Observation")
     end
 
-    subgraph D2["<strong>Depth 3</strong> (Tension: -0.21)"]
+    subgraph D3["<strong>Depth 3</strong> (Tension: -0.21)"]
       D("Evidence")
-      E("Hypothesis"):::committal
+      E("Hypothesis")
       F("Question")
     end
 
-    subgraph D3["<strong>Depth 4</strong> (Tension: -0.09)"]
+    subgraph D4["<strong>Depth 4</strong> (Tension: +0.09)"]
       G("Question")
       H("Evidence")
-      I("Evidence"):::committal
+      I("Evidence")
       J("Hypothesis")
     end
 
@@ -325,12 +326,14 @@ graph TD
   end
 
   subgraph CH2["Context Horizon 2 (Domain B)"]
-    subgraph D4["<strong>Depth 1</strong> (Tension: +0.03)"]
-      K("Conclusion"):::committal
+    subgraph D5["<strong>Depth 1</strong> (Tension: +0.17)"]
+      K("Question"):::expressive
     end
   end
 
   I -->|"Closure Boundary"| K
+
+  class A,B,E,I,K committal
 
 ```
 
@@ -742,9 +745,7 @@ flowchart TB
   COM -.- V3
   DEP -.- V6
 
-  classDef committalNode fill:#bac8ff,stroke:#4c6ef5,color:#4c6ef5
-
-  class P1,P4,P5,P7,P8,P10,V1,V3,V6,V9 committalNode
+  class P1,P4,P5,P7,P8,P10,V1,V3,V6,V9 committal
 
   linkStyle 0,2,4 stroke:#3b5bdb,color:#3b5bdb
 ```
@@ -1178,7 +1179,7 @@ $$
 
 When Tension is neutral (`0`), Charge is fully available (`1`).
 As Tension approaches either extreme (`-1` or `+1`), Charge approaches zero.
-It doesn't get transferred or consumed, and it is always derived from Tension.
+It doesn't get transferred or consumed, and is always derived from Tension.
 
 | Tension | Charge |
 | ------: | -----: |
@@ -1212,11 +1213,11 @@ to raise or lower magnitudal Tension, as long as the signed direction remains th
 
 For example, the following change in Tension would remain within Emergence:
 
-<span style={{ color: "#8ca3ff" }}>$$ +0.7 \rightarrow +0.3 $$</span>
+$$ +0.7 \rightarrow +0.3 $$
 
 and the following would remain in Settlement:
 
-<span style={{ color: "#263578" }}>$$ -0.4 \rightarrow -0.6 $$</span>
+$$ -0.4 \rightarrow -0.6 $$
 
 A new Context Horizon begins only when a commitment causes Tension to cross into the opposite Domain.
 The Committal Proposition that initiated the transition becomes the provenancial seed for
@@ -1534,7 +1535,7 @@ _This section is incomplete._
 
 # Acknowledgements
 
-- Authored by Claire Mira Shaw. Proudly written in my own words, without the assistance of AI.
-- This document is still a working draft and will be subject to change.
+- Authored by Claire Mira Shaw. Proudly written in my own words.
+- This document is still a working draft and is subject to change.
 - The implementations provided are working examples, and are intended to be
   configurable upon creation of a substrate.
