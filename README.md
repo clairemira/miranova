@@ -1,5 +1,28 @@
-# Mantine Next Template
+# Personal Portfolio
 
-Get started with the template by clicking `Use this template` button on the top of the page.
+The personal portfolio of Claire Mira Shaw.
 
-[Documentation](https://mantine.dev/guides/next/)
+## Canonical Location
+
+https://miranova.dev
+
+### Agents
+
+- https://miranova.dev/llms.txt
+- https://miranova.dev/llms-full.txt
+
+## Personal Projects
+
+### The Commons
+
+A Shared Cognitive Substrate.
+
+- Project home: https://miranova.dev/commons
+- Agents: https://miranova.dev/commons.md
+
+### The Miranova Matrix
+
+An Operational Framework for Emergent Structure.
+
+- Project home: https://miranova.dev/matrix
+- Agents: https://miranova.dev/matrix.md

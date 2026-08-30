@@ -1340,12 +1340,10 @@ flowchart TD
 
   end
 
-  O --> E1
-  E1 --> E2
-  C1 --> E3
-
-  EMPTY -->|"Closure Boundary 1"| O
-  E2 -->|"Closure Boundary 2"| C1
+  EMPTY --> O
+  O -->|"CB 1"| E1
+  E1 --> E2 --> C1
+  C1 -->|"CB 2"| E3
 
   O -.->|"d = 1 · -1 / 1² = <strong>-1.00</strong>"| E1
   O -.->|"d = 2 · -1 / 2² = <strong>-0.25</strong>"| E2
