@@ -54,6 +54,8 @@ The content is subject to change as I experiment with the system and refine it f
   which represent structured containers of context.
 - Participant's navigate through [Cycles & Phases](/commons#cycles-and-phases),
   determining which Classification Registers can be read, superceded from, and written to.
+- Unique Receipts attached to contributions add [Reinforcement](/commons#reinforcement),
+  increasing the weight of a contribution as it provides additional grounding and support.
 - [Observables](/commons#observables) are computed properties calculated by comparing unique
   aspects of the inputs between two complementary [Domains](/commons#domain);
   - Registerial-Supersessional shape & structure -> [Correspondence](/commons#correspondence)
@@ -106,9 +108,9 @@ flowchart TB
 
         subgraph MEAS["Measurements"]
             direction LR
-            C(Correspondence):::expressive
-            H(Chirality):::expressive
-            L(Closure):::expressive
+            C(Correspondence)
+            H(Chirality)
+            L(Closure)
         end
 
         subgraph DERIVED["Derived"]
@@ -166,25 +168,25 @@ flowchart TB
             subgraph EMERGENCE["Emergence"]
                 direction TB
 
-                ACTIVITY(Activity):::activity
-                FRONTIER(Frontier):::frontier
-                CANON(Canon):::canon
+                ACTIVITY("<strong>Activity</strong><br><small>What is new</small>"):::activity
+                FRONTIER("<strong>Frontier</strong><br><small>What is forming</small>"):::frontier
+                CANON("<strong>Canon</strong><br><small>What persists</small>"):::canon
             end
 
             subgraph SETTLEMENT["Settlement"]
                 direction TB
 
-                SIGNAL(Signal):::signal
-                STANCE(Stance):::stance
-                CONCORD(Concord):::concord
+                SIGNAL("<strong>Signal</strong><br><small>What changed</small>"):::signal
+                STANCE("<strong>Stance</strong><br><small>Where we stand</small>"):::stance
+                CONCORD("<strong>Concord</strong><br><small>Where we agree</small>"):::concord
             end
-
-            COMMIT[Commit]:::committal
         end
+
+        COMMIT[Commit]:::committal
     end
 
-    POTENTIAL -.->|"T<small>dir</small> < 0<br>P1"| SIGNAL
     POTENTIAL -.->|"T<small>dir</small> > 0<br>P1"| ACTIVITY
+    POTENTIAL -.->|"T<small>dir</small> < 0<br>P1"| SIGNAL
     POTENTIAL ---> PC
 
     ACTIVITY -.->|"P2, P5"| FRONTIER
@@ -204,11 +206,15 @@ flowchart TB
     COMMIT -.->|"← Tension"| PERS
     PERS -->|"Output"| PARTICIPANT_OUT
 
+    CHA_C commitCharge@<--> COMMIT
+    classDef reverseOnly marker-end:none;
+    class commitCharge reverseOnly;
+
     %% Negative (-) edges
-    linkStyle 12,14,16,18 stroke:#3b5bdb,color:#3b5bdb
+    linkStyle 11,13,15,17 stroke:#3b5bdb,color:#3b5bdb
 
     %% Positive (+) edges
-    linkStyle 11,13,15,17 stroke:#748ffc,color:#748ffc
+    linkStyle 12,14,16,18 stroke:#748ffc,color:#748ffc
 ```
 
 ---
@@ -310,7 +316,7 @@ graph TD
       F("Question")
     end
 
-    subgraph D4["<strong>Depth 4</strong> (Tension: +0.09)"]
+    subgraph D4["<strong>Depth 4</strong> (Tension: -0.09)"]
       G("Question")
       H("Evidence")
       I("Evidence")
@@ -454,11 +460,10 @@ whether branching from an existing Proposition or replacing one.
 
 #### Node Weighting
 
-One Receipt per Participant (1PP) counts as an additional weighting extension,
-reinforcing how strongly the structure is anchored.
+Reinforcement from Receipts is factored in to provide additional weighting.
 
-- **(-)** Light Colour (None/Low Receipts)
-- **(+)** **Solid Colour** (Many/High Receipts)
+- **(-)** Light Colour (Low Reinforcement)
+- **(+)** **Solid Colour** (High Reinforcement)
 
 #### Graph Kernel
 
@@ -557,8 +562,9 @@ Correspondence plays a balancing role during the **Read** Stage of Phase 5: **Me
 How similar is the **direction and magnitude** of Attestations between Domains,
 and how strongly are they endorsed with Receipts?
 
-Take the active head nodes within a Context Horizon, i.e. the nodes that haven't yet
-been hard superceded, and then identify the aggregate lean.
+Take the active nodes of the current lineage within a Context Horizon,
+i.e. the nodes that haven't yet been hard superceded,
+and then identify the aggregate lean.
 
 ```mermaid
 ---
@@ -682,18 +688,9 @@ It is important to note that Alignment & Divergence are not the same as Support 
 Alignment between Domains means that they _lean together_, even if that lean is toward
 a Refuting direction. Divergence is where the Domains lean apart in opposing directions.
 
-#### Reinforcement
-
-Receipts attached to Attestations (1PP) count as an additional
-weighting extension, reinforcing the chosen direction.
-
-To provide additional weight without taking away from the value of an
-Attestation itself, a ratio of `3:1` Attestations to Receipts is used.
-This is intended to be a starting point for experimentation while being configurable.
-
 #### Rationale
 
-A rationale is optional and doesn't count directly towards reinforcement the
+A rationale is optional and doesn't count directly towards Reinforcement the
 same way Receipts do, however the rationale may still sway another Participant's opinion
 depending on how they decide to attest themselves.
 
@@ -702,7 +699,8 @@ depending on how they decide to attest themselves.
 Chirality plays a balancing role during the **Gate** Stage of Phase 6: **Bias**:
 
 - The only Propositions available to be Superceded (Gated) from are the ones that
-  align with the aggregate lean direction of the current Context Horizon.
+  align with the aggregate lean direction of the current lineage within the active
+  Context Horizon.
 - As reconciled Propositions are no longer active, they no longer contribute
   towards Chirality, therefore trending the aggregate lean towards balance.
 
@@ -824,14 +822,6 @@ flowchart TB
   end
 ```
 
-##### Reinforcement
-
-Receipts (1PP) count as additional weighting extension to reinforce Depth.
-
-The same weighting method as Chirality is used as a default option,
-with a ratio of `3:1` Depth to Receipts. This weighting is intended to be
-configurable and may change over time through experimentation.
-
 #### Cadence
 
 Rather than using an external measurement of time, Cadence is measured in number
@@ -931,6 +921,23 @@ Closure plays a balancing role during the **Write** Stage of Phase 7: **Order**:
 - The balancing effect for Closure naturally falls out in the cost of writing;
   commitment that causes high Tension allocates global Charge, while Tension reducing
   commitment reclaims global Charge.
+
+### Reinforcement
+
+Receipts provide additional grounding and support for contributions.
+This gets factored into the above calculations as an additional weighting extension.
+
+- Not all Receipt Types count towards Reinforcement,
+  as some types (such as Cite) can be easily obtained.
+- Only **unique** Receipts get counted across all Participants,
+  in an attempt to reduce coordinated efforts.
+- The system determines the uniqueness of a Receipt, such as comparing
+  file hashes or identifying an accurate last updated timestamp from the source.
+
+The initial implementation uses a contribution to Receipt ratio of `3:1`,
+allowing Receipts to provide additional support without taking away from
+the value of the contribution itself. This ratio is intended to be configurable
+upon the creation of a substrate, and is just a starting point for experimentation.
 
 ## Projections
 
@@ -1205,6 +1212,12 @@ branches without immediately affecting the rest of the substrate.
 
 When a Proposition becomes Committal, the globally committed state changes and
 Global Charge is recalculated from its resulting Tension.
+
+---
+
+## Potential
+
+_This section is incomplete._
 
 ---
 
